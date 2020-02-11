@@ -120,6 +120,62 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &919274942 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1232062003993282254, guid: 73145e3d55775c143841e1428be57f03,
+    type: 3}
+  m_PrefabInstance: {fileID: 1232062004008162955}
+  m_PrefabAsset: {fileID: 0}
+--- !u!60 &919274943
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919274942}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.64, y: 0.64}
+    newSize: {x: 2, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.32, y: 0.32}
+      - {x: -0.32, y: -0.32}
+      - {x: 0.32, y: -0.32}
+      - {x: 0.32, y: 0.32}
+--- !u!50 &919274947
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919274942}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1411789146
 GameObject:
   m_ObjectHideFlags: 0
@@ -130,6 +186,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1411789148}
   - component: {fileID: 1411789147}
+  - component: {fileID: 1411789150}
+  - component: {fileID: 1411789149}
   m_Layer: 0
   m_Name: New Sprite
   m_TagString: Untagged
@@ -200,6 +258,56 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &1411789149
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1411789146}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.64, y: 0.64}
+    newSize: {x: 0.64, y: 0.64}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.32, y: 0.32}
+      - {x: -0.32, y: -0.32}
+      - {x: 0.32, y: -0.32}
+      - {x: 0.32, y: 0.32}
+--- !u!50 &1411789150
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1411789146}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &1232062004008162955
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -207,6 +315,50 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Points.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Points.Array.data[1].x
+      value: -0.3110088
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Points.Array.data[2].x
+      value: 0.31757152
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Points.Array.data[1].y
+      value: 0.3166101
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Points.Array.data[2].y
+      value: 0.3234707
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Points.Array.data[3].x
+      value: -0.08126345
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Points.Array.data[3].y
+      value: -0.09087652
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Points.Array.data[0].y
+      value: -0.3217168
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Points.Array.data[0].x
+      value: -0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Points.Array.data[4].x
+      value: 0.32510668
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Points.Array.data[4].y
+      value: -0.33192998
+      objectReference: {fileID: 0}
     - target: {fileID: 1232062003993282254, guid: 73145e3d55775c143841e1428be57f03,
         type: 3}
       propertyPath: m_Name
