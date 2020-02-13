@@ -19,6 +19,12 @@ public class InventoryScript : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     }
 
+    public void OnMouseDown(PointerEventData pointerEventData)
+    {
+        Debug.Log("Clicked");
+        slot.GetComponent<Image>().color = new Color32(50, 50, 50, 255);
+    }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         Debug.Log("Hovering");
