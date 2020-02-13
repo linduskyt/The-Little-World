@@ -401,21 +401,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Sprites
+    - Assets/Scenes/MainMenuUI
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Sprites
+  - Assets/Scenes/MainMenuUI
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\linduskyt1743\Documents\GitHub\The-Little-World\The
-    Little World
+  m_LastProjectPath: D:\TheLittleWorld\The-Little-World\The Little World
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 4e2e0000
-    m_LastClickedID: 11854
-    m_ExpandedIDs: 00000000242d000000ca9a3b
+    m_SelectedIDs: 44370000
+    m_LastClickedID: 14148
+    m_ExpandedIDs: 00000000b82d00002e2e000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -443,7 +442,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000242d0000
+    m_ExpandedIDs: 00000000b82d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -470,7 +469,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000263200002e320000522d000056320000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -564,23 +563,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: 48f2ffff60f3ffff76fbffff8e310000
+      m_SelectedIDs: b2370000
+      m_LastClickedID: 14258
+      m_ExpandedIDs: 20f1ffff2afbffffa237000002380000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: TempPlayer
-        m_OriginalName: TempPlayer
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 12692
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 4}
       m_SearchString: 
@@ -626,9 +625,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 1.7673367, y: 0.1694704, z: -2.0588593}
+    m_Target: {x: 846.166, y: 341.28015, z: -134.75}
     speed: 2
-    m_Value: {x: 1.7673367, y: 0.1694704, z: -2.0588593}
+    m_Value: {x: 846.166, y: 341.28015, z: -134.75}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -661,9 +660,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 7.358209
+    m_Target: 1261.711
     speed: 2
-    m_Value: 7.358209
+    m_Value: 1261.711
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -726,10 +725,10 @@ MonoBehaviour:
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -168
-    m_HBaseRangeMax: 168
-    m_VBaseRangeMin: -268.5
-    m_VBaseRangeMax: 268.5
+    m_HBaseRangeMin: -640
+    m_HBaseRangeMax: 640
+    m_VBaseRangeMin: -400
+    m_VBaseRangeMax: 400
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -738,7 +737,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 0
+    m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -749,7 +748,7 @@ MonoBehaviour:
       y: 17
       width: 1150
       height: 537
-    m_Scale: {x: 1, y: 1}
+    m_Scale: {x: 0.67125, y: 0.67125}
     m_Translation: {x: 575, y: 268.5}
     m_MarginLeft: 0
     m_MarginRight: 0
@@ -757,12 +756,12 @@ MonoBehaviour:
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -575
-      y: -268.5
-      width: 1150
-      height: 537
+      x: -856.61084
+      y: -400
+      width: 1713.2217
+      height: 800
     m_MinimalGUI: 1
-  m_defaultScale: 1
+  m_defaultScale: 0.67125
   m_TargetTexture: {fileID: 0}
   m_CurrentColorSpace: 0
   m_LastWindowPixelSize: {x: 1150, y: 554}
