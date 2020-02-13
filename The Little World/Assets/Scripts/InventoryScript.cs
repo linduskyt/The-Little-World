@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using UnityEngine;
 
-public class InventoryScript : MonoBehaviour
+public class InventoryScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    public Image slot;
     // Start is called before the first frame update
     void Start()
     {
-        
+        slot = GetComponent<Image>();
     }
 
     // Update is called once per frame
@@ -16,17 +19,15 @@ public class InventoryScript : MonoBehaviour
 
     }
 
-    public void OnGUI()
+    public void OnPointerEnter(PointerEventData eventData)
     {
-        // Make a group on the center of the screen
-        GUI.BeginGroup(new Rect(Screen.width / 2 - 150, Screen.height / 2 - 150, 300, 300));
-        // All rectangles are now adjusted to the group. (0,0) is the topleft corner of the group.
+        Debug.Log("Hovering");
+        slot.GetComponent<Image>().color = new Color32(70, 70, 70, 255);
+    }
 
-        // We'll make a box so you can see where the group is on-screen.
-        GUI.Box(new Rect(0, 0, 200, 200), "Inventory");
-        GUI.Button(new Rect(20, 40, 160, 150), "Click me");
-
-        // End the group we started above. This is very important to remember!
-        GUI.EndGroup();
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        slot.GetComponent<Image>().color = new Color32(58, 58, 58, 255);
+        Debug.Log("Not Hovering");
     }
 }
