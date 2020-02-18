@@ -64,6 +64,8 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\MenuUIScripts\GameSceneUI.cs" />
     <Compile Include="Assets\Scripts\MenuUIScripts\MainMenuScript.cs" />
+    <Compile Include="Assets\Scripts\NPC\Passive\NPCpassive.cs" />
+    <Compile Include="Assets\Scripts\NPC\Passive\Passive.cs" />
     <Compile Include="Assets\Scripts\PlayerWalking.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
