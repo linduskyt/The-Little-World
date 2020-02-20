@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\MenuUIScripts\GameSceneUI.cs" />
     <Compile Include="Assets\Scripts\MenuUIScripts\MainMenuScript.cs" />
+    <Compile Include="Assets\Scripts\NPC\Active\NPCMovment.cs" />
     <Compile Include="Assets\Scripts\NPC\Passive\NPCpassive.cs" />
     <Compile Include="Assets\Scripts\NPC\Passive\Passive.cs" />
     <Compile Include="Assets\Scripts\PlayerWalking.cs" />
