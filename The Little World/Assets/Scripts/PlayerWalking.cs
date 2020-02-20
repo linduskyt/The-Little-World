@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerWalking : MonoBehaviour
 {
 
-    public float speed = 10;
+    public float speed = 0.01F;
 
     // Start is called before the first frame update
     void Start()
@@ -34,5 +34,10 @@ public class PlayerWalking : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col)
     {
         Debug.Log("OnCollisionEnter2D");
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+    
     }
 }
