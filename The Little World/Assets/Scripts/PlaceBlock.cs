@@ -19,7 +19,7 @@ public class PlaceBlock : MonoBehaviour
         {
             Debug.Log("Upclick");
             Vector3 mousePos = Input.mousePosition;
-            mousePos.x = ((mousePos.x -640)/ 80) + transform.position.x;
+            mousePos.x = ((mousePos.x -400)/ 80) + transform.position.x;
             
             if (mousePos.x < 0.3F && mousePos.x > -0.3F)
             { }
@@ -30,7 +30,7 @@ public class PlaceBlock : MonoBehaviour
             mousePos.x = mousePos.x - (mousePos.x % (0.6F));
 
 
-            mousePos.y = ((mousePos.y - 400) / 80) + transform.position.y;
+            mousePos.y = ((mousePos.y - 640) / 80) + transform.position.y;
             
             if (mousePos.y < 0.3F && mousePos.y > -0.3F)
             { }
