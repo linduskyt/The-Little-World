@@ -1,13 +1,7 @@
 fileFormatVersion: 2
-guid: 0a2723ea766d869429e19626440b2d8a
+guid: 117a7b028c0256f4c9b3805d62a91f45
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: -5435841297361953006
-    second: TempBlock_0
-  - first:
-      213: -3173326390973230521
-    second: TempBlock_1
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -50,13 +44,13 @@ TextureImporter:
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 9
-  spritePivot: {x: 0.5, y: 0.5}
+  spritePivot: {x: 0.5, y: 0.25}
   spritePixelsToUnits: 50
-  spriteBorder: {x: 0, y: 0, z: 0, w: 16}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: 0
+  spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -162,58 +156,8 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: TempBlock_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 45f683f896457a8469862ecfc55fec03
-      internalID: -5435841297361953006
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TempBlock_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5f00994b4ea29bc479db4b63a3f49078
-      internalID: -3173326390973230521
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    outline:
-    - - {x: -7.9735403, y: -16}
-      - {x: -7.9735403, y: -0.10089302}
-      - {x: 8, y: -0.031312943}
-      - {x: 8, y: -16}
-    - - {x: -8, y: -0.031312943}
-      - {x: -8, y: 16}
-      - {x: 8, y: 15.972168}
-      - {x: 8, y: -0.031312943}
+    sprites: []
+    outline: []
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
