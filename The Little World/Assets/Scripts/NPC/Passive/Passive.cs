@@ -10,7 +10,7 @@ public class Passive : MonoBehaviour
 
     public Transform locations;
     public float minX;
-    public float MaxX;
+    public float maxX;
     public float minY;
     public float maxY;
 
@@ -20,7 +20,7 @@ public class Passive : MonoBehaviour
     {
         waitTime = startWaitTime;
 
-        locations.position = new Vector2(Random.Range(minX, MaxX), Random.Range(minX, MaxX));
+        locations.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
     }
 
     private void Update()
@@ -31,7 +31,7 @@ public class Passive : MonoBehaviour
         {
             if (waitTime <= 0)
             {
-                locations.position = new Vector2(Random.Range(minX, MaxX), Random.Range(minX, MaxX));
+                locations.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
                 waitTime = startWaitTime;
             }
 
