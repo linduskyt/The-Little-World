@@ -19,28 +19,25 @@ public class PlaceBlock : MonoBehaviour
         {
             Debug.Log("Upclick");
             Vector3 mousePos = Input.mousePosition;
-            mousePos.x = ((mousePos.x -400)/ 80) + transform.position.x;
-            
-            if (mousePos.x < 0.3F && mousePos.x > -0.3F)
-            { }
-            else if (mousePos.x > 0)
-                mousePos.x += 0.3F;
-            else
-                mousePos.x -= 0.3F;
-            mousePos.x = mousePos.x - (mousePos.x % (0.6F));
+            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
 
+            if (mousePos.x > 0.32F)
+                mousePos.x += 0.32F;
+            else if (mousePos.x < -0.32F)
+                mousePos.x -= 0.32F;
 
-            mousePos.y = ((mousePos.y - 640) / 80) + transform.position.y;
+            if (mousePos.y > 0.32F)
+                mousePos.y += 0.32F;
+            else if (mousePos.y < -0.32F)
+                mousePos.y -= 0.32F;
+
+            mousePos.x = mousePos.x - (mousePos.x % 0.64F);
+            mousePos.y = mousePos.y - (mousePos.y % 0.64F);
+            mousePos.z = -5;
+
             
-            if (mousePos.y < 0.3F && mousePos.y > -0.3F)
-            { }
-            else if (mousePos.y > 0)
-                mousePos.y += 0.3F;
-            else
-                mousePos.y -= 0.3F;
-            mousePos.y = mousePos.y - (mousePos.y % (0.6F));
-            mousePos.z = 0;
             Instantiate(blockPreFab, mousePos, Quaternion.identity);
+            
         }
     }
 }
