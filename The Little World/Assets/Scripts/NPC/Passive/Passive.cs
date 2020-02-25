@@ -40,5 +40,7 @@ public class Passive : MonoBehaviour
                 waitTime -= Time.deltaTime;
             }
         }
+
+
     }
 }
