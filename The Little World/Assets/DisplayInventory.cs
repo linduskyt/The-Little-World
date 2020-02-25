@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using UnityEngine.Events;
 
 public class DisplayInventory : MonoBehaviour
 {
@@ -14,56 +16,96 @@ public class DisplayInventory : MonoBehaviour
     public int Y_START;
     public int Y_SPACE;
     public int NUMBER_OF_COLUMNS;
-    Dictionary<InventorySlot, GameObject> itemsDisplayed = new Dictionary<InventorySlot, GameObject>();
+    Dictionary<GameObject, InventorySlot> itemsDisplayed = new Dictionary<GameObject, InventorySlot>();
     //Start is called before the first frame update
     void Start()
     {
-        CreateDisplay();
+        CreateSlots();
     }
 
     // Update is called once per frame
     void Update()
     {
-        UpdateDisplay();
+        UpdateSlots();
     }
 
-    public void CreateDisplay()
+    public void UpdateSlots()
     {
-        for (int i = 0; i < inventory.Container.Items.Count; i++)
+        foreach (KeyValuePair<GameObject, InventorySlot> _slot in itemsDisplayed)
         {
-            InventorySlot slot = inventory.Container.Items[i];
-
-            var obj = Instantiate(inventoryPrefab, Vector3.zero, Quaternion.identity, transform);
-            obj.transform.GetChild(0).GetComponentInChildren<Image>().sprite = inventory.database.GetItem[slot.item.Id].uiDisplay;
-            obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
-            obj.GetComponentInChildren<TextMeshProUGUI>().text = inventory.Container.Items[i].amount.ToString("n0");
-            itemsDisplayed.Add(slot, obj);
+            if(_slot.Value.ID >= 0)
+            {
+                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = inventory.database.GetItem[_slot.Value.item.Id].uiDisplay;
+                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
+                _slot.Key.GetComponentInChildren<TextMeshProUGUI>().text = _slot.Value.amount == 1 ? "" : _slot.Value.amount.ToString("n0");
+            }
+            else
+            {
+                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = null;
+                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 0);
+                _slot.Key.GetComponentInChildren<TextMeshProUGUI>().text = "";
+            }
         }
+    }
+
+    public void CreateSlots()
+    {
+        itemsDisplayed = new Dictionary<GameObject, InventorySlot>();
+        for (int i = 0; i < inventory.Container.Items.Length; i++)
+        {
+            var obj = Instantiate(inventoryPrefab, Vector3.zero, Quaternion.identity, transform);
+            obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
+
+            AddEvent(obj, EventTriggerType.PointerEnter, delegate { OnEnter(obj); });
+            AddEvent(obj, EventTriggerType.PointerExit, delegate { OnExit(obj); });
+            AddEvent(obj, EventTriggerType.BeginDrag, delegate { OnDragStart(obj); });
+            AddEvent(obj, EventTriggerType.EndDrag, delegate { OnDragEnd(obj); });
+            AddEvent(obj, EventTriggerType.Drag, delegate { OnDrag(obj); });
+
+            itemsDisplayed.Add(obj, inventory.Container.Items[i]);
+        }
+    }
+
+    private void AddEvent(GameObject obj, EventTriggerType type, UnityAction<BaseEventData> action)
+    {
+        EventTrigger trigger = obj.GetComponent<EventTrigger>();
+        var eventTrigger = new EventTrigger.Entry();
+        eventTrigger.eventID = type;
+        eventTrigger.callback.AddListener(action);
+        trigger.triggers.Add(eventTrigger);
+    }
+
+    public void OnEnter(GameObject obj)
+    {
+
+    }
+    public void OnExit(GameObject obj)
+    {
+
+    }
+    public void OnDragStart(GameObject obj)
+    {
+        var mouseObject = new GameObject();
+        var rt = mouseObject.AddComponent<RectTransform>();
+        rt.sizeDelta = new Vector2(50, 50);
+        mouseObject.transform.SetParent(transform.parent);
+        if (itemsDisplayed[obj].ID >= 0)
+        {
+            var img = mouseObject.AddComponent<Image>();
+            img.sprite = inventory.database.GetItem[itemsDisplayed[obj].ID].uiDisplay;
+        }
+    }
+    public void OnDragEnd(GameObject obj)
+    {
+
+    }
+    public void OnDrag(GameObject obj)
+    {
+
     }
 
     public Vector3 GetPosition(int i)
     {
         return new Vector3(X_START + (X_SPACE * (i % NUMBER_OF_COLUMNS)), Y_START + (-Y_SPACE * (i / NUMBER_OF_COLUMNS)), 0f);
-    }
-
-    public void UpdateDisplay()
-    {
-        for (int i = 0; i < inventory.Container.Items.Count; i++)
-        {
-            InventorySlot slot = inventory.Container.Items[i];
-
-            if (itemsDisplayed.ContainsKey(slot))
-            {
-                itemsDisplayed[slot].GetComponentInChildren<TextMeshProUGUI>().text = inventory.Container.Items[i].amount.ToString("n0");
-            }
-            else
-            {
-                var obj = Instantiate(inventoryPrefab, Vector3.zero, Quaternion.identity, transform);
-                obj.transform.GetChild(0).GetComponentInChildren<Image>().sprite = inventory.database.GetItem[slot.item.Id].uiDisplay;
-                obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
-                obj.GetComponentInChildren<TextMeshProUGUI>().text = inventory.Container.Items[i].amount.ToString("n0");
-                itemsDisplayed.Add(inventory.Container.Items[i], obj);
-            }
-        }
     }
 }
