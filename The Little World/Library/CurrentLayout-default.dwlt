@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PixelRect:
     serializedVersion: 2
-    x: 0
-    y: 43
+    x: 43
+    y: 67
     width: 1920
     height: 997
   m_ShowMode: 4
@@ -383,8 +383,8 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 0
-    y: 646
+    x: 43
+    y: 670
     width: 1532
     height: 355
   m_ViewDataDictionary: {fileID: 0}
@@ -401,11 +401,11 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Sprites/Ground Concepts
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Sprites/Ground Concepts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\linduskyt1743\Documents\GitHub\The-Little-World\The
     Little World
@@ -413,25 +413,25 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: b82d0000
-    m_LastClickedID: 11704
+    m_SelectedIDs: dc330000
+    m_LastClickedID: 13276
     m_ExpandedIDs: 00000000322d0000902e000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: Scripts
+      m_OriginalName: Scripts
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 12656
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 0}
+      m_ClientGUIView: {fileID: 5}
     m_SearchString: 
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
@@ -471,7 +471,7 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c6230000263200002e320000522d000056320000922f0000fc31000074300000d2320000f82f0000
+    m_ExpandedInstanceIDs: c6230000263200002e320000522d000056320000922f0000fc31000074300000d2320000f82f0000e4330000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -487,7 +487,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 11}
+      m_ClientGUIView: {fileID: 5}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
@@ -520,8 +520,8 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1532
-    y: 73
+    x: 1575
+    y: 97
     width: 386
     height: 928
   m_ViewDataDictionary: {fileID: 0}
@@ -556,17 +556,17 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 0
-    y: 73
+    x: 43
+    y: 97
     width: 379
     height: 554
   m_ViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: fa2e0000
-      m_LastClickedID: 0
-      m_ExpandedIDs: 20eeffff8ef0ffffeaf0ffff10f1ffff36f1ffff5cf1ffff92f1ffffb8f1ffff70fbffff6a3200008a340000
+      m_SelectedIDs: c8330000
+      m_LastClickedID: 13256
+      m_ExpandedIDs: 46f5ffff30f8ffff94f8ffff0cf9ffff34f9ffff5af9ffff80f9ffff3afaffff70faffff70fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -611,8 +611,8 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 379
-    y: 73
+    x: 422
+    y: 97
     width: 1151
     height: 554
   m_ViewDataDictionary: {fileID: 0}
@@ -626,9 +626,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 1.6395981, y: 0.027517878, z: -15.816406}
+    m_Target: {x: 4.361253, y: -0.6296812, z: -17.437157}
     speed: 2
-    m_Value: {x: 1.6395981, y: 0.027517878, z: -15.816406}
+    m_Value: {x: 4.361253, y: -0.6296812, z: -17.437157}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -661,9 +661,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 11.872533
+    m_Target: 18.141096
     speed: 2
-    m_Value: 11.361276
+    m_Value: 18.141096
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -710,8 +710,8 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 379
-    y: 73
+    x: 422
+    y: 97
     width: 1151
     height: 554
   m_ViewDataDictionary: {fileID: 0}
