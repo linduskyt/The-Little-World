@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Apple
   m_EditorClassIdentifier: 
   id: 0
-  uiDisplay: {fileID: -7546749225554514126, guid: 0506a4e99bdc8584687d39f8b05cabe2,
+  uiDisplay: {fileID: 2587022931209156266, guid: 0506a4e99bdc8584687d39f8b05cabe2,
     type: 3}
   type: 0
   description: An apple.
-  restoreHealthValue: 5
+  buffs: []

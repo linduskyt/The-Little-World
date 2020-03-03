@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Block1
   m_EditorClassIdentifier: 
   id: 0
-  uiDisplay: {fileID: 0}
+  uiDisplay: {fileID: 5550176342417070115, guid: 0506a4e99bdc8584687d39f8b05cabe2,
+    type: 3}
   type: 3
   description: 
   buffs: []
