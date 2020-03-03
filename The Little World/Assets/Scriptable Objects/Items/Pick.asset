@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1b9816de2b696e4fbc077037a82c976, type: 3}
+  m_Name: Pick
+  m_EditorClassIdentifier: 
+  id: 3
+  uiDisplay: {fileID: 8715187426014285487, guid: 0506a4e99bdc8584687d39f8b05cabe2,
+    type: 3}
+  type: 1
+  description: A pick.
+  buffs:
+  - attribute: 3
+    value: 0
+    min: 0
+    max: 0

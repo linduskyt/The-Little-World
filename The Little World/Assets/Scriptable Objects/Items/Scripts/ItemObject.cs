@@ -6,14 +6,17 @@ public enum ItemType
 {
     Food,
     Equipment,
-    Default
+    Default,
+    Block
 }
 
 public enum Attributes
 {
     Attack,
     Defense,
-    Heal
+    Heal,
+    Mining_Speed
+
 }
 
 public abstract class ItemObject : ScriptableObject
