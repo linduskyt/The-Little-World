@@ -62,7 +62,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\PlayerWalkAnimated.cs" />
     <Compile Include="Assets\Scripts\PlayerWalking.cs" />
+    <Compile Include="Assets\Scripts\SpriteRenderOrder.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/linduskyt1743/Documents/GitHub/The-Little-World/The Little World/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
