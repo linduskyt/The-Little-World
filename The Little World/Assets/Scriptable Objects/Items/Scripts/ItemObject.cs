@@ -21,7 +21,7 @@ public enum Attributes
 
 public abstract class ItemObject : ScriptableObject
 {
-    public int id;
+    public int Id;
     public Sprite uiDisplay;
     public ItemType type;
     [TextArea(15, 20)]
@@ -44,7 +44,7 @@ public class Item
     public Item(ItemObject item)
     {
         Name = item.name;
-        Id = item.id;
+        Id = item.Id;
         buffs = new ItemBuff[item.buffs.Length];
         for (int i = 0; i < buffs.Length; i++)
         {

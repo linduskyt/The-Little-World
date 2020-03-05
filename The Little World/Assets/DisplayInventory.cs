@@ -8,6 +8,9 @@ using UnityEngine.Events;
 
 public class DisplayInventory : MonoBehaviour
 {
+    [SerializeField]
+    private Canvas myCanvas = null;
+
     public MouseItem mouseItem = new MouseItem();
 
     public GameObject inventoryPrefab;
@@ -95,6 +98,7 @@ public class DisplayInventory : MonoBehaviour
         var rt = mouseObject.AddComponent<RectTransform>();
         rt.sizeDelta = new Vector2(50, 50);
         mouseObject.transform.SetParent(transform.parent);
+        rt.localScale = new Vector3(1.0f, 1.0f, 1.0f);
         if (itemsDisplayed[obj].ID >= 0)
         {
             var img = mouseObject.AddComponent<Image>();
@@ -113,7 +117,7 @@ public class DisplayInventory : MonoBehaviour
         }
         else
         {
-
+            //inventory.RemoveItem(itemsDisplayed[obj].item);
         }
         Destroy(mouseItem.obj);
         mouseItem.item = null;
@@ -122,7 +126,12 @@ public class DisplayInventory : MonoBehaviour
     {
         if (mouseItem.obj != null)
         {
-            mouseItem.obj.GetComponent<RectTransform>().position = Input.mousePosition;
+            Vector3 mousePos = Input.mousePosition;
+            mousePos.z = 10.0f;
+            Vector2 returnPos;
+            RectTransform mouseItemTransRef = mouseItem.obj.GetComponent<RectTransform>();
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(myCanvas.transform as RectTransform, mousePos, myCanvas.worldCamera, out returnPos);
+            mouseItemTransRef.position = myCanvas.transform.TransformPoint(returnPos);
         }
     }
 
