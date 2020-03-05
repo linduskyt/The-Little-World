@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scenes\NPC\NPCpassive.cs" />
     <Compile Include="Assets\Scripts\MenuUIScripts\GameSceneUI.cs" />
     <Compile Include="Assets\Scripts\MenuUIScripts\MainMenuScript.cs" />
+    <Compile Include="Assets\Scripts\NPC\Active\Discussion.cs" />
     <Compile Include="Assets\Scripts\NPC\Active\NPCMovment.cs" />
     <Compile Include="Assets\Scripts\NPC\NPCWalking.cs" />
     <Compile Include="Assets\Scripts\NPC\Passive\Passive.cs" />
