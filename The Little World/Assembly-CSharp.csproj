@@ -62,6 +62,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Chunk.cs" />
+    <Compile Include="Assets\Scripts\ChunkHandler.cs" />
     <Compile Include="Assets\Scripts\MenuUIScripts\GameSceneUI.cs" />
     <Compile Include="Assets\Scripts\MenuUIScripts\MainMenuScript.cs" />
     <Compile Include="Assets\Scripts\NPC\Active\NPCMovment.cs" />
