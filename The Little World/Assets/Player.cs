@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public InventoryObject inventory;
+    public InventoryObject hotbar;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -12,6 +13,7 @@ public class Player : MonoBehaviour
         if (item)
         {
             inventory.AddItem(new Item(item.item), 1);
+            hotbar.AddItem(new Item(item.item), 1);
             Destroy(collision.gameObject);
         }
     }
@@ -27,5 +29,6 @@ public class Player : MonoBehaviour
     private void OnApplicationQuit()
     {
         inventory.Container.Items = new InventorySlot[36];
+        hotbar.Container.Items = new InventorySlot[9];
     }
 }

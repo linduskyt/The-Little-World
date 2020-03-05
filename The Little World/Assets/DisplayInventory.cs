@@ -10,6 +10,8 @@ public class DisplayInventory : MonoBehaviour
 {
     [SerializeField]
     private Canvas myCanvas = null;
+    [SerializeField]
+    private DisplayInventory myHotbar = null;
 
     public MouseItem mouseItem = new MouseItem();
 
@@ -114,6 +116,8 @@ public class DisplayInventory : MonoBehaviour
         if (mouseItem.hoverObj && mouseItem.item.ID >= 0)
         {
             inventory.MoveItem(itemsDisplayed[obj], itemsDisplayed[mouseItem.hoverObj]);
+            //if(inventory.Container.Items. < 9)
+            myHotbar.inventory.MoveItem(itemsDisplayed[obj], itemsDisplayed[mouseItem.hoverObj]);
         }
         else
         {
