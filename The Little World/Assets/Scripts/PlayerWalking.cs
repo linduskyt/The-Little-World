@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerWalking : MonoBehaviour
 {
-
-    public float speed = 10;
+    private const int V = 130;
+    public float speed = 0.1F;
 
     // Start is called before the first frame update
     void Start()
@@ -19,9 +19,6 @@ public class PlayerWalking : MonoBehaviour
         float horizTranslation = Input.GetAxis("Horizontal") * speed;
         float vertTranslation = Input.GetAxis("Vertical") * speed;
 
-        horizTranslation *= Time.deltaTime;
-        vertTranslation *= Time.deltaTime;
-
-        transform.Translate(horizTranslation, vertTranslation, 0);
+        transform.Translate(horizTranslation / V, vertTranslation / V, 0);
     }
 }
