@@ -21,8 +21,8 @@ public class DisplayInventory : MonoBehaviour
     public int Y_START;
     public int Y_SPACE;
     public int NUMBER_OF_COLUMNS;
-    Dictionary<GameObject, InventorySlot> itemsDisplayed = new Dictionary<GameObject, InventorySlot>();
-
+    public Dictionary<GameObject, InventorySlot> itemsDisplayed = new Dictionary<GameObject, InventorySlot>();
+    
     //Start is called before the first frame update
     void Start()
     {
@@ -96,7 +96,7 @@ public class DisplayInventory : MonoBehaviour
     {
         var mouseObject = new GameObject();
         var rt = mouseObject.AddComponent<RectTransform>();
-        rt.sizeDelta = new Vector2(50, 50);
+        rt.sizeDelta = new Vector2(40, 40);
         mouseObject.transform.SetParent(transform.parent);
         rt.localScale = new Vector3(1.0f, 1.0f, 1.0f);
         if (itemsDisplayed[obj].ID >= 0)
@@ -111,7 +111,7 @@ public class DisplayInventory : MonoBehaviour
     }
     public void OnDragEnd(GameObject obj)
     {
-        if (mouseItem.hoverObj)
+        if (mouseItem.hoverObj && mouseItem.item.ID >= 0)
         {
             inventory.MoveItem(itemsDisplayed[obj], itemsDisplayed[mouseItem.hoverObj]);
         }
