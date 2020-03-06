@@ -8,22 +8,18 @@ using UnityEngine.Events;
 
 public class DisplayInventory : MonoBehaviour
 {
-    [SerializeField]
-    private Canvas myCanvas = null;
-    [SerializeField]
-    private DisplayInventory myHotbar = null;
-
-    public MouseItem mouseItem = new MouseItem();
-
-    public GameObject inventoryPrefab;
+    [SerializeField] private Canvas myCanvas = null;
+    [SerializeField] private MouseItem mouseItem = new MouseItem();
+    [SerializeField] private GameObject inventoryPrefab = null;
     public InventoryObject inventory;
 
-    public int X_SPACE;
-    public int X_START;
-    public int Y_START;
-    public int Y_SPACE;
-    public int NUMBER_OF_COLUMNS;
-    public Dictionary<GameObject, InventorySlot> itemsDisplayed = new Dictionary<GameObject, InventorySlot>();
+    [SerializeField] private int X_SPACE = 0;
+    [SerializeField] private int X_START = 0;
+    [SerializeField] private int Y_START = 0;
+    [SerializeField] private int Y_SPACE = 0;
+    [SerializeField] private int NUMBER_OF_COLUMNS = 0;
+
+    Dictionary<GameObject, InventorySlot> itemsDisplayed = new Dictionary<GameObject, InventorySlot>();
     
     //Start is called before the first frame update
     void Start()
@@ -37,6 +33,9 @@ public class DisplayInventory : MonoBehaviour
         UpdateSlots();
     }
 
+    /// <summary>
+    /// Updates the sprites in the player's inventory to match the database.
+    /// </summary>
     public void UpdateSlots()
     {
         foreach (KeyValuePair<GameObject, InventorySlot> _slot in itemsDisplayed)
@@ -56,6 +55,9 @@ public class DisplayInventory : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Creates the item slots for the player's inventory and creates the events for interaction with the inventory.
+    /// </summary>
     public void CreateSlots()
     {
         itemsDisplayed = new Dictionary<GameObject, InventorySlot>();
@@ -74,6 +76,12 @@ public class DisplayInventory : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Method/Function which creates an event.
+    /// </summary>
+    /// <param name="obj"></param>
+    /// <param name="type">Type of event trigger.</param>
+    /// <param name="action"></param>
     private void AddEvent(GameObject obj, EventTriggerType type, UnityAction<BaseEventData> action)
     {
         EventTrigger trigger = obj.GetComponent<EventTrigger>();
@@ -83,17 +91,34 @@ public class DisplayInventory : MonoBehaviour
         trigger.triggers.Add(eventTrigger);
     }
 
+    /// <summary>
+    /// Active when the player hovers over the item slot.
+    /// Sets the selected item to whatever is being hovered over.
+    /// </summary>
+    /// <param name="obj">Item slot which player is hovering over.</param>
     public void OnEnter(GameObject obj)
     {
         mouseItem.hoverObj = obj;
         if (itemsDisplayed.ContainsKey(obj))
             mouseItem.hoverItem = itemsDisplayed[obj];
     }
+
+    /// <summary>
+    /// Activates once when the player is no longer hovering over the item slot.
+    /// Resets the selected item.
+    /// </summary>
+    /// <param name="obj">Item slot which player was hovering over.</param>
     public void OnExit(GameObject obj)
     {
         mouseItem.hoverObj = null;
         mouseItem.hoverItem = null;
     }
+
+    /// <summary>
+    /// Activates once the player begins to drag the item slot.
+    /// It creates a copy sprite of the item which is being dragged.
+    /// </summary>
+    /// <param name="obj">Item slot which player is dragging.</param>
     public void OnDragStart(GameObject obj)
     {
         var mouseObject = new GameObject();
@@ -111,13 +136,17 @@ public class DisplayInventory : MonoBehaviour
         mouseItem.item = itemsDisplayed[obj];
 
     }
+
+    /// <summary>
+    /// Activates once when the player is no longer dragging the item slot.
+    /// It deletes the copy sprite after letting go of the object.
+    /// </summary>
+    /// <param name="obj">Item slot which player was dragging.</param>
     public void OnDragEnd(GameObject obj)
     {
         if (mouseItem.hoverObj && mouseItem.item.ID >= 0)
         {
             inventory.MoveItem(itemsDisplayed[obj], itemsDisplayed[mouseItem.hoverObj]);
-            //if(inventory.Container.Items. < 9)
-            myHotbar.inventory.MoveItem(itemsDisplayed[obj], itemsDisplayed[mouseItem.hoverObj]);
         }
         else
         {
@@ -126,6 +155,12 @@ public class DisplayInventory : MonoBehaviour
         Destroy(mouseItem.obj);
         mouseItem.item = null;
     }
+
+    /// <summary>
+    /// Activates when the player is dragging the item slot.
+    /// It transforms the a copy sprite to the player's mouse position.
+    /// </summary>
+    /// <param name="obj">Item slot which player is/was dragging.</param>
     public void OnDrag(GameObject obj)
     {
         if (mouseItem.obj != null)
@@ -139,12 +174,20 @@ public class DisplayInventory : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Generates the position which the item slots need to be generated at from given inital points.
+    /// </summary>
+    /// <param name="i">Slot number in row.</param>
+    /// <returns></returns>
     public Vector3 GetPosition(int i)
     {
         return new Vector3(X_START + (X_SPACE * (i % NUMBER_OF_COLUMNS)), Y_START + (-Y_SPACE * (i / NUMBER_OF_COLUMNS)), 0f);
     }
 }
 
+/// <summary>
+/// The object which the mouse is hovering over.
+/// </summary>
 public class MouseItem
 {
     public GameObject obj;

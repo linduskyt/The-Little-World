@@ -5,15 +5,15 @@ using UnityEngine.UI;
 
 public class InventoryToggle : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject inventoryScreen = null;
+    [SerializeField] private GameObject inventoryScreen = null;
+    [SerializeField] private Button myButton = null;
 
-    public Button myButton;
+    private Button btn;
 
     // Start is called before the first frame update
     void Start()
     {
-        Button btn = myButton.GetComponent<Button>();
+        btn = myButton.GetComponent<Button>();
         btn.onClick.AddListener(onClick);
     }
 

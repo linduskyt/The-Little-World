@@ -7,7 +7,7 @@ public class ItemDatabaseObject : ScriptableObject, ISerializationCallbackReceiv
 {
     public ItemObject[] Items;
     public Dictionary<int, ItemObject> GetItem = new Dictionary<int, ItemObject>();
-
+    
     public void OnAfterDeserialize()
     {
         for (int i = 0; i < Items.Length; i++)

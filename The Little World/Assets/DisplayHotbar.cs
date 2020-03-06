@@ -8,30 +8,21 @@ using UnityEngine.Events;
 
 public class DisplayHotbar : MonoBehaviour
 {
-    [SerializeField]
-    private DisplayInventory myInventory = null;
-    //[SerializeField]
-    //public Sprite sel_Sprite;
+    [SerializeField] private DisplayInventory myInventory = null;
+    [SerializeField] private GameObject inventoryPrefab = null;
+    [SerializeField] private InventoryObject inventory = null;
 
-    //public Image border;
-    public GameObject inventoryPrefab;
-    public InventoryObject inventory;
-    //public Button myButton;
+    [SerializeField] private int X_SPACE = 0;
+    [SerializeField] private int X_START = 0;
+    [SerializeField] private int Y_START = 0;
+    [SerializeField] private int Y_SPACE = 0;
+    [SerializeField] private int NUMBER_OF_COLUMNS = 0;
 
-    public int X_SPACE;
-    public int X_START;
-    public int Y_START;
-    public int Y_SPACE;
-    public int NUMBER_OF_COLUMNS;
     Dictionary<GameObject, InventorySlot> itemsDisplayed = new Dictionary<GameObject, InventorySlot>();
 
     //Start is called before the first frame update
     void Start()
     {
-        //myButton = GameObject.FindWithTag("HotbarButton").GetComponent<Button>();
-        //Button btn = myButton.GetComponent<Button>();
-        //border = GetComponent<Image>();
-        //btn.onClick.AddListener(onClick);
         CreateSlots();
     }
 
@@ -41,13 +32,23 @@ public class DisplayHotbar : MonoBehaviour
         UpdateSlots();
     }
 
-    //private void onClick()
-    //{
-    //    border.sprite = sel_Sprite;
-    //}
-
+    /// <summary>
+    /// Updates the item slots to match the inventory's first row.
+    /// </summary>
     public void UpdateSlots()
     {
+        /* Lag issue may occur because of this for loop
+         * In that case, there needs to be a new method to create a 
+         * hotbar containing the items in the first row of the player's inventory
+         */
+        for(int i = 0; i < inventory.Container.Items.Length; i++)
+        {
+            inventory.Container.Items[i] = myInventory.inventory.Container.Items[i];
+        }
+
+        /* Changes the sprite of hotbar's slot[i] to match the sprite of the inventory's slot[i]
+         * Or, it removes the sprite if there is no longer any item in the slot.
+         */
         foreach (KeyValuePair<GameObject, InventorySlot> _slot in itemsDisplayed)
         {
             if (_slot.Value.ID >= 0)
@@ -65,6 +66,9 @@ public class DisplayHotbar : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Creates the item slots in the hotbar.
+    /// </summary>
     public void CreateSlots()
     {
         itemsDisplayed = new Dictionary<GameObject, InventorySlot>();
@@ -76,9 +80,19 @@ public class DisplayHotbar : MonoBehaviour
             itemsDisplayed.Add(obj, myInventory.inventory.Container.Items[i]);
         }
     }
-
+    
+    /// <summary>
+    /// Generates the position which the item slots need to be generated at from given inital points.
+    /// </summary>
+    /// <param name="i">Slot number in row.</param>
+    /// <returns></returns>
     public Vector3 GetPosition(int i)
     {
         return new Vector3(X_START + (X_SPACE * (i % NUMBER_OF_COLUMNS)), Y_START + (-Y_SPACE * (i / NUMBER_OF_COLUMNS)), 0f);
+    }
+
+    private void OnMouseDown()
+    {
+        
     }
 }

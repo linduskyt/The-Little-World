@@ -7,13 +7,16 @@ public class Player : MonoBehaviour
     public InventoryObject inventory;
     public InventoryObject hotbar;
 
+    /// <summary>
+    /// Adds item to player inventory and destroys collided item.
+    /// </summary>
+    /// <param name="collision">Item being collided with.</param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
         var item = collision.GetComponent<GroundItem>();
         if (item)
         {
             inventory.AddItem(new Item(item.item), 1);
-            hotbar.AddItem(new Item(item.item), 1);
             Destroy(collision.gameObject);
         }
     }
@@ -26,6 +29,9 @@ public class Player : MonoBehaviour
             inventory.Load();
     }
 
+    /// <summary>
+    /// Sets inventory and hotbar sizes on application quit.
+    /// </summary>
     private void OnApplicationQuit()
     {
         inventory.Container.Items = new InventorySlot[36];

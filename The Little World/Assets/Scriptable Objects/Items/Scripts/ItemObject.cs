@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// List of all the different item types.
+/// </summary>
 public enum ItemType
 {
     Food,
@@ -10,6 +13,9 @@ public enum ItemType
     Block
 }
 
+/// <summary>
+/// List of all the different item attributes.
+/// </summary>
 public enum Attributes
 {
     Attack,
@@ -19,6 +25,9 @@ public enum Attributes
 
 }
 
+/// <summary>
+/// Base information all items require.
+/// </summary>
 public abstract class ItemObject : ScriptableObject
 {
     public int Id;
@@ -35,6 +44,9 @@ public abstract class ItemObject : ScriptableObject
     }
 }
 
+/// <summary>
+/// Creates the item object used in the inventory slots.
+/// </summary>
 [System.Serializable]
 public class Item
 {
@@ -54,6 +66,9 @@ public class Item
     }
 }
 
+/// <summary>
+/// Generates the item attribute values within given range.
+/// </summary>
 [System.Serializable]
 public class ItemBuff
 {

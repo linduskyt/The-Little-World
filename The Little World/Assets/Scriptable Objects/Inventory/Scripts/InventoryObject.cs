@@ -13,6 +13,11 @@ public class InventoryObject : ScriptableObject
     public ItemDatabaseObject database;
     public Inventory Container;
 
+    /// <summary>
+    /// Adds the item to the player's inventory.
+    /// </summary>
+    /// <param name="_item">Item being added to the inventory.</param>
+    /// <param name="_amount">Amount being added to the inventory.</param>
     public void AddItem(Item _item, int _amount)
     {
 
@@ -33,6 +38,12 @@ public class InventoryObject : ScriptableObject
         setEmptySlot(_item, _amount);
     }
 
+    /// <summary>
+    /// Searches for an open slot within the player's inventory to place item.
+    /// </summary>
+    /// <param name="_item">Item being added to the player's inventory.</param>
+    /// <param name="_amount">Amount being added to the player's inventory.</param>
+    /// <returns></returns>
     public InventorySlot setEmptySlot(Item _item, int _amount)
     {
         for (int i = 0; i < Container.Items.Length; i++)
@@ -47,6 +58,11 @@ public class InventoryObject : ScriptableObject
         return null;
     }
 
+    /// <summary>
+    /// Moves items from one slot to another.
+    /// </summary>
+    /// <param name="item1">Item being swapped with second item.</param>
+    /// <param name="item2">Item being swapped with first item.</param>
     public void MoveItem(InventorySlot item1, InventorySlot item2)
     {
         InventorySlot temp = new InventorySlot(item2.ID, item2.item, item2.amount);
@@ -86,6 +102,9 @@ public class InventoryObject : ScriptableObject
         }
     }
 
+    /// <summary>
+    /// Clears the inventory upon closing the game.
+    /// </summary>
     [ContextMenu("Clear")]
     public void Clear()
     {
@@ -93,12 +112,18 @@ public class InventoryObject : ScriptableObject
     }
 }
 
+/// <summary>
+/// Creates an inventory size.
+/// </summary>
 [System.Serializable]
 public class Inventory
 {
     public InventorySlot[] Items = new InventorySlot[36];
 }
 
+/// <summary>
+/// Contains the information of the inventory slot and manipulations of the inventory slot.
+/// </summary>
 [System.Serializable]
 public class InventorySlot
 {

@@ -1768,7 +1768,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myCanvas: {fileID: 1792299646}
-  myHotbar: {fileID: 0}
   inventoryPrefab: {fileID: 4400728398252729081, guid: e4db019ec71d6094fbf12b0a6fa3b980,
     type: 3}
   inventory: {fileID: 11400000, guid: 98c37f05495ad55449facec0e88bbc56, type: 2}
@@ -1869,7 +1868,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1564269217}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: GroundItems
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
