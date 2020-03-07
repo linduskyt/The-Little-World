@@ -1,5 +1,17 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &2481519347394707258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2266788287946080163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd5ef54e1b577624e9b9726e637efbcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5552025403024203047
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,6 +255,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5978515775764432396, guid: e4db019ec71d6094fbf12b0a6fa3b980,
+        type: 3}
+      propertyPath: m_Name
+      value: Border
+      objectReference: {fileID: 0}
     - target: {fileID: 3157030713647563030, guid: e4db019ec71d6094fbf12b0a6fa3b980,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -263,13 +280,14 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5978515775764432396, guid: e4db019ec71d6094fbf12b0a6fa3b980,
-        type: 3}
-      propertyPath: m_Name
-      value: Border
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4db019ec71d6094fbf12b0a6fa3b980, type: 3}
+--- !u!1 &2266788287946080163 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4400728398252729081, guid: e4db019ec71d6094fbf12b0a6fa3b980,
+    type: 3}
+  m_PrefabInstance: {fileID: 2479153364703206746}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &361653336065863498 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2838218922708382224, guid: e4db019ec71d6094fbf12b0a6fa3b980,
