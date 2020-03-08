@@ -56,12 +56,11 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\CheckRight.cs" />
-     <Compile Include="Assets\DialogueManager.cs" />
      <Compile Include="Assets\NPCGraphics.cs" />
-     <Compile Include="Assets\Scenes\NPC\NPCpassive.cs" />
      <Compile Include="Assets\Scripts\MenuUIScripts\GameSceneUI.cs" />
      <Compile Include="Assets\Scripts\MenuUIScripts\MainMenuScript.cs" />
      <Compile Include="Assets\Scripts\NPC\Active\Dialogue.cs" />
+     <Compile Include="Assets\Scripts\NPC\Active\DialogueManager.cs" />
      <Compile Include="Assets\Scripts\NPC\Active\NPCDialogue.cs" />
      <Compile Include="Assets\Scripts\NPC\Active\NPCMovment.cs" />
      <Compile Include="Assets\Scripts\NPC\NPCWalking.cs" />

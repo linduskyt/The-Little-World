@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class NPCDialogue : MonoBehaviour
 {
-    public Dialogue dialogue;
+    public Dialogue dialogue = new Dialogue();
 
-    FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+    //FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
 }
