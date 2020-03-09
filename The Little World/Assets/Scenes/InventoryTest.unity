@@ -5450,7 +5450,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myInventory: {fileID: 1378088997}
-  inventoryPrefab: {fileID: 2266788287946080163, guid: c6eb981265fadbe47b3891e4ad0ca0cc,
+  inventoryPrefab: {fileID: 2968204630992216101, guid: 9d870d75317eb944181bc85d92010369,
     type: 3}
   inventory: {fileID: 11400000, guid: 714b3e6875627d24db7319faad68d878, type: 2}
   X_SPACE: 52
