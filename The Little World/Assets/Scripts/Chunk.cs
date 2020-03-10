@@ -16,12 +16,13 @@ public class Chunk
     short biome;
     List<worldObjectData> blockList;
     List<worldObjectData> objectList;
+    bool isAlive;
 
     // The index in the chunkList(Part of ChunkHandler.cs) of the Chunks on any given side of this chunk 
-    short indxLeft;
-    short indxRight;
-    short indxUp;
-    short indxDown;
+    short indxWest;
+    short indxEast;
+    short indxNorth;
+    short indxSouth;
 
     public Chunk(Vector2 location, short biome, short left = -1, short right = -1, short up = -1, short down = -1)
     {
@@ -31,10 +32,10 @@ public class Chunk
         blockList = new List<worldObjectData>();
         objectList = new List<worldObjectData>();
 
-        indxRight = right;
-        indxLeft = left;
-        indxUp = up;
-        indxDown = down;
+        indxWest = left;
+        indxEast = right;
+        indxNorth = up;
+        indxSouth = down;
 
     }
 
@@ -46,44 +47,44 @@ public class Chunk
     }
     // Get and Set chunkList Indices
 
-    public short GetLeft()
+    public short GetWest()
     {
-        return indxLeft;
+        return indxWest;
     }
 
-    public void SetLeft (short left)
+    public void SetWest (short left)
     {
-        indxLeft = left;
+        indxWest = left;
     }
 
-    public short GetRight()
+    public short GetEast()
     {
-        return indxRight;
+        return indxEast;
     }
 
-    public void SetRight (short right)
+    public void SetEast (short right)
     {
-        indxRight = right;
+        indxEast = right;
     }
 
-    public short GetUp()
+    public short GetNorth()
     {
-        return indxUp;
+        return indxNorth;
     }
 
-    public void SetUp (short up)
+    public void SetNorth (short up)
     {
-        indxUp = up;
+        indxNorth = up;
     }
 
-    public short GetDown()
+    public short GetSouth()
     {
-        return indxDown;
+        return indxSouth;
     }
 
-    public void SetDown (short down)
+    public void SetSouth (short down)
     {
-        indxDown = down;
+        indxSouth = down;
     }
 }
 
