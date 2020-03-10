@@ -10,7 +10,7 @@ public struct worldObjectData
     int y;
 }
 
-public class Chunk
+public class Chunk : MonoBehaviour
 {
     Vector2 location;
     short biome;
