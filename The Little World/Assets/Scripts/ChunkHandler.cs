@@ -56,6 +56,7 @@ public class ChunkHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         // Runs different checks on a cycle of 9 frames
         switch (updateCycle)
         {
@@ -106,6 +107,7 @@ public class ChunkHandler : MonoBehaviour
                 break;
         }
         ++updateCycle;
+        */
     }
 
     // Give two adjacent chunks each others index so they can reference each other
