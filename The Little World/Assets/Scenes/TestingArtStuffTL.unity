@@ -138,8 +138,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcd59f2aad66e2f4bbad08f85f8fdd36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 0.1
   animator: {fileID: 26441561}
+  myBody: {fileID: 0}
 --- !u!95 &26441561
 Animator:
   serializedVersion: 3
@@ -2952,7 +2953,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60717eae56d65614f90861c74813511b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 0.1
 --- !u!1 &1651117265
 GameObject:
   m_ObjectHideFlags: 0
