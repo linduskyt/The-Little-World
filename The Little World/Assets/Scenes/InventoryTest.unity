@@ -978,7 +978,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1006942543
 GameObject:
@@ -1881,7 +1881,7 @@ Transform:
   m_Children:
   - {fileID: 1814644428}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1564269216
 GameObject:
@@ -1925,7 +1925,7 @@ Transform:
   - {fileID: 1006942544}
   - {fileID: 151732000}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1565171621
 GameObject:
@@ -1989,6 +1989,49 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 7441cf03c8d7d814cb5b543cb3742f5d, type: 2}
+--- !u!1 &1613909905
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1613909907}
+  - component: {fileID: 1613909906}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1613909906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613909905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70867a5eb251e3549b1bbbb59aaf8832, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1613909907
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613909905}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1693986401
 GameObject:
   m_ObjectHideFlags: 0
@@ -2276,7 +2319,7 @@ Transform:
   - {fileID: 1201649454}
   - {fileID: 1106913593}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1759446681
 BoxCollider2D:
@@ -2411,7 +2454,7 @@ RectTransform:
   - {fileID: 2056034299}
   - {fileID: 2013981640}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5476,6 +5519,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e1d44c9f473a97409018c4365b18817, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedObject:
+    slotId: -1
+    ID: -1
+    item:
+      Name: 
+      Id: 0
+      buffs: []
+    amount: 0
   myInventory: {fileID: 1378088997}
   inventoryPrefab: {fileID: 6324182652228505701, guid: 9d870d75317eb944181bc85d92010369,
     type: 3}
@@ -5568,6 +5619,7 @@ MonoBehaviour:
   tabSelected: {fileID: -6758416485335216122, guid: cdbf86b0aa979bf4eb1c1349d1f854e3,
     type: 3}
   hotbar: {fileID: 0}
+  selectedTab: {fileID: 0}
 --- !u!1 &2043272560
 GameObject:
   m_ObjectHideFlags: 0

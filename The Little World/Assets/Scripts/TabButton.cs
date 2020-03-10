@@ -33,13 +33,11 @@ public class TabButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("Selecting slot " + buttonId);
         tabGroup.onTabSelected(this);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("Entering slot " + buttonId);
         tabGroup.onTabEnter(this);
     }
 

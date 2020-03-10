@@ -1,4 +1,4 @@
-﻿ using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -15,14 +15,15 @@ public class DisplayHotbar : MonoBehaviour
     [SerializeField] private GameObject inventoryPrefab = null;
     [SerializeField] private InventoryObject inventory = null;
     [SerializeField] private TabGroup tabGroup = null;
-    private MouseItem mouseItem = new MouseItem();
     private Sprite[] borderSprite;
+    private InventorySlot selectedSlot = null;
 
     [SerializeField] private int X_SPACE = 0;
     [SerializeField] private int X_START = 0;
     [SerializeField] private int Y_START = 0;
     [SerializeField] private int Y_SPACE = 0;
     [SerializeField] private int NUMBER_OF_COLUMNS = 0;
+    private int selectedSlotId = -1;
     private int slotId = 0;
 
     Dictionary<GameObject, InventorySlot> itemsDisplayed = new Dictionary<GameObject, InventorySlot>();
@@ -49,7 +50,7 @@ public class DisplayHotbar : MonoBehaviour
          * In that case, there needs to be a new method to create a 
          * hotbar containing the items in the first row of the player's inventory
          */
-        for(int i = 0; i < inventory.Container.Items.Length; i++)
+        for (int i = 0; i < inventory.Container.Items.Length; i++)
         {
             inventory.Container.Items[i] = myInventory.inventory.Container.Items[i];
         }
@@ -89,9 +90,11 @@ public class DisplayHotbar : MonoBehaviour
             inventory.Container.Items[i].slotId = slotId++;
             TabButton tabButtonRef = obj.GetComponent<TabButton>();
             tabButtonRef.MyTabGroup = tabGroup;
+
+
         }
     }
-    
+
     /// <summary>
     /// Generates the position which the item slots need to be generated at from given inital points.
     /// </summary>
@@ -102,36 +105,48 @@ public class DisplayHotbar : MonoBehaviour
         return new Vector3(X_START + (X_SPACE * (i % NUMBER_OF_COLUMNS)), Y_START + (-Y_SPACE * (i / NUMBER_OF_COLUMNS)), 0f);
     }
 
+    /// <summary>
+    /// Changes sprite of hotbar borders to indicate hovering and selection.
+    /// </summary>
+    /// <param name="id">ID of the button</param>
     public void slotDisplay(int id)
     {
         foreach (KeyValuePair<GameObject, InventorySlot> _slot in itemsDisplayed)
         {
-            if (id == -1 && tabGroup.selectedTab == null)
+            if (_slot.Value.slotId != selectedSlotId)
             {
-                _slot.Key.transform.GetChild(2).GetComponentInChildren<Image>().sprite = borderSprite[0];
-                _slot.Key.transform.GetChild(2).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
-                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color32(255, 255, 155, 132);
-            }
+                if (id == -1)
+                {
+                    _slot.Key.transform.GetChild(2).GetComponentInChildren<Image>().sprite = borderSprite[0];
+                    _slot.Key.transform.GetChild(2).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
+                    _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color32(255, 255, 155, 132);
+                }
 
-            else if (_slot.Value.slotId == id)
-            {
-                _slot.Key.transform.GetChild(2).GetComponentInChildren<Image>().sprite = borderSprite[1];
-                _slot.Key.transform.GetChild(2).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
-                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color32(255, 255, 155, 132);
+                else if (_slot.Value.slotId == id)
+                {
+                    _slot.Key.transform.GetChild(2).GetComponentInChildren<Image>().sprite = borderSprite[1];
+                    _slot.Key.transform.GetChild(2).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
+                    _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color32(255, 255, 155, 132);
+                }
             }
+        }
+    }
 
-            else if (_slot.Value.slotId == tabGroup.selectedTab.buttonId)
+    public void slotSelected(int id)
+    {
+        foreach (KeyValuePair<GameObject, InventorySlot> _slot in itemsDisplayed)
+        {
+            if (_slot.Value.slotId == id)
             {
                 _slot.Key.transform.GetChild(2).GetComponentInChildren<Image>().sprite = borderSprite[1];
                 _slot.Key.transform.GetChild(2).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
                 _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color32(71, 255, 110, 132);
-            }
-
-            else
-            {
-                _slot.Key.transform.GetChild(2).GetComponentInChildren<Image>().sprite = borderSprite[0];
-                _slot.Key.transform.GetChild(2).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
-                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color32(255, 255, 155, 132);
+                selectedSlotId = id;
+                selectedSlot = _slot.Value;
+                Debug.Log("Selected Slot ID: " + selectedSlot.slotId);
+                Debug.Log("Selected Slot Item: " + selectedSlot.item.Name);
+                Debug.Log("Selected Slot Item ID: " + selectedSlot.item.Id);
+                slotDisplay(-1);
             }
         }
     }

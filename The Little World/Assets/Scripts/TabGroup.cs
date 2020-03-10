@@ -40,6 +40,6 @@ public class TabGroup : MonoBehaviour
     public void onTabSelected(TabButton button)
     {
         selectedTab = button;
-        hotbar.slotDisplay(button.buttonId);
+        hotbar.slotSelected(selectedTab.buttonId);
     }
 }
