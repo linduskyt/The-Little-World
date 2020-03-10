@@ -9,7 +9,7 @@ using UnityEngine.Events;
 public class DisplayInventory : MonoBehaviour
 {
     [SerializeField] private Canvas myCanvas = null;
-    [SerializeField] private MouseItem mouseItem = new MouseItem();
+    private MouseItem mouseItem = new MouseItem();
     [SerializeField] private GameObject inventoryPrefab = null;
     public InventoryObject inventory;
 
@@ -18,6 +18,7 @@ public class DisplayInventory : MonoBehaviour
     [SerializeField] private int Y_START = 0;
     [SerializeField] private int Y_SPACE = 0;
     [SerializeField] private int NUMBER_OF_COLUMNS = 0;
+    private int slotId = 0;
 
     Dictionary<GameObject, InventorySlot> itemsDisplayed = new Dictionary<GameObject, InventorySlot>();
     
@@ -71,6 +72,7 @@ public class DisplayInventory : MonoBehaviour
             AddEvent(obj, EventTriggerType.BeginDrag, delegate { OnDragStart(obj); });
             AddEvent(obj, EventTriggerType.EndDrag, delegate { OnDragEnd(obj); });
             AddEvent(obj, EventTriggerType.Drag, delegate { OnDrag(obj); });
+            inventory.Container.Items[i].slotId = slotId++;
 
             itemsDisplayed.Add(obj, inventory.Container.Items[i]);
         }
@@ -98,6 +100,7 @@ public class DisplayInventory : MonoBehaviour
     /// <param name="obj">Item slot which player is hovering over.</param>
     public void OnEnter(GameObject obj)
     {
+        obj.GetComponent<Image>().color = new Color32(169, 169, 169, 100);
         mouseItem.hoverObj = obj;
         if (itemsDisplayed.ContainsKey(obj))
             mouseItem.hoverItem = itemsDisplayed[obj];

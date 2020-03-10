@@ -6,7 +6,7 @@ TagManager:
   tags:
   - canvas
   - InventoryScreen
-  - HotbarButton
+  - Hotbar
   layers:
   - Default
   - TransparentFX

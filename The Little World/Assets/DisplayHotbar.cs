@@ -5,24 +5,32 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
+using System.Linq;
 
 public class DisplayHotbar : MonoBehaviour
 {
+    public InventorySlot selectedObject = null;
+
     [SerializeField] private DisplayInventory myInventory = null;
     [SerializeField] private GameObject inventoryPrefab = null;
     [SerializeField] private InventoryObject inventory = null;
+    [SerializeField] private TabGroup tabGroup = null;
+    private MouseItem mouseItem = new MouseItem();
+    private Sprite[] borderSprite;
 
     [SerializeField] private int X_SPACE = 0;
     [SerializeField] private int X_START = 0;
     [SerializeField] private int Y_START = 0;
     [SerializeField] private int Y_SPACE = 0;
     [SerializeField] private int NUMBER_OF_COLUMNS = 0;
+    private int slotId = 0;
 
     Dictionary<GameObject, InventorySlot> itemsDisplayed = new Dictionary<GameObject, InventorySlot>();
 
     //Start is called before the first frame update
     void Start()
     {
+        borderSprite = Resources.LoadAll<Sprite>("Images/HotbarBlock");
         CreateSlots();
     }
 
@@ -53,14 +61,14 @@ public class DisplayHotbar : MonoBehaviour
         {
             if (_slot.Value.ID >= 0)
             {
-                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = myInventory.inventory.database.GetItem[_slot.Value.item.Id].uiDisplay;
-                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
+                _slot.Key.transform.GetChild(1).GetComponentInChildren<Image>().sprite = myInventory.inventory.database.GetItem[_slot.Value.item.Id].uiDisplay;
+                _slot.Key.transform.GetChild(1).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
                 _slot.Key.GetComponentInChildren<TextMeshProUGUI>().text = _slot.Value.amount == 1 ? "" : _slot.Value.amount.ToString("n0");
             }
             else
             {
-                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = null;
-                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 0);
+                _slot.Key.transform.GetChild(1).GetComponentInChildren<Image>().sprite = null;
+                _slot.Key.transform.GetChild(1).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 0);
                 _slot.Key.GetComponentInChildren<TextMeshProUGUI>().text = "";
             }
         }
@@ -78,6 +86,9 @@ public class DisplayHotbar : MonoBehaviour
             obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
 
             itemsDisplayed.Add(obj, myInventory.inventory.Container.Items[i]);
+            inventory.Container.Items[i].slotId = slotId++;
+            TabButton tabButtonRef = obj.GetComponent<TabButton>();
+            tabButtonRef.MyTabGroup = tabGroup;
         }
     }
     
@@ -89,5 +100,39 @@ public class DisplayHotbar : MonoBehaviour
     public Vector3 GetPosition(int i)
     {
         return new Vector3(X_START + (X_SPACE * (i % NUMBER_OF_COLUMNS)), Y_START + (-Y_SPACE * (i / NUMBER_OF_COLUMNS)), 0f);
+    }
+
+    public void slotDisplay(int id)
+    {
+        foreach (KeyValuePair<GameObject, InventorySlot> _slot in itemsDisplayed)
+        {
+            if (id == -1 && tabGroup.selectedTab == null)
+            {
+                _slot.Key.transform.GetChild(2).GetComponentInChildren<Image>().sprite = borderSprite[0];
+                _slot.Key.transform.GetChild(2).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
+                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color32(255, 255, 155, 132);
+            }
+
+            else if (_slot.Value.slotId == id)
+            {
+                _slot.Key.transform.GetChild(2).GetComponentInChildren<Image>().sprite = borderSprite[1];
+                _slot.Key.transform.GetChild(2).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
+                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color32(255, 255, 155, 132);
+            }
+
+            else if (_slot.Value.slotId == tabGroup.selectedTab.buttonId)
+            {
+                _slot.Key.transform.GetChild(2).GetComponentInChildren<Image>().sprite = borderSprite[1];
+                _slot.Key.transform.GetChild(2).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
+                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color32(71, 255, 110, 132);
+            }
+
+            else
+            {
+                _slot.Key.transform.GetChild(2).GetComponentInChildren<Image>().sprite = borderSprite[0];
+                _slot.Key.transform.GetChild(2).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
+                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color32(255, 255, 155, 132);
+            }
+        }
     }
 }

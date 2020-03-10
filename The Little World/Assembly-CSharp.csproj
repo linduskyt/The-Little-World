@@ -76,6 +76,8 @@
     <Compile Include="Assets\Scripts\HotbarSelection.cs" />
     <Compile Include="Assets\Scripts\InventoryToggle.cs" />
     <Compile Include="Assets\Scripts\PlayerWalking.cs" />
+    <Compile Include="Assets\Scripts\TabButton.cs" />
+    <Compile Include="Assets\Scripts\TabGroup.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />

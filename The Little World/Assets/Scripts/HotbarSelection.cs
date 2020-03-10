@@ -5,10 +5,14 @@ using UnityEngine.UI;
 
 public class HotbarSelection : MonoBehaviour
 {
-    private GameObject border = GameObject.Find("Border");
+    private GameObject border;
+    private void Awake()
+    {
+        
+    }
 
     private void OnMouseDown()
     {
-        border.GetComponent<Image>().sprite = (Sprite)Resources.Load("/Images/HotbarBlock_1");
+
     }
 }   
