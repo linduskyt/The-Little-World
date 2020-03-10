@@ -52,11 +52,13 @@ public class Item
 {
     public string Name;
     public int Id;
+    public ItemType type;
     public ItemBuff[] buffs;
     public Item(ItemObject item)
     {
         Name = item.name;
         Id = item.Id;
+        type = item.type;
         buffs = new ItemBuff[item.buffs.Length];
         for (int i = 0; i < buffs.Length; i++)
         {

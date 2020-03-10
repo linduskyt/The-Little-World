@@ -9,14 +9,13 @@ using System.Linq;
 
 public class DisplayHotbar : MonoBehaviour
 {
-    public InventorySlot selectedObject = null;
+    public InventorySlot selectedSlot = null;
 
-    [SerializeField] private DisplayInventory myInventory = null;
+    public DisplayInventory myInventory = null;
     [SerializeField] private GameObject inventoryPrefab = null;
     [SerializeField] private InventoryObject inventory = null;
     [SerializeField] private TabGroup tabGroup = null;
     private Sprite[] borderSprite;
-    private InventorySlot selectedSlot = null;
 
     [SerializeField] private int X_SPACE = 0;
     [SerializeField] private int X_START = 0;
@@ -26,7 +25,7 @@ public class DisplayHotbar : MonoBehaviour
     private int selectedSlotId = -1;
     private int slotId = 0;
 
-    Dictionary<GameObject, InventorySlot> itemsDisplayed = new Dictionary<GameObject, InventorySlot>();
+    public Dictionary<GameObject, InventorySlot> itemsDisplayed = new Dictionary<GameObject, InventorySlot>();
 
     //Start is called before the first frame update
     void Start()

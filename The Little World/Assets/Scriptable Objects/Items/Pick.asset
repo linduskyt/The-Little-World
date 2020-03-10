@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1b9816de2b696e4fbc077037a82c976, type: 3}
   m_Name: Pick
   m_EditorClassIdentifier: 
-  id: 3
-  uiDisplay: {fileID: 8715187426014285487, guid: 0506a4e99bdc8584687d39f8b05cabe2,
+  Id: 3
+  uiDisplay: {fileID: -5971942374765049077, guid: e1154149ae8c8f04591c2790f20e665d,
     type: 3}
   type: 1
   description: A pick.

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fce22d699ad1c24b8d6b6ff06c24ce4, type: 3}
   m_Name: Apple
   m_EditorClassIdentifier: 
-  id: 0
-  uiDisplay: {fileID: 2587022931209156266, guid: 0506a4e99bdc8584687d39f8b05cabe2,
+  Id: 0
+  uiDisplay: {fileID: 4639506938558671751, guid: e1154149ae8c8f04591c2790f20e665d,
     type: 3}
   type: 0
   description: An apple.
