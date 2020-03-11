@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
         var item = collision.GetComponent<GroundItem>();
         if (item)
         {
-            inventory.AddItem(new Item(item.item), 1);
+            inventory.AddItem(new Item(item.item), item.amount);
             Destroy(collision.gameObject);
         }
     }

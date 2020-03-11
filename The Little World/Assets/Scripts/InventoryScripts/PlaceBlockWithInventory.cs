@@ -22,13 +22,18 @@ public class PlaceBlockWithInventory : MonoBehaviour
         if (item.type == ItemType.Block)
         {
             //If right click, drop block under mouse
-            if (Input.GetMouseButtonUp(1) == true && hotbar.selectedSlot.amount > 0)
+            Vector3 mousePos = Input.mousePosition;
+            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+            Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
+
+            RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
+            if (hit.collider != null) { Debug.Log("Placable: False"); }
+            if (hit.collider == null) { Debug.Log("Placable: True"); }
+            if (Input.GetMouseButtonUp(1) == true && hotbar.selectedSlot.amount > 0 && hit.collider == null)
             {
+                Debug.Log("Upclick");
                 Debug.Log("Removing one " + item.Name);
                 hotbar.selectedSlot.addAmount(-1);
-                Debug.Log("Upclick");
-                Vector3 mousePos = Input.mousePosition;
-                mousePos = Camera.main.ScreenToWorldPoint(mousePos);
 
                 if (mousePos.x > 0.16F)
                     mousePos.x += 0.16F;
@@ -44,11 +49,12 @@ public class PlaceBlockWithInventory : MonoBehaviour
                 mousePos.y = mousePos.y - (mousePos.y % 0.32F);
                 //mousePos.z = -5 + (mousePos.y * .0001F);
                 mousePos.z = 0;
-                
+
                 Instantiate(blockPreFab, mousePos, Quaternion.identity);
+
             }
-            
-            if (hotbar.selectedSlot.amount == 0)
+
+            if (hotbar.selectedSlot.amount <= 0)
             {
                 hotbar.selectedSlot.ID = -1;
             }
