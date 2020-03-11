@@ -27,8 +27,8 @@ public class PlaceBlockWithInventory : MonoBehaviour
             Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
 
             RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
-            if (hit.collider != null) { Debug.Log("Placable: False"); }
-            if (hit.collider == null) { Debug.Log("Placable: True"); }
+            //if (hit.collider != null) { Debug.Log("Placable: False"); }
+            //if (hit.collider == null) { Debug.Log("Placable: True"); }
             if (Input.GetMouseButtonUp(1) == true && hotbar.selectedSlot.amount > 0 && hit.collider == null)
             {
                 Debug.Log("Upclick");
@@ -60,9 +60,34 @@ public class PlaceBlockWithInventory : MonoBehaviour
             }
         }
         //If left click, break block under mouse
-        else if (Input.GetMouseButtonUp(0) == true)
+        if (Input.GetMouseButtonUp(0) == true)
         {
+            //Debug.Log("Left Click");
+            Vector3 mousePos = Input.mousePosition;
+            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+            Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
 
+            //Detects if there is an object where the mouse is at.
+            RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
+            if (hit.collider != null && hit.collider.CompareTag("ItemBlock"))
+            {
+                //Debug.Log("Destroying Object");
+                GroundBlock destroyBlock = hit.collider.gameObject.GetComponent<GroundBlock>();
+                for (int i = 0; i < hotbar.myInventory.inventory.Container.Items.Length; i++)
+                {
+                    if (hotbar.myInventory.inventory.Container.Items[i].item.Id == destroyBlock.item.Id)
+                    {
+                        //Adds an item to the slot containing the same item id if it exists.
+                        hotbar.myInventory.inventory.Container.Items[i].addAmount(destroyBlock.amount);
+                        break;
+                    }
+
+                    //If item doesn't exist in the inventory, add a new item of the destroyed block to the inventory.
+                    if (i + 1 >= hotbar.myInventory.inventory.Container.Items.Length)
+                        hotbar.myInventory.inventory.AddItem(new Item(destroyBlock.item), 1);
+                }
+                Destroy(hit.collider.gameObject);
+            }
         }
     }
 }

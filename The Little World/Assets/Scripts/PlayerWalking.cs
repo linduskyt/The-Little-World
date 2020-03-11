@@ -5,8 +5,6 @@ using UnityEngine;
 public class PlayerWalking : MonoBehaviour
 {
     public float speed = 0.1F;
-
-    public float speed = 0.1F;
     private Rigidbody2D myBody;
 
     // Start is called before the first frame update

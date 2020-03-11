@@ -81,6 +81,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1200520740686049909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6217176618349398197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11c10062f7d1fd449867d2821de7615c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: a8bfae6c0b5a4164c8b378c55310647a, type: 2}
+  amount: 1
 --- !u!1 &8295936085449258778
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,6 +248,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 304502356732118413, guid: a244e3fd816c5e84eab9b8c7b410e538,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 304502356732118413, guid: a244e3fd816c5e84eab9b8c7b410e538,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 304502356732118413, guid: a244e3fd816c5e84eab9b8c7b410e538,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 304502356732118413, guid: a244e3fd816c5e84eab9b8c7b410e538,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 0.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 304502356732118413, guid: a244e3fd816c5e84eab9b8c7b410e538,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 304502356732118413, guid: a244e3fd816c5e84eab9b8c7b410e538,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 420123395519455429, guid: a244e3fd816c5e84eab9b8c7b410e538,
         type: 3}
       propertyPath: m_Sprite
@@ -274,36 +318,6 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.newSize.y
       value: 0.64
       objectReference: {fileID: 0}
-    - target: {fileID: 304502356732118413, guid: a244e3fd816c5e84eab9b8c7b410e538,
-        type: 3}
-      propertyPath: m_SpriteTilingProperty.pivot.y
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 304502356732118413, guid: a244e3fd816c5e84eab9b8c7b410e538,
-        type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.64
-      objectReference: {fileID: 0}
-    - target: {fileID: 304502356732118413, guid: a244e3fd816c5e84eab9b8c7b410e538,
-        type: 3}
-      propertyPath: m_SpriteTilingProperty.newSize.x
-      value: 0.32
-      objectReference: {fileID: 0}
-    - target: {fileID: 304502356732118413, guid: a244e3fd816c5e84eab9b8c7b410e538,
-        type: 3}
-      propertyPath: m_SpriteTilingProperty.newSize.y
-      value: 0.64
-      objectReference: {fileID: 0}
-    - target: {fileID: 304502356732118413, guid: a244e3fd816c5e84eab9b8c7b410e538,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 0.32
-      objectReference: {fileID: 0}
-    - target: {fileID: 304502356732118413, guid: a244e3fd816c5e84eab9b8c7b410e538,
-        type: 3}
-      propertyPath: m_Offset.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5183050712629547505, guid: a244e3fd816c5e84eab9b8c7b410e538,
         type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.y
@@ -327,6 +341,12 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 5183050712629547505, guid: a244e3fd816c5e84eab9b8c7b410e538, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a244e3fd816c5e84eab9b8c7b410e538, type: 3}
+--- !u!1 &6217176618349398197 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6080952420994973385, guid: a244e3fd816c5e84eab9b8c7b410e538,
+    type: 3}
+  m_PrefabInstance: {fileID: 154313381625493116}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &56266093316827729 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 208254671925287981, guid: a244e3fd816c5e84eab9b8c7b410e538,
