@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - canvas
+  - InventoryScreen
+  - Hotbar
+  - ItemBlock
   layers:
   - Default
   - TransparentFX
@@ -13,8 +17,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - NPC
+  - grid
   - 
   - 
   - 
@@ -41,9 +45,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Ground
-    uniqueID: 2538034651
+  - name: UI
+    uniqueID: 3074132681
     locked: 0
-  - name: Objects
-    uniqueID: 3590025191
+  - name: npc
+    uniqueID: 2493466029
+    locked: 0
+  - name: ground
+    uniqueID: 1580506225
     locked: 0
