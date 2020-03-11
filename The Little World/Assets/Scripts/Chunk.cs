@@ -10,7 +10,7 @@ public struct worldObjectData
     int y;
 }
 
-public class Chunk : MonoBehaviour
+public class Chunk : ScriptableObject
 {
     Vector2 location;
     short myIndex;
