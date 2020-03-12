@@ -29,8 +29,8 @@ public class PlaceBlockWithInventory : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
             //if (hit.collider != null) { Debug.Log("Placable: False"); }
             //if (hit.collider == null) { Debug.Log("Placable: True"); }
-            Debug.Log("Item Placable Test 1: " + hotbar.myInventory.isPlacable);
-            Debug.Log("Item Placable Test 2: " + !hotbar.myInventory.isDragging);
+            //Debug.Log("Item Placable Test 1: " + hotbar.myInventory.isPlacable);
+            //Debug.Log("Item Placable Test 2: " + !hotbar.myInventory.isDragging);
             if (Input.GetMouseButtonUp(1) == true && hotbar.selectedSlot.amount > 0 && hit.collider == null && !(hotbar.myInventory.isDragging) && hotbar.myInventory.isPlacable)
             {
                 Debug.Log("Upclick");
@@ -79,14 +79,18 @@ public class PlaceBlockWithInventory : MonoBehaviour
                 {
                     if (hotbar.myInventory.inventory.Container.Items[i].item.Id == destroyBlock.item.Id)
                     {
+                        Debug.Log("Adding Item");
                         //Adds an item to the slot containing the same item id if it exists.
-                        hotbar.myInventory.inventory.Container.Items[i].addAmount(destroyBlock.amount);
+                        hotbar.myInventory.inventory.AddItem(destroyBlock.item.CreateItem(), 1);
                         break;
                     }
 
                     //If item doesn't exist in the inventory, add a new item of the destroyed block to the inventory.
                     if (i + 1 >= hotbar.myInventory.inventory.Container.Items.Length)
+                    {
+                        Debug.Log("Adding NEW Item");
                         hotbar.myInventory.inventory.AddItem(new Item(destroyBlock.item), 1);
+                    }
                 }
                 Destroy(hit.collider.gameObject);
             }

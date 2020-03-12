@@ -25,6 +25,7 @@ public class DisplayInventory : MonoBehaviour
     private int slotId = 0;
     private int itemId = 0;
     private InventorySlot tempObject;
+    private TextMeshProUGUI dragItemText;
 
     Dictionary<GameObject, InventorySlot> itemsDisplayed = new Dictionary<GameObject, InventorySlot>();
 
@@ -41,6 +42,10 @@ public class DisplayInventory : MonoBehaviour
         
         if (isDragging && Input.GetMouseButtonUp(0))
             isDragging = false;
+        if (isDragging && Input.GetMouseButtonDown(1))
+        {
+
+        }
     }
 
     /// <summary>
@@ -146,16 +151,16 @@ public class DisplayInventory : MonoBehaviour
                 var rt = mouseObject.AddComponent<RectTransform>();
                 var mouseChild = new GameObject();
                 mouseChild.transform.Translate((float)12.5, -(float)12.5, 0);
-                var text = mouseChild.AddComponent<TextMeshProUGUI>();
+                dragItemText = mouseChild.AddComponent<TextMeshProUGUI>();
                 mouseChild.transform.SetParent(mouseObject.transform);
 
 
                 rt.sizeDelta = new Vector2(40, 40);
 
-                text.fontSize = 16;
-                text.autoSizeTextContainer = true;
-                text.fontStyle = FontStyles.Bold;
-                text.alignment = TextAlignmentOptions.MidlineJustified;
+                dragItemText.fontSize = 16;
+                dragItemText.autoSizeTextContainer = true;
+                dragItemText.fontStyle = FontStyles.Bold;
+                dragItemText.alignment = TextAlignmentOptions.MidlineJustified;
 
                 mouseObject.transform.SetParent(transform.parent);
                 rt.localScale = new Vector3(1.0f, 1.0f, 1.0f);
@@ -163,7 +168,7 @@ public class DisplayInventory : MonoBehaviour
                 {
                     var img = mouseObject.AddComponent<Image>();
                     img.sprite = inventory.database.GetItem[itemsDisplayed[obj].ID].uiDisplay;
-                    text.text = itemsDisplayed[obj].amount.ToString("n0");
+                    dragItemText.text = itemsDisplayed[obj].amount.ToString("n0");
                     img.raycastTarget = false;
                 }
                 tempObject = itemsDisplayed[obj];
@@ -229,6 +234,21 @@ public class DisplayInventory : MonoBehaviour
     public Vector3 GetPosition(int i)
     {
         return new Vector3(X_START + (X_SPACE * (i % NUMBER_OF_COLUMNS)), Y_START + (-Y_SPACE * (i / NUMBER_OF_COLUMNS)), 0f);
+    }
+
+    private void splitStack()
+    {
+        Debug.Log("Hover item ID: " + mouseItem.hoverItem.ID);
+        if (mouseItem.hoverItem.ID < 0 && Input.GetMouseButtonDown(1))
+        {
+            for (int i = 0; i < inventory.Container.Items.Length; i++)
+            {
+                if (inventory.Container.Items[i].slotId == mouseItem.hoverItem.slotId)
+                {
+                    dragItemText.text = itemsDisplayed[mouseItem.obj].amount.ToString("n0");
+                }
+            }
+        }
     }
 
     public void mouseEnter()
