@@ -29,7 +29,9 @@ public class PlaceBlockWithInventory : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
             //if (hit.collider != null) { Debug.Log("Placable: False"); }
             //if (hit.collider == null) { Debug.Log("Placable: True"); }
-            if (Input.GetMouseButtonUp(1) == true && hotbar.selectedSlot.amount > 0 && hit.collider == null)
+            Debug.Log("Item Placable Test 1: " + hotbar.myInventory.isPlacable);
+            Debug.Log("Item Placable Test 2: " + !hotbar.myInventory.isDragging);
+            if (Input.GetMouseButtonUp(1) == true && hotbar.selectedSlot.amount > 0 && hit.collider == null && !(hotbar.myInventory.isDragging) && hotbar.myInventory.isPlacable)
             {
                 Debug.Log("Upclick");
                 Debug.Log("Removing one " + item.Name);

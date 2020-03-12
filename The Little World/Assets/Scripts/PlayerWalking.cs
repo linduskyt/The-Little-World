@@ -20,7 +20,7 @@ public class PlayerWalking : MonoBehaviour
         float horizTranslation = Input.GetAxis("Horizontal") * speed;
         float vertTranslation = Input.GetAxis("Vertical") * speed;
         
-        myBody.velocity = new Vector2(horizTranslation, vertTranslation);
+        myBody.velocity = new Vector2(Mathf.RoundToInt(horizTranslation), Mathf.RoundToInt(vertTranslation));
 
 
 

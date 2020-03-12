@@ -8,20 +8,26 @@ using UnityEngine.Events;
 
 public class DisplayInventory : MonoBehaviour
 {
+    public InventoryObject inventory;
+    public bool isDragging = false;
+    public bool isPlacable = true;
+
     [SerializeField] private Canvas myCanvas = null;
     private MouseItem mouseItem = new MouseItem();
     [SerializeField] private GameObject inventoryPrefab = null;
-    public InventoryObject inventory;
 
     [SerializeField] private int X_SPACE = 0;
     [SerializeField] private int X_START = 0;
     [SerializeField] private int Y_START = 0;
     [SerializeField] private int Y_SPACE = 0;
     [SerializeField] private int NUMBER_OF_COLUMNS = 0;
+
     private int slotId = 0;
+    private int itemId = 0;
+    private InventorySlot tempObject;
 
     Dictionary<GameObject, InventorySlot> itemsDisplayed = new Dictionary<GameObject, InventorySlot>();
-    
+
     //Start is called before the first frame update
     void Start()
     {
@@ -32,6 +38,9 @@ public class DisplayInventory : MonoBehaviour
     void Update()
     {
         UpdateSlots();
+        
+        if (isDragging && Input.GetMouseButtonUp(0))
+            isDragging = false;
     }
 
     /// <summary>
@@ -41,7 +50,7 @@ public class DisplayInventory : MonoBehaviour
     {
         foreach (KeyValuePair<GameObject, InventorySlot> _slot in itemsDisplayed)
         {
-            if(_slot.Value.ID >= 0)
+            if (_slot.Value.ID >= 0)
             {
                 _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = inventory.database.GetItem[_slot.Value.item.Id].uiDisplay;
                 _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
@@ -103,7 +112,9 @@ public class DisplayInventory : MonoBehaviour
         obj.GetComponent<Image>().color = new Color32(169, 169, 169, 100);
         mouseItem.hoverObj = obj;
         if (itemsDisplayed.ContainsKey(obj))
+        {
             mouseItem.hoverItem = itemsDisplayed[obj];
+        }
     }
 
     /// <summary>
@@ -113,6 +124,7 @@ public class DisplayInventory : MonoBehaviour
     /// <param name="obj">Item slot which player was hovering over.</param>
     public void OnExit(GameObject obj)
     {
+
         mouseItem.hoverObj = null;
         mouseItem.hoverItem = null;
     }
@@ -124,20 +136,43 @@ public class DisplayInventory : MonoBehaviour
     /// <param name="obj">Item slot which player is dragging.</param>
     public void OnDragStart(GameObject obj)
     {
-        var mouseObject = new GameObject();
-        var rt = mouseObject.AddComponent<RectTransform>();
-        rt.sizeDelta = new Vector2(40, 40);
-        mouseObject.transform.SetParent(transform.parent);
-        rt.localScale = new Vector3(1.0f, 1.0f, 1.0f);
-        if (itemsDisplayed[obj].ID >= 0)
+        Debug.Log("Is Dragging: " + isDragging);
+        if (mouseItem.hoverItem != null)
         {
-            var img = mouseObject.AddComponent<Image>();
-            img.sprite = inventory.database.GetItem[itemsDisplayed[obj].ID].uiDisplay;
-            img.raycastTarget = false;
-        }
-        mouseItem.obj = mouseObject;
-        mouseItem.item = itemsDisplayed[obj];
+            if (Input.GetMouseButton(0) && !(Input.GetMouseButton(1)) && mouseItem.hoverItem.ID >= 0)
+            {
+                isDragging = true;
+                var mouseObject = new GameObject();
+                var rt = mouseObject.AddComponent<RectTransform>();
+                var mouseChild = new GameObject();
+                mouseChild.transform.Translate((float)12.5, -(float)12.5, 0);
+                var text = mouseChild.AddComponent<TextMeshProUGUI>();
+                mouseChild.transform.SetParent(mouseObject.transform);
 
+
+                rt.sizeDelta = new Vector2(40, 40);
+
+                text.fontSize = 16;
+                text.autoSizeTextContainer = true;
+                text.fontStyle = FontStyles.Bold;
+                text.alignment = TextAlignmentOptions.MidlineJustified;
+
+                mouseObject.transform.SetParent(transform.parent);
+                rt.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+                if (itemsDisplayed[obj].ID >= 0 && isDragging)
+                {
+                    var img = mouseObject.AddComponent<Image>();
+                    img.sprite = inventory.database.GetItem[itemsDisplayed[obj].ID].uiDisplay;
+                    text.text = itemsDisplayed[obj].amount.ToString("n0");
+                    img.raycastTarget = false;
+                }
+                tempObject = itemsDisplayed[obj];
+                mouseItem.obj = mouseObject;
+                mouseItem.item = itemsDisplayed[obj];
+                itemId = itemsDisplayed[obj].ID;
+                itemsDisplayed[obj].ID = -1;
+            }
+        }
     }
 
     /// <summary>
@@ -147,16 +182,25 @@ public class DisplayInventory : MonoBehaviour
     /// <param name="obj">Item slot which player was dragging.</param>
     public void OnDragEnd(GameObject obj)
     {
-        if (mouseItem.hoverObj && mouseItem.item.ID >= 0)
+        if (mouseItem != null && mouseItem.item != null)
         {
-            inventory.MoveItem(itemsDisplayed[obj], itemsDisplayed[mouseItem.hoverObj]);
-        }
-        else
-        {
-            //inventory.RemoveItem(itemsDisplayed[obj].item);
+            Debug.Log("Is Dragging: " + isDragging);
+            if (mouseItem.hoverObj && isDragging)
+            {
+                itemsDisplayed[obj].ID = itemId;
+                inventory.MoveItem(itemsDisplayed[obj], itemsDisplayed[mouseItem.hoverObj]);
+            }
+            else
+            {
+                Debug.Log("Recovering Item");
+                itemsDisplayed[obj].ID = itemId;
+                //itemsDisplayed[obj] = tempObject;
+            }
         }
         Destroy(mouseItem.obj);
         mouseItem.item = null;
+        isDragging = false;
+        Debug.Log("Is Dragging: " + isDragging);
     }
 
     /// <summary>
@@ -166,7 +210,7 @@ public class DisplayInventory : MonoBehaviour
     /// <param name="obj">Item slot which player is/was dragging.</param>
     public void OnDrag(GameObject obj)
     {
-        if (mouseItem.obj != null)
+        if (mouseItem.obj != null && isDragging)
         {
             Vector3 mousePos = Input.mousePosition;
             mousePos.z = 10.0f;
@@ -186,6 +230,16 @@ public class DisplayInventory : MonoBehaviour
     {
         return new Vector3(X_START + (X_SPACE * (i % NUMBER_OF_COLUMNS)), Y_START + (-Y_SPACE * (i / NUMBER_OF_COLUMNS)), 0f);
     }
+
+    public void mouseEnter()
+    {
+        isPlacable = false;
+    }
+
+    public void mouseExit()
+    {
+        isPlacable = true;
+    }
 }
 
 /// <summary>
@@ -197,4 +251,5 @@ public class MouseItem
     public InventorySlot item;
     public InventorySlot hoverItem;
     public GameObject hoverObj;
+    public string itemAmount;
 }
