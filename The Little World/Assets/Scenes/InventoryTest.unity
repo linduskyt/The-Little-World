@@ -571,7 +571,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1113281359
 RectTransform:
   m_ObjectHideFlags: 0
@@ -588,8 +588,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -360, y: 160}
-  m_SizeDelta: {x: -800, y: -580}
+  m_AnchoredPosition: {x: -1.7000732, y: -0.7999878}
+  m_SizeDelta: {x: 33.7, y: 42.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1113281360
 MonoBehaviour:
@@ -598,7 +598,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1113281358}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
   m_Name: 
@@ -611,7 +611,7 @@ MonoBehaviour:
   m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 52, y: 52}
+  m_CellSize: {x: 100, y: 100}
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
@@ -633,10 +633,10 @@ MonoBehaviour:
   myCanvas: {fileID: 1792299646}
   inventoryPrefab: {fileID: 4400728398252729081, guid: e4db019ec71d6094fbf12b0a6fa3b980,
     type: 3}
-  X_SPACE: 52
-  X_START: -209
-  Y_START: 78
-  Y_SPACE: 52
+  X_SPACE: 105
+  X_START: -540
+  Y_START: 300
+  Y_SPACE: 105
   NUMBER_OF_COLUMNS: 9
 --- !u!114 &1113281362
 MonoBehaviour:
@@ -651,7 +651,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.62352943}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -946,6 +946,11 @@ PrefabInstance:
       propertyPath: orthographic size
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 230319901833833137, guid: ef5b43a82a216524696554f2362f7a43,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 230319901833833151, guid: ef5b43a82a216524696554f2362f7a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1019,11 +1024,6 @@ PrefabInstance:
     - target: {fileID: 230319901833833138, guid: ef5b43a82a216524696554f2362f7a43,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 230319901833833137, guid: ef5b43a82a216524696554f2362f7a43,
-        type: 3}
-      propertyPath: m_BodyType
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 230319901575732652, guid: ef5b43a82a216524696554f2362f7a43,
@@ -5912,6 +5912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c714c72a9b0171f4cbdbf9023cb9a069, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryToggled: 0
   inventoryScreen: {fileID: 1113281358}
   myButton: {fileID: 2056034300}
 --- !u!1 &2144063002

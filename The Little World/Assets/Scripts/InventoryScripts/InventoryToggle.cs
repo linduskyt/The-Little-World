@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class InventoryToggle : MonoBehaviour
 {
+    public bool inventoryToggled;
+
     [SerializeField] private GameObject inventoryScreen = null;
     [SerializeField] private Button myButton = null;
 
@@ -13,12 +15,14 @@ public class InventoryToggle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        inventoryToggled = false;
         btn = myButton.GetComponent<Button>();
         btn.onClick.AddListener(onClick);
     }
 
     private void onClick()
     {
+        inventoryToggled = !inventoryToggled;
         inventoryScreen.SetActive(!inventoryScreen.activeInHierarchy);
     }
 }

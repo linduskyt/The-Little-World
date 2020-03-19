@@ -57,14 +57,19 @@ public class DisplayInventory : MonoBehaviour
         {
             if (_slot.Value.ID >= 0)
             {
-                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = inventory.database.GetItem[_slot.Value.item.Id].uiDisplay;
-                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
+                if (_slot.Value.slotId >= 9)
+                {
+                    _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = null;
+                    _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color32(1, 1, 1, 0);
+                }
+                _slot.Key.transform.GetChild(1).GetComponentInChildren<Image>().sprite = inventory.database.GetItem[_slot.Value.item.Id].uiDisplay;
+                _slot.Key.transform.GetChild(1).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
                 _slot.Key.GetComponentInChildren<TextMeshProUGUI>().text = _slot.Value.amount == 1 ? "" : _slot.Value.amount.ToString("n0");
             }
             else
             {
-                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = null;
-                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 0);
+                _slot.Key.transform.GetChild(1).GetComponentInChildren<Image>().sprite = null;
+                _slot.Key.transform.GetChild(1).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 0);
                 _slot.Key.GetComponentInChildren<TextMeshProUGUI>().text = "";
             }
         }
@@ -89,6 +94,27 @@ public class DisplayInventory : MonoBehaviour
             inventory.Container.Items[i].slotId = slotId++;
 
             itemsDisplayed.Add(obj, inventory.Container.Items[i]);
+        }
+
+        foreach (KeyValuePair<GameObject, InventorySlot> _slot in itemsDisplayed)
+        {
+            if (_slot.Value.ID >= -1)
+            {
+                if (_slot.Value.slotId >= 9)
+                {
+                    _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = null;
+                    _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color32(1, 1, 1, 0);
+                }
+                _slot.Key.transform.GetChild(1).GetComponentInChildren<Image>().sprite = inventory.database.GetItem[_slot.Value.item.Id].uiDisplay;
+                _slot.Key.transform.GetChild(1).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
+                _slot.Key.GetComponentInChildren<TextMeshProUGUI>().text = _slot.Value.amount == 1 ? "" : _slot.Value.amount.ToString("n0");
+            }
+            else
+            {
+                _slot.Key.transform.GetChild(1).GetComponentInChildren<Image>().sprite = null;
+                _slot.Key.transform.GetChild(1).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 0);
+                _slot.Key.GetComponentInChildren<TextMeshProUGUI>().text = "";
+            }
         }
     }
 
@@ -150,17 +176,19 @@ public class DisplayInventory : MonoBehaviour
                 var mouseObject = new GameObject();
                 var rt = mouseObject.AddComponent<RectTransform>();
                 var mouseChild = new GameObject();
-                mouseChild.transform.Translate((float)12.5, -(float)12.5, 0);
+                mouseChild.transform.Translate((float)25, -(float)25, 0);
                 dragItemText = mouseChild.AddComponent<TextMeshProUGUI>();
                 mouseChild.transform.SetParent(mouseObject.transform);
 
 
-                rt.sizeDelta = new Vector2(40, 40);
+                rt.sizeDelta = new Vector2(70, 70);
 
-                dragItemText.fontSize = 16;
+                dragItemText.fontSize = 45;
                 dragItemText.autoSizeTextContainer = true;
                 dragItemText.fontStyle = FontStyles.Bold;
                 dragItemText.alignment = TextAlignmentOptions.MidlineJustified;
+                dragItemText.outlineWidth = (float)0.3;
+                dragItemText.outlineColor = Color.black;
 
                 mouseObject.transform.SetParent(transform.parent);
                 rt.localScale = new Vector3(1.0f, 1.0f, 1.0f);
@@ -168,7 +196,10 @@ public class DisplayInventory : MonoBehaviour
                 {
                     var img = mouseObject.AddComponent<Image>();
                     img.sprite = inventory.database.GetItem[itemsDisplayed[obj].ID].uiDisplay;
-                    dragItemText.text = itemsDisplayed[obj].amount.ToString("n0");
+                    if (itemsDisplayed[obj].amount > 1)
+                        dragItemText.text = itemsDisplayed[obj].amount.ToString("n0");
+                    else
+                        dragItemText.text = "";
                     img.raycastTarget = false;
                 }
                 tempObject = itemsDisplayed[obj];
