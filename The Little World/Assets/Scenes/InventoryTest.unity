@@ -571,7 +571,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1113281359
 RectTransform:
   m_ObjectHideFlags: 0
@@ -630,6 +630,7 @@ MonoBehaviour:
   inventory: {fileID: 11400000, guid: 98c37f05495ad55449facec0e88bbc56, type: 2}
   isDragging: 0
   isPlacable: 0
+  stacking: 0
   myCanvas: {fileID: 1792299646}
   inventoryPrefab: {fileID: 4400728398252729081, guid: e4db019ec71d6094fbf12b0a6fa3b980,
     type: 3}
