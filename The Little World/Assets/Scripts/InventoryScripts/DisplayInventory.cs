@@ -11,12 +11,13 @@ public class DisplayInventory : MonoBehaviour
 {
     public InventoryObject inventory;
     public bool isDragging = false;
-    public bool isPlacable = true;
+    public bool isPlacable = false;
     public bool stacking = false;
 
     [SerializeField] private Canvas myCanvas = null;
     private MouseItem mouseItem = new MouseItem();
     [SerializeField] private GameObject inventoryPrefab = null;
+    [SerializeField] private GameObject inventoryScreen = null;
 
     [SerializeField] private int X_SPACE = 0;
     [SerializeField] private int X_START = 0;
@@ -31,10 +32,17 @@ public class DisplayInventory : MonoBehaviour
 
     Dictionary<GameObject, InventorySlot> itemsDisplayed = new Dictionary<GameObject, InventorySlot>();
 
+    private void Awake()
+    {
+        CreateSlots();
+    }
+
     //Start is called before the first frame update
     void Start()
     {
-        CreateSlots();
+        inventoryScreen = this.gameObject;
+        inventoryScreen.SetActive(false);
+        isPlacable = true;
     }
 
     // Update is called once per frame
@@ -46,8 +54,8 @@ public class DisplayInventory : MonoBehaviour
             isDragging = false;
         if (isDragging && Input.GetMouseButtonDown(1))
         {
-            stacking = true;
-            splitStack();
+            //stacking = true;
+            //splitStack();
         }
     }
 
@@ -345,8 +353,10 @@ public class DisplayInventory : MonoBehaviour
         if (mouseItem.hoverItem != null && isDragging)
         {
             int stackAmount = mouseItem.item.amount;
+            Debug.Log("Stack size: " + stackAmount);
+            mouseItem.item.amount = 0;
             Debug.Log("Hover item ID: " + mouseItem.hoverItem.item.Id);
-            if (stackAmount == 1)
+            if (stackAmount == 1 && mouseItem.hoverItem.slotId != mouseItem.item.slotId)
             {
                 Debug.Log("Stack = 1");
                 mouseItem.item.ID = itemId;
@@ -356,12 +366,24 @@ public class DisplayInventory : MonoBehaviour
                 Destroy(mouseItem.obj);
                 isDragging = false;
             }
-            else if (mouseItem.hoverItem.slotId == mouseItem.item.slotId && stackAmount > 0)
+            else if (mouseItem.hoverItem.slotId == mouseItem.item.slotId && stackAmount == 1)
+            {
+                Debug.Log("Case: Same Slot with Stack = 1");
+                mouseItem.item.ID = itemId;
+                dragItemText.text = (0).ToString();
+                stackAmount = 0;
+                mouseItem.hoverItem.addAmount(1);
+                //mouseItem.hoverItem.UpdateSlot(itemId, mouseItem.item.item, 1);
+                Destroy(mouseItem.obj);
+                isDragging = false;
+            }
+            else if (mouseItem.hoverItem.slotId == mouseItem.item.slotId && stackAmount > 1)
             {
                 Debug.Log("Case: Same slot as mouse item");
                 mouseItem.item.ID = itemId;
-                dragItemText.text = (stackAmount - (Mathf.FloorToInt((float)1.0 * stackAmount / 2))).ToString();
-                mouseItem.hoverItem.UpdateSlot(mouseItem.item.item.Id, mouseItem.item.item, Mathf.FloorToInt((float)1.0 * stackAmount / 2));
+                dragItemText.text = (stackAmount - (Mathf.CeilToInt((float)1.0 * stackAmount / 2))).ToString();
+                mouseItem.hoverItem.addAmount(Mathf.CeilToInt((float)1.0 * stackAmount / 2));
+                //mouseItem.hoverItem.UpdateSlot(mouseItem.item.item.Id, mouseItem.item.item, Mathf.FloorToInt((float)1.0 * stackAmount / 2));
             }
 
             else if (itemsDisplayed[mouseItem.hoverObj].ID == -1 && mouseItem != null && itemsDisplayed[mouseItem.hoverObj].item.Id >= 0 && stackAmount > 0)
@@ -370,8 +392,8 @@ public class DisplayInventory : MonoBehaviour
                 //itemsDisplayed[mouseItem.hoverObj].item.Id = mouseItem.item.ID;
                 //itemsDisplayed[mouseItem.hoverObj].amount = Mathf.FloorToInt((float)1.0 * mouseItem.item.amount / 2);
                 itemsDisplayed[mouseItem.hoverObj].ID = itemId;
-                dragItemText.text = (stackAmount - (Mathf.FloorToInt((float)1.0 * stackAmount / 2))).ToString();
-                mouseItem.hoverItem.UpdateSlot(mouseItem.item.item.Id, mouseItem.item.item, Mathf.FloorToInt((float)1.0 * stackAmount / 2));
+                dragItemText.text = (stackAmount - (Mathf.CeilToInt((float)1.0 * stackAmount / 2))).ToString();
+                mouseItem.hoverItem.UpdateSlot(mouseItem.item.item.Id, mouseItem.item.item, Mathf.CeilToInt((float)1.0 * stackAmount / 2));
             }
         }
     }

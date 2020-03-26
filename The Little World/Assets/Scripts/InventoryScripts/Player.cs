@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     public InventoryObject inventory;
     public InventoryObject hotbar;
+    private PolygonCollider2D col;
 
     /// <summary>
     /// Adds item to player inventory and destroys collided item.

@@ -21,6 +21,7 @@ public class PlaceBlockWithInventory : MonoBehaviour
         item = hotbar.selectedSlot.item;
         if (item.type == ItemType.Block)
         {
+            Debug.Log("Placable: " + hotbar.myInventory.isPlacable);
             //If right click, drop block under mouse
             Vector3 mousePos = Input.mousePosition;
             mousePos = Camera.main.ScreenToWorldPoint(mousePos);
