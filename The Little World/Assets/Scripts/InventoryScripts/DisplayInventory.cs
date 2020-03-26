@@ -34,13 +34,15 @@ public class DisplayInventory : MonoBehaviour
 
     private void Awake()
     {
-        CreateSlots();
+
     }
 
     //Start is called before the first frame update
     void Start()
     {
         inventoryScreen = this.gameObject;
+        CreateSlots();
+        UpdateSlots();
         inventoryScreen.SetActive(false);
         isPlacable = true;
     }
@@ -261,9 +263,9 @@ public class DisplayInventory : MonoBehaviour
             else if (mouseItem.hoverItem.ID == -1)
             {
                 Debug.Log("End Drag Case 4");
+                Debug.Log("mouseItem.item.ID: " + itemId);
+                inventory.MoveItem(itemsDisplayed[obj], itemsDisplayed[mouseItem.hoverObj]);
                 itemsDisplayed[mouseItem.hoverObj].ID = itemId;
-                itemsDisplayed[mouseItem.hoverObj].item.Id = itemId;
-                itemsDisplayed[mouseItem.hoverObj].amount = mouseItem.item.amount;
             }
             else
             {
