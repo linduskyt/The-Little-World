@@ -5,12 +5,13 @@ using UnityEngine;
 public class NPCWalking : MonoBehaviour
 {
 
-    public float speed = 0.01F;
+    public float speed = 0.1F;
+    private Rigidbody2D myBody;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        myBody = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -19,13 +20,8 @@ public class NPCWalking : MonoBehaviour
         //Accept directional input and apply speed modifier
         float horizTranslation = Input.GetAxis("Horizontal") * speed;
         float vertTranslation = Input.GetAxis("Vertical") * speed;
-
-        //Make movment relative to time rather than frames
-        horizTranslation *= Time.deltaTime;
-        vertTranslation *= Time.deltaTime;
-
-        //Apply movment
-        transform.Translate(horizTranslation, vertTranslation, 0);
+        
+        myBody.velocity = new Vector2(horizTranslation, vertTranslation);
 
 
 

@@ -1,5 +1,0 @@
-sceneSetups:
-- path: Assets/Scenes/NPC/Dialogue/Talk to NPC.unity
-  isLoaded: 1
-  isActive: 1
-  isSubScene: 0
