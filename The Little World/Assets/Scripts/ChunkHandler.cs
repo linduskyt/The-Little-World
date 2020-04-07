@@ -14,22 +14,22 @@ public class ChunkHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        chunkSize = 64;
-        List<Chunk> chunkList = new List<Chunk>();
-        updateCycle = 0;
-        changingChunks = false;
+        this.chunkSize = 64;
+        this.chunkList = new List<Chunk>();
+        this.updateCycle = 0;
+        this.changingChunks = false;
 
-        /*
+        
         // Hardcoded Generation and Linking of 3x3 cluster of starting chunks
-        chunkList.Add(new Chunk(new Vector2(0, 0), 0)); // 0:Center
-        chunkList.Add(new Chunk(new Vector2(1, 0), 0)); // 1:East
-        chunkList.Add(new Chunk(new Vector2(-1, 0), 0));// 2:West
-        chunkList.Add(new Chunk(new Vector2(0, 1), 0)); // 3:North
-        chunkList.Add(new Chunk(new Vector2(0, -1), 0));// 4:South
-        chunkList.Add(new Chunk(new Vector2(1, 1), 0)); // 5:NorthEast
-        chunkList.Add(new Chunk(new Vector2(-1, 1), 0));// 6:NorthWest
-        chunkList.Add(new Chunk(new Vector2(1, -1), 0));// 7:SouthEast
-        chunkList.Add(new Chunk(new Vector2(-1, -1), 0));// 8:SouthWest
+        this.chunkList.Add(new Chunk(0, new Vector2(0, 0), 0)); // 0:Center
+        this.chunkList.Add(new Chunk(1, new Vector2(1, 0), 0)); // 1:East
+        this.chunkList.Add(new Chunk(2, new Vector2(-1, 0), 0));// 2:West
+        this.chunkList.Add(new Chunk(3, new Vector2(0, 1), 0)); // 3:North
+        this.chunkList.Add(new Chunk(4, new Vector2(0, -1), 0));// 4:South
+        this.chunkList.Add(new Chunk(5, new Vector2(1, 1), 0)); // 5:NorthEast
+        this.chunkList.Add(new Chunk(6, new Vector2(-1, 1), 0));// 6:NorthWest
+        this.chunkList.Add(new Chunk(7, new Vector2(1, -1), 0));// 7:SouthEast
+        this.chunkList.Add(new Chunk(8, new Vector2(-1, -1), 0));// 8:SouthWest
 
         LinkChunks(0, 1);   // Center & East
         LinkChunks(0, 2);   // Center & West
@@ -43,7 +43,7 @@ public class ChunkHandler : MonoBehaviour
         LinkChunks(7, 4);   // SouthEast & South
         LinkChunks(8, 2);   // SouthWest & West
         LinkChunks(8, 4);   // SouthWest & South
-        */
+        /*
 
         //Generates 3x3 grid of spawn chunks
         for (short i = -1; i < 2; ++i)
@@ -61,6 +61,9 @@ public class ChunkHandler : MonoBehaviour
                 LinkChunks(i, k);
             }
         }
+        */
+
+        activeChunk = this.chunkList[0];
         
     }
 
@@ -68,7 +71,7 @@ public class ChunkHandler : MonoBehaviour
     void Update()
     {
         // Runs different checks on a cycle of 9 frames
-        switch (updateCycle)
+        switch (this.updateCycle)
         {
             case 0:
                 //if (activeChunk != playerChunk)
@@ -103,10 +106,10 @@ public class ChunkHandler : MonoBehaviour
                 // Check/Load West & NorthWest chunks
                 Chunk westChunk = GetChunkToThe(-1, 0);
                 Chunk northWestChunk = GetChunkToThe(-1, 1);
-                updateCycle = -1;
+                this.updateCycle = -1;
                 break;
         }
-        ++updateCycle;
+        ++this.updateCycle;
     }
 
     void BuildChunk(Chunk buildingChunk)
@@ -125,13 +128,13 @@ public class ChunkHandler : MonoBehaviour
                 switch (verticalOffset)
                 {
                     case -1:
-                        indexTemp = activeChunk.GetSouthWest();
+                        indexTemp = this.activeChunk.GetSouthWest();
                         break;
                     case 0:
-                        indexTemp = activeChunk.GetWest();
+                        indexTemp = this.activeChunk.GetWest();
                         break;
                     case 1:
-                        indexTemp = activeChunk.GetNorthWest();
+                        indexTemp = this.activeChunk.GetNorthWest();
                         break;
                     default:
                         // Should Never Happen
@@ -142,10 +145,10 @@ public class ChunkHandler : MonoBehaviour
                 switch (verticalOffset)
                 {
                     case -1:
-                        indexTemp = activeChunk.GetSouth();
+                        indexTemp = this.activeChunk.GetSouth();
                         break;
                     case 1:
-                        indexTemp = activeChunk.GetNorth();
+                        indexTemp = this.activeChunk.GetNorth();
                         break;
                     case 0:
                     default:
@@ -157,13 +160,13 @@ public class ChunkHandler : MonoBehaviour
                 switch (verticalOffset)
                 {
                     case -1:
-                        indexTemp = activeChunk.GetSouthEast();
+                        indexTemp = this.activeChunk.GetSouthEast();
                         break;
                     case 0:
-                        indexTemp = activeChunk.GetEast();
+                        indexTemp = this.activeChunk.GetEast();
                         break;
                     case 1:
-                        indexTemp = activeChunk.GetNorthEast();
+                        indexTemp = this.activeChunk.GetNorthEast();
                         break;
                     default:
                         // Should Never Happen
@@ -177,26 +180,26 @@ public class ChunkHandler : MonoBehaviour
 
         if (indexTemp == -1)
         {
-            target = target + activeChunk.GetLocation();
-            indexTemp = (short)chunkList.FindIndex(a => a.GetLocation() == target);
+            target = target + this.activeChunk.GetLocation();
+            indexTemp = (short)this.chunkList.FindIndex(a => a.GetLocation() == target);
             if (indexTemp != -1)
             {
-                LinkChunks(indexTemp, activeChunk.GetMyIndex());
+                LinkChunks(indexTemp, this.activeChunk.GetMyIndex());
             }
             else
             {
                 // If there is no chunk to the north of activeChunk, create one
                 indexTemp = (short)chunkList.Count;
-                chunkList.Add(new Chunk(indexTemp, new Vector2(target.x, target.y), 0));
+                this.chunkList.Add(new Chunk(indexTemp, new Vector2(target.x, target.y), 0));
             }
         }
-        return chunkList[indexTemp];
+        return this.chunkList[indexTemp];
     }
 
     // Give two adjacent chunks each others index so they can reference each other
     void LinkChunks(short indA, short indB)
     {
-        Vector2 linkVector = chunkList[indA].GetLocation() - chunkList[indB].GetLocation();
+        Vector2 linkVector = this.chunkList[indA].GetLocation() - this.chunkList[indB].GetLocation();
         if (linkVector.sqrMagnitude == 1 | linkVector.sqrMagnitude == Mathf.Sqrt(2)) // Validate that the two chunks are horizontally or vertically adjacent
         {
             switch (linkVector.x)
@@ -205,16 +208,16 @@ public class ChunkHandler : MonoBehaviour
                     switch (linkVector.y)
                     {
                         case -1: // B is to the NorthEast of A
-                            chunkList[indA].SetNorthEast(indB);
-                            chunkList[indB].SetSouthWest(indA);
+                            this.chunkList[indA].SetNorthEast(indB);
+                            this.chunkList[indB].SetSouthWest(indA);
                             break;
                         case 1: // B is to the SouthEast of A
-                            chunkList[indA].SetSouthEast(indB);
-                            chunkList[indB].SetNorthWest(indA);
+                            this.chunkList[indA].SetSouthEast(indB);
+                            this.chunkList[indB].SetNorthWest(indA);
                             break;
                         case 0: // B is directly to the East of A
-                            chunkList[indA].SetEast(indB);
-                            chunkList[indB].SetWest(indA);
+                            this.chunkList[indA].SetEast(indB);
+                            this.chunkList[indB].SetWest(indA);
                             break;
                         default:
                             break;
@@ -224,16 +227,16 @@ public class ChunkHandler : MonoBehaviour
                     switch (linkVector.y)
                     {
                         case -1: // B is to the NorthWest of A
-                            chunkList[indA].SetNorthWest(indB);
-                            chunkList[indB].SetSouthEast(indA);
+                            this.chunkList[indA].SetNorthWest(indB);
+                            this.chunkList[indB].SetSouthEast(indA);
                             break;
                         case 1: // B is to the SouthWest of A
-                            chunkList[indA].SetSouthWest(indB);
-                            chunkList[indB].SetNorthEast(indA);
+                            this.chunkList[indA].SetSouthWest(indB);
+                            this.chunkList[indB].SetNorthEast(indA);
                             break;
                         case 0: // B is directly to the West of A
-                            chunkList[indA].SetWest(indB);
-                            chunkList[indB].SetEast(indA);
+                            this.chunkList[indA].SetWest(indB);
+                            this.chunkList[indB].SetEast(indA);
                             break;
                         default:
                             break;
@@ -243,12 +246,12 @@ public class ChunkHandler : MonoBehaviour
                     switch (linkVector.y)
                     {
                         case -1:    // B is to the North of A
-                            chunkList[indA].SetNorth(indB);
-                            chunkList[indB].SetSouth(indA);
+                            this.chunkList[indA].SetNorth(indB);
+                            this.chunkList[indB].SetSouth(indA);
                             break;
                         case 1:     // B is to the South of A
-                            chunkList[indA].SetSouth(indB);
-                            chunkList[indB].SetNorth(indA);
+                            this.chunkList[indA].SetSouth(indB);
+                            this.chunkList[indB].SetNorth(indA);
                             break;
                         case 0:
                         default:

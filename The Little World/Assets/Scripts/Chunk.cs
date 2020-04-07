@@ -6,11 +6,12 @@ public struct worldObjectData
 {
     short worldObjID;
     //Block coordinates of the object relative to it's chunk (0 - 63)
-    int x;
-    int y;
+    sbyte x;
+    sbyte y;
+    sbyte z;
 }
 
-public class Chunk : MonoBehaviour
+public class Chunk
 {
     Vector2 location;
     short myIndex;
@@ -35,19 +36,19 @@ public class Chunk : MonoBehaviour
         this.myIndex = myIndexInList;
         this.location = location;
         this.biome = biome;
-        
-        blockList = new List<worldObjectData>();
-        objectList = new List<worldObjectData>();
 
-        indxWest = left;
-        indxEast = right;
-        indxNorth = up;
-        indxSouth = down;
+        this.blockList = new List<worldObjectData>();
+        this.objectList = new List<worldObjectData>();
 
-        indxNorthEast = upAndRight;
-        indxNorthWest = upAndLeft;
-        indxSouthEast = downAndRight;
-        indxSouthWest = downAndLeft;
+        this.indxWest = left;
+        this.indxEast = right;
+        this.indxNorth = up;
+        this.indxSouth = down;
+
+        this.indxNorthEast = upAndRight;
+        this.indxNorthWest = upAndLeft;
+        this.indxSouthEast = downAndRight;
+        this.indxSouthWest = downAndLeft;
 
     }
 
@@ -55,90 +56,90 @@ public class Chunk : MonoBehaviour
 
     public Vector2 GetLocation()
     {
-        return location;
+        return this.location;
     }
 
     public short GetMyIndex()
     {
-        return myIndex;
+        return this.myIndex;
     }
 
     public bool IsAlive()
     {
-        return isAlive;
+        return this.isAlive;
     }
     // Get and Set chunkList Indices
 
     public short GetWest()
     {
-        return indxWest;
+        return this.indxWest;
     }
     public void SetWest (short left)
     {
-        indxWest = left;
+        this.indxWest = left;
     }
 
     public short GetEast()
     {
-        return indxEast;
+        return this.indxEast;
     }
     public void SetEast (short right)
     {
-        indxEast = right;
+        this.indxEast = right;
     }
 
     public short GetNorth()
     {
-        return indxNorth;
+        return this.indxNorth;
     }
     public void SetNorth (short up)
     {
-        indxNorth = up;
+        this.indxNorth = up;
     }
 
     public short GetSouth()
     {
-        return indxSouth;
+        return this.indxSouth;
     }
     public void SetSouth (short down)
     {
-        indxSouth = down;
+        this.indxSouth = down;
     }
 
     public short GetNorthEast()
     {
-        return indxNorthEast;
+        return this.indxNorthEast;
     }
     public void SetNorthEast(short upAndRight)
     {
-        indxNorthEast = upAndRight;
+        this.indxNorthEast = upAndRight;
     }
 
     public short GetNorthWest()
     {
-        return indxNorthWest;
+        return this.indxNorthWest;
     }
     public void SetNorthWest(short upAndLeft)
     {
-        indxNorthWest = upAndLeft;
+        this.indxNorthWest = upAndLeft;
     }
 
     public short GetSouthEast()
     {
-        return indxSouthEast;
+        return this.indxSouthEast;
     }
     public void SetSouthEast(short downAndRight)
     {
-        indxSouthEast = downAndRight;
+        this.indxSouthEast = downAndRight;
     }
 
     public short GetSouthWest()
     {
-        return indxSouthWest;
+        return this.indxSouthWest;
     }
     public void SetSouthWest(short downAndLeft)
     {
-        indxSouthWest = downAndLeft;
+        this.indxSouthWest = downAndLeft;
     }
 }
 
