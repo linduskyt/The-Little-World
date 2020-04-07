@@ -58,7 +58,6 @@
      <Compile Include="Assets\CheckRight.cs" />
      <Compile Include="Assets\GameOrientationScript.cs" />
      <Compile Include="Assets\NPCGraphics.cs" />
-     <Compile Include="Assets\Scenes\NPCDialogue.cs" />
      <Compile Include="Assets\Scriptable Objects\Inventory\Scripts\InventoryObject.cs" />
      <Compile Include="Assets\Scriptable Objects\Items\Scripts\BuildingBlockObject.cs" />
      <Compile Include="Assets\Scriptable Objects\Items\Scripts\DefaultObject.cs" />
@@ -81,6 +80,7 @@
      <Compile Include="Assets\Scripts\NPC\Dialogue.cs" />
      <Compile Include="Assets\Scripts\NPC\DialogueManager.cs" />
      <Compile Include="Assets\Scripts\NPC\Discussion.cs" />
+     <Compile Include="Assets\Scripts\NPC\NPCDialogue.cs" />
      <Compile Include="Assets\Scripts\NPC\NPCMovment.cs" />
      <Compile Include="Assets\Scripts\NPC\NPCWalking.cs" />
      <Compile Include="Assets\Scripts\PlaceBlock.cs" />
