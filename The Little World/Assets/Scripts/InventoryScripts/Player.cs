@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public int mode = 0;
+
     public InventoryObject inventory;
     public InventoryObject hotbar;
+    private PolygonCollider2D col;
 
     /// <summary>
     /// Adds item to player inventory and destroys collided item.
@@ -23,10 +26,12 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.Space))
             inventory.Save();
         if (Input.GetKeyDown(KeyCode.KeypadEnter))
             inventory.Load();
+        */
     }
 
     /// <summary>
