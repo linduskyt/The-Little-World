@@ -21,4 +21,4 @@ MonoBehaviour:
   - attribute: 3
     value: 0
     min: 1
-    max: 100
+    max: 3
