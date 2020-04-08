@@ -4,20 +4,27 @@ using UnityEngine;
 
 public class ChunkHandler : MonoBehaviour
 {
+    //DEMO ONLY REMOVE LATER
+    public GameObject blockPreFab;
+    //End Demo
     //Declare class variables
-    short updateCycle; // Counter to cycle through staggered pdate
-    bool changingChunks; // If player crossed a chunk and a full cycle through update cases has yet to finish
-    short chunkSize; // Number of blocks per chunk
-    Chunk activeChunk; // Chunk Player is currently standing in
-    List<Chunk> chunkList; // List of Chunks
+    private short updateCycle; // Counter to cycle through staggered pdate
+    private Vector2 changingChunks; // If player crossed a chunk and a full cycle through update cases has yet to finish 
+    private short chunkSize; // Number of blocks per chunk
+    private Chunk activeChunk; // Chunk Player is currently standing in
+    private List<Chunk> chunkList; // List of Chunks
+    private GameObject playerObj; // Reference to player
+    private Chunk prevChunk; // Chunk player just left
 
     // Start is called before the first frame update
     void Start()
     {
+        this.playerObj = GameObject.Find("Player");
         this.chunkSize = 64;
         this.chunkList = new List<Chunk>();
+        // The origin chunk (0, 0) goes from block at world coord (0, 0) to (chunkSize - 1, chunkSize -1)
         this.updateCycle = 0;
-        this.changingChunks = false;
+        this.changingChunks = new Vector2(0, 0);
 
         
         // Hardcoded Generation and Linking of 3x3 cluster of starting chunks
@@ -70,54 +77,204 @@ public class ChunkHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Runs different checks on a cycle of 9 frames
+        // Runs different checks on a cycle of 5 frames
         switch (this.updateCycle)
         {
-            case 0:
-                //if (activeChunk != playerChunk)
-                 //   activeChunk = playerChunk;
-                  //  changingChunks = true;
+            case 0: // Check if player is in the active chunk, if not change the active chunk and set changingChunk to tell following cycles what direction to load/unload
+                Vector2 playerChunkLoc = WorldToChunk(playerObj.transform.position.x, playerObj.transform.position.y);
+                if (playerChunkLoc != this.activeChunk.GetLocation())
+                {
+                    Vector2 playerMoved = this.activeChunk.GetLocation() - playerChunkLoc;
+                    if (playerMoved.x >= 1)
+                        playerMoved.x = 1;
+                    else if (playerMoved.x <= -1)
+                        playerMoved.x = -1;
+                    else if (playerMoved.x == 0) { }
+                    //No Change, just checking
+                    else { }
+                    //This Should NEVER happen
+
+                    if (playerMoved.y >= 1)
+                        playerMoved.y = 1;
+                    else if (playerMoved.y <= -1)
+                        playerMoved.y = -1;
+                    else if (playerMoved.y == 0) { }
+                    //No Change, just checking
+                    else { }
+                    //This Should NEVER happen
+
+                    this.prevChunk = this.activeChunk;
+                    this.activeChunk = GetChunkToThe((short)-playerMoved.x, (short)-playerMoved.y, this.activeChunk);
+                    this.changingChunks = playerMoved;
+                }
+                else
+                {
+                    this.changingChunks.x = 0;
+                    this.changingChunks.y = 0;
+                }
                 break;
             case 1:
-                // Check/Load North & NorthEast chunks
-                Chunk northChunk = GetChunkToThe(0, 1);
-                Chunk northEastChunk = GetChunkToThe(1, 1);
+                if (this.changingChunks.x != 0 || this.changingChunks.y != 0) { 
+                    // Check/Load North & NorthEast chunks
+                    Chunk northChunk = GetChunkToThe(0, 1, this.activeChunk);
+                    Chunk northEastChunk = GetChunkToThe(1, 1, this.activeChunk);
 
-                if (!northChunk.IsAlive())
-                {
-                    BuildChunk(northChunk);
-                }
-                if (!northEastChunk.IsAlive())
-                {
-                    BuildChunk(northEastChunk);
+                    if (!northChunk.IsAlive())
+                    {
+                        LoadChunk(northChunk);
+                    }
+                    if (!northEastChunk.IsAlive())
+                    {
+                        LoadChunk(northEastChunk);
+                    }
+
+                    // Check/Unload North & NorthEast chunks
+                    if (this.changingChunks.y == -1)
+                    {
+                        northChunk = GetChunkToThe(0, 1, this.prevChunk);
+                        northEastChunk = GetChunkToThe(1, 1, this.prevChunk);
+
+                        if (northChunk.IsAlive())
+                        {
+                            UnloadChunk(northChunk);
+                        }
+                        if (northEastChunk.IsAlive())
+                        {
+                            UnloadChunk(northEastChunk);
+                        }
+                    }
                 }
                 break;
             case 2:
-                // Check/Load East & SouthEast chunks
-                Chunk eastChunk = GetChunkToThe(1, 0);
-                Chunk southEastChunk = GetChunkToThe(1, -1);
+                if (this.changingChunks.x != 0 || this.changingChunks.y != 0)
+                {
+                    // Check/Load East & SouthEast chunks
+                    Chunk eastChunk = GetChunkToThe(1, 0, this.activeChunk);
+                    Chunk southEastChunk = GetChunkToThe(1, -1, this.activeChunk);
+
+                    if (!eastChunk.IsAlive())
+                    {
+                        LoadChunk(eastChunk);
+                    }
+                    if (!southEastChunk.IsAlive())
+                    {
+                        LoadChunk(southEastChunk);
+                    }
+
+                    // Check/Unload North & NorthEast chunks
+                    if (this.changingChunks.y == -1)
+                    {
+                        eastChunk = GetChunkToThe(0, 1, this.prevChunk);
+                        southEastChunk = GetChunkToThe(1, 1, this.prevChunk);
+
+                        if (eastChunk.IsAlive())
+                        {
+                            UnloadChunk(eastChunk);
+                        }
+                        if (southEastChunk.IsAlive())
+                        {
+                            UnloadChunk(southEastChunk);
+                        }
+                    }
+                }
                 break;
             case 3:
-                // Check/Load South & SouthWest chunks
-                Chunk southChunk = GetChunkToThe(0, -1);
-                Chunk southWestChunk = GetChunkToThe(-1, -1);
+                if (this.changingChunks.x != 0 || this.changingChunks.y != 0)
+                {
+                    // Check/Load South & SouthWest chunks
+                    Chunk southChunk = GetChunkToThe(0, -1, this.activeChunk);
+                    Chunk southWestChunk = GetChunkToThe(-1, -1, this.activeChunk);
+
+                    if (!southChunk.IsAlive())
+                    {
+                        LoadChunk(southChunk);
+                    }
+                    if (!southWestChunk.IsAlive())
+                    {
+                        LoadChunk(southWestChunk);
+                    }
+
+                    // Check/Unload North & NorthEast chunks
+                    if (this.changingChunks.y == -1)
+                    {
+                        southChunk = GetChunkToThe(0, 1, this.prevChunk);
+                        southWestChunk = GetChunkToThe(1, 1, this.prevChunk);
+
+                        if (southChunk.IsAlive())
+                        {
+                            UnloadChunk(southChunk);
+                        }
+                        if (southWestChunk.IsAlive())
+                        {
+                            UnloadChunk(southWestChunk);
+                        }
+                    }
+                }
                 break;
             case 4:
-                // Check/Load West & NorthWest chunks
-                Chunk westChunk = GetChunkToThe(-1, 0);
-                Chunk northWestChunk = GetChunkToThe(-1, 1);
+                if (this.changingChunks.x != 0 || this.changingChunks.y != 0)
+                {
+                    // Check/Load West & NorthWest chunks
+                    Chunk westChunk = GetChunkToThe(-1, 0, this.activeChunk);
+                    Chunk northWestChunk = GetChunkToThe(-1, 1, this.activeChunk);
+
+                    if (!westChunk.IsAlive())
+                    {
+                        LoadChunk(westChunk);
+                    }
+                    if (!northWestChunk.IsAlive())
+                    {
+                        LoadChunk(northWestChunk);
+                    }
+
+                    // Check/Unload North & NorthEast chunks
+                    if (this.changingChunks.y == -1)
+                    {
+                        westChunk = GetChunkToThe(0, 1, this.prevChunk);
+                        northWestChunk = GetChunkToThe(1, 1, this.prevChunk);
+
+                        if (westChunk.IsAlive())
+                        {
+                            UnloadChunk(westChunk);
+                        }
+                        if (northWestChunk.IsAlive())
+                        {
+                            UnloadChunk(northWestChunk);
+                        }
+                    }
+                }
                 this.updateCycle = -1;
                 break;
         }
         ++this.updateCycle;
     }
 
-    void BuildChunk(Chunk buildingChunk)
+    void LoadChunk(Chunk chunkToLoad)
     {
+        chunkToLoad.Activate();
+        List<WorldObjectData> blockList = chunkToLoad.GetBlockList();
+        Vector3 chunkTranslation = new Vector3((float)(chunkToLoad.GetLocation().x * 64 * 0.32), (float)(chunkToLoad.GetLocation().y * 64 * 0.32), 0);
 
+        for (short i = 0; i < blockList.Count; ++i)
+        {
+            Vector3 objCoords = new Vector3((float)(blockList[i].x * 0.32), (float)(blockList[i].y * 0.32), blockList[i].z); // Temporary, PLEASE CREATE A FUNCTION TO SIMPLIFY LATER
+           
+            GameObject block = Instantiate(blockPreFab, chunkTranslation + objCoords, Quaternion.identity);
+            chunkToLoad.AddToActiveList(block);
+        }
     }
 
-    Chunk GetChunkToThe(short horizontalOffset, short verticalOffset)
+    void UnloadChunk(Chunk chunkToUnload)
+    {
+        chunkToUnload.Deactivate();
+        List<GameObject> blockList = chunkToUnload.GetObjectList();
+        for (short i = (short)(blockList.Count - 1); i >= 0; --i)
+        {
+            Destroy(blockList[i]);
+        }
+    }
+
+    Chunk GetChunkToThe(short horizontalOffset, short verticalOffset, Chunk fromChunk)
     {
         Vector2 target = new Vector2(horizontalOffset, verticalOffset);
         short indexTemp = -1;
@@ -128,13 +285,13 @@ public class ChunkHandler : MonoBehaviour
                 switch (verticalOffset)
                 {
                     case -1:
-                        indexTemp = this.activeChunk.GetSouthWest();
+                        indexTemp = fromChunk.GetSouthWest();
                         break;
                     case 0:
-                        indexTemp = this.activeChunk.GetWest();
+                        indexTemp = fromChunk.GetWest();
                         break;
                     case 1:
-                        indexTemp = this.activeChunk.GetNorthWest();
+                        indexTemp = fromChunk.GetNorthWest();
                         break;
                     default:
                         // Should Never Happen
@@ -145,10 +302,10 @@ public class ChunkHandler : MonoBehaviour
                 switch (verticalOffset)
                 {
                     case -1:
-                        indexTemp = this.activeChunk.GetSouth();
+                        indexTemp = fromChunk.GetSouth();
                         break;
                     case 1:
-                        indexTemp = this.activeChunk.GetNorth();
+                        indexTemp = fromChunk.GetNorth();
                         break;
                     case 0:
                     default:
@@ -160,13 +317,13 @@ public class ChunkHandler : MonoBehaviour
                 switch (verticalOffset)
                 {
                     case -1:
-                        indexTemp = this.activeChunk.GetSouthEast();
+                        indexTemp = fromChunk.GetSouthEast();
                         break;
                     case 0:
-                        indexTemp = this.activeChunk.GetEast();
+                        indexTemp = fromChunk.GetEast();
                         break;
                     case 1:
-                        indexTemp = this.activeChunk.GetNorthEast();
+                        indexTemp = fromChunk.GetNorthEast();
                         break;
                     default:
                         // Should Never Happen
@@ -273,9 +430,36 @@ public class ChunkHandler : MonoBehaviour
     }
 
     // Coordinate conversions
-    void WorldToChunk()
+    Vector2 WorldToChunk(Vector2 loc)
     {
+        return WorldToChunk(loc.x, loc.y);
+    }
+    Vector2 WorldToChunk(float x, float y)
+    {
+        if (x % 0.32 != 0 || y % 0.32 != 0)
+        {
+            //take any coordinate in world and align it to block grid.
+            if (x > 0.16F)
+                x += 0.16F;
+            else if (x < -0.16F)
+                x -= 0.16F;
 
+            if (y > 0.16F)
+                y += 0.16F;
+            else if (y < -0.16F)
+                y -= 0.16F;
+
+            x = x - (x % 0.32F);
+            y = y - (y % 0.32F);
+        }
+        //Take alligned coord and convert to block in world
+        x = (float)(x / 0.32);
+        y = (float)(y / 0.32);
+        //Reduce to the bottom left block in chunk, then divide by the number of blocks in a chunk to get chunk coords.
+        x = (x - (x % this.chunkSize)) / this.chunkSize;
+        y = (y - (y % this.chunkSize)) / this.chunkSize;
+
+        return new Vector2(x, y);
     }
 
     void ChunkToWorld()
@@ -293,9 +477,39 @@ public class ChunkHandler : MonoBehaviour
 
     }
 
-    void WorldToBlock()
+    Vector2 WorldToBlock(Vector2 loc)
     {
+        return WorldToBlock(loc.x, loc.y);
+    }
+    Vector2 WorldToBlock(float x, float y)
+    {
+        if (x%0.32 != 0 || y%0.32 != 0) { 
+            //take any coordinate in world and align it to block grid.
+            if (x > 0.16F)
+                x += 0.16F;
+            else if (x < -0.16F)
+                x -= 0.16F;
 
+            if (y > 0.16F)
+                y += 0.16F;
+            else if (y < -0.16F)
+                y -= 0.16F;
+
+            x = x - (x % 0.32F);
+            y = y - (y % 0.32F);
+        }
+        //Take alligned coord and convert to block in world
+        x = (float)(x / 0.32);
+        y = (float)(y / 0.32);
+        //Convert to block in chunk
+        x = x % this.chunkSize;
+        y = y % this.chunkSize;
+        if (x < 0)
+            x = 64 - x;
+        if (y < 0)
+            y = 64 - y;
+
+        return new Vector2(x, y);
     }
 
     void BlockToWorld()

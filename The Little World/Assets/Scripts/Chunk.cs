@@ -2,23 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public struct worldObjectData
+public struct WorldObjectData
 {
     short worldObjID;
     //Block coordinates of the object relative to it's chunk (0 - 63)
-    sbyte x;
-    sbyte y;
-    sbyte z;
+    public sbyte x;
+    public sbyte y;
+    public sbyte z;
+
+    public WorldObjectData(short objID, sbyte x, sbyte y, sbyte z)
+    {
+        this.worldObjID = objID;
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    }
 }
 
 public class Chunk
 {
-    Vector2 location;
-    short myIndex;
-    short biome;
-    List<worldObjectData> blockList;
-    List<worldObjectData> objectList;
-    bool isAlive;
+    private Vector2 location;
+    private short myIndex;
+    private short biome;
+    private List<WorldObjectData> blockList;
+    private List<WorldObjectData> objectList;
+    private List<GameObject> activeObjList;
+    private bool isAlive;
 
     // The index in the chunkList(Part of ChunkHandler.cs) of the Chunks on any given side of this chunk 
     short indxWest;
@@ -37,8 +46,20 @@ public class Chunk
         this.location = location;
         this.biome = biome;
 
-        this.blockList = new List<worldObjectData>();
-        this.objectList = new List<worldObjectData>();
+        this.blockList = new List<WorldObjectData>();
+        this.objectList = new List<WorldObjectData>();
+        this.activeObjList = new List<GameObject>();
+
+        WorldObjectData data = new WorldObjectData(1, 0, 0, 0);
+        this.blockList.Add(data);
+        data = new WorldObjectData(1, 63, 0, 0);
+        this.blockList.Add(data);
+        data = new WorldObjectData(1, 63, 63, 0);
+        this.blockList.Add(data);
+        data = new WorldObjectData(1, 0, 63, 0);
+        this.blockList.Add(data);
+
+
 
         this.indxWest = left;
         this.indxEast = right;
@@ -53,6 +74,20 @@ public class Chunk
     }
 
     // Getters & Setters
+    public List<WorldObjectData> GetBlockList()
+    {
+        return this.blockList;
+    }
+
+    public List<GameObject> GetObjectList()
+    {
+        return this.activeObjList;
+    }
+
+    public void AddToActiveList(GameObject obj)
+    {
+        this.activeObjList.Add(obj);
+    }
 
     public Vector2 GetLocation()
     {
@@ -67,6 +102,16 @@ public class Chunk
     public bool IsAlive()
     {
         return this.isAlive;
+    }
+
+    public void Activate()
+    {
+        this.isAlive = true;
+    }
+
+    public void Deactivate()
+    {
+        this.isAlive = false;
     }
     // Get and Set chunkList Indices
 
