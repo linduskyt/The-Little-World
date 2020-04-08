@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class treeInteraction : MonoBehaviour
 {
-    [SerializeField] private Player player = null;
-
+    [SerializeField] private int treeMaxHealth = 1;
     [SerializeField] private int treeHealth = -1;
-
+    [SerializeField] private Player player = null;
     [SerializeField] private ItemObject item = null;
+
+    private DisplayHotbar hotbar = null;
 
     private GameObject tree = null;
 
     private int numItem = -1;
 
-    [SerializeField] private int treeMaxHealth = 1;
-
     private void Start()
     {
+        hotbar = GameObject.FindWithTag("Hotbar").GetComponent<DisplayHotbar>();
         player = GameObject.FindWithTag("Player").GetComponent<Player>();
         treeHealth = Random.Range(3, 7);
         treeMaxHealth = treeHealth;
@@ -45,16 +45,25 @@ public class treeInteraction : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if(player)
+        if(player && hotbar.selectedSlot.item.type == ItemType.Equipment && hotbar.selectedSlot.item.Id == 3)
         {
             if (player.mode == 1 && Input.GetMouseButtonUp(1))
             {
-                treeHealth = treeHealth - 1;
+                treeHealth = treeHealth - hotbar.selectedSlot.item.buffs[0].value;
+
+                if (treeHealth < 0)
+                    treeHealth = 0;
+
                 Debug.Log("Tree Health: " + treeHealth + "\nTree Max Health: " + treeMaxHealth);
-                
 
+                Debug.Log("Tool Mining Speed: " + hotbar.selectedSlot.item.buffs[0].value);
 
-                float floatScale = 3f - ((2f / (treeMaxHealth)) * (treeMaxHealth - treeHealth));
+                float floatScale = 0;
+                for (int i = 0; treeHealth > 0 && i < hotbar.selectedSlot.item.buffs[0].value; i++)
+                {
+                    floatScale = 3f - (((2f / (treeMaxHealth)) * (treeMaxHealth - treeHealth)));
+                }
+
                 Debug.Log("Float: " + floatScale);
 
                 if(!tree.transform.GetChild(3).gameObject.activeInHierarchy)

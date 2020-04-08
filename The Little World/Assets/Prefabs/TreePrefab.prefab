@@ -291,8 +291,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c8d5372173ca234c85aab65b7d243d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  treeMaxHealth: 1
   treeHealth: -1
+  player: {fileID: 0}
   item: {fileID: 11400000, guid: a8bfae6c0b5a4164c8b378c55310647a, type: 2}
 --- !u!1 &4718989512658322241
 GameObject:
