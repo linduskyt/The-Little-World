@@ -37,6 +37,7 @@ public class NPCDialogue : MonoBehaviour
     {
         if (this.dialogueNum == 0)
         {
+            dyradShop.SetActive(false);
             theSpriteRenderer.sprite = screenOne;
             dialogueNum++;
         }
