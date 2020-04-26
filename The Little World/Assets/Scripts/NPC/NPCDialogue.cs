@@ -19,11 +19,11 @@ public class NPCDialogue : MonoBehaviour
       dyradDialogue = GameObject.Find("dyradDialogue");
       dyradShop = GameObject.Find("NPC_Shop");
       theSpriteRenderer = dyradDialogue.GetComponent<SpriteRenderer>();
-      shopLoader = dyradShop.GetComponent<>();
+      //shopLoader = dyradShop.GetComponent<>();
       currentSprite = null;
       screenOne = Resources.Load<Sprite>("Dialogue1");
       screenTwo = Resources.Load<Sprite>("Dialogue2");
-    
+      dyradShop.SetActive(false);
     }
     //FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
 
@@ -57,6 +57,6 @@ public class NPCDialogue : MonoBehaviour
     private void npcShopHandler()
     {
         Debug.Log("Got Here");
-        //dyradShop.
+        dyradShop.SetActive(true);
     }
 }
