@@ -79,10 +79,7 @@
      <Compile Include="Assets\Scripts\InventoryScripts\TabButton.cs" />
      <Compile Include="Assets\Scripts\InventoryScripts\TabGroup.cs" />
      <Compile Include="Assets\Scripts\Joystick.cs" />
-     <Compile Include="Assets\Scripts\NPC\Dialogue.cs" />
-     <Compile Include="Assets\Scripts\NPC\DialogueManager.cs" />
-     <Compile Include="Assets\Scripts\NPC\Discussion.cs" />
-     <Compile Include="Assets\Scripts\NPC\NPCDialogue.cs" />
+     <Compile Include="Assets\Scripts\NPC\Dialogue\NPCDialogue.cs" />
      <Compile Include="Assets\Scripts\NPC\NPCMovment.cs" />
      <Compile Include="Assets\Scripts\NPC\NPCWalking.cs" />
      <Compile Include="Assets\Scripts\PlaceBlock.cs" />
