@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6adf32222a06f0f40906c28b6ee2e32f, type: 3}
+  m_Name: NPC Shop Inventory
+  m_EditorClassIdentifier: 
+  savePath: 
+  database: {fileID: 11400000, guid: e4a8c2c28a9fdc347a1b28bf6b2c6adb, type: 2}
+  Container:
+    Items:
+    - slotId: 0
+      ID: 4
+      item:
+        Name: WoodBlock
+        Id: 4
+        type: 3
+        buffs: []
+      amount: 4
+    - slotId: 1
+      ID: 0
+      item:
+        Name: Apple
+        Id: 0
+        type: 0
+        buffs: []
+      amount: 1
+    - slotId: 2
+      ID: 2
+      item:
+        Name: Sword
+        Id: 2
+        type: 1
+        buffs:
+        - attribute: 0
+          value: 26
+          min: 1
+          max: 50
+        - attribute: 1
+          value: 5
+          min: 1
+          max: 10
+      amount: 1
+    - slotId: 3
+      ID: 3
+      item:
+        Name: Pick
+        Id: 3
+        type: 1
+        buffs:
+        - attribute: 3
+          value: 1
+          min: 1
+          max: 3
+      amount: 1
+  disableInventoryResetOnStop: 1
