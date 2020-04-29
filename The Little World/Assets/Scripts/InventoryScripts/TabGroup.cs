@@ -11,6 +11,7 @@ public class TabGroup : MonoBehaviour
     [SerializeField] private Sprite tabSelected;
     [SerializeField] private DisplayHotbar hotbar;
     public TabButton selectedTab = null;
+    public bool IsHover = false;
 
     private void Start()
     {
@@ -29,11 +30,13 @@ public class TabGroup : MonoBehaviour
 
     public void onTabEnter(TabButton button)
     {
+        IsHover = true;
         hotbar.slotDisplay(button.buttonId);
     }
 
     public void onTabExit(TabButton button)
     {
+        IsHover = false;
         hotbar.slotDisplay(-1);
     }
 
