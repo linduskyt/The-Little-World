@@ -4,7 +4,7 @@ using UnityEngine;
 
 public struct WorldObjectData
 {
-    short worldObjID;
+    public short worldObjID;
     //Block coordinates of the object relative to it's chunk (0 - 63)
     public sbyte x;
     public sbyte y;
@@ -28,6 +28,7 @@ public class Chunk
     private List<WorldObjectData> objectList;
     private List<GameObject> activeObjList;
     private bool isAlive;
+    private sbyte objPerChunk;
 
     // The index in the chunkList(Part of ChunkHandler.cs) of the Chunks on any given side of this chunk 
     short indxWest;
@@ -42,6 +43,7 @@ public class Chunk
 
     public Chunk(short myIndexInList, Vector2 location, short biome, short left = -1, short right = -1, short up = -1, short down = -1, short upAndRight = -1, short upAndLeft = -1, short downAndRight = -1, short downAndLeft = -1)
     {
+        this.objPerChunk = 22;
         this.myIndex = myIndexInList;
         this.location = location;
         this.biome = biome;
@@ -50,16 +52,19 @@ public class Chunk
         this.objectList = new List<WorldObjectData>();
         this.activeObjList = new List<GameObject>();
 
-        WorldObjectData data = new WorldObjectData(1, 0, 0, 0);
+        WorldObjectData data = new WorldObjectData(004, 0, 0, 0);
         this.blockList.Add(data);
-        data = new WorldObjectData(1, 63, 0, 0);
+        data = new WorldObjectData(004, 63, 0, 0);
         this.blockList.Add(data);
-        data = new WorldObjectData(1, 63, 63, 0);
+        data = new WorldObjectData(004, 63, 63, 0);
         this.blockList.Add(data);
-        data = new WorldObjectData(1, 0, 63, 0);
+        data = new WorldObjectData(004, 0, 63, 0);
         this.blockList.Add(data);
 
-
+        if (this.biome == 0)
+        {
+            GenerateForest();
+        }
 
         this.indxWest = left;
         this.indxEast = right;
@@ -185,6 +190,42 @@ public class Chunk
     public void SetSouthWest(short downAndLeft)
     {
         this.indxSouthWest = downAndLeft;
+    }
+
+    //Build Chunk
+    private void GenerateForest()
+    {
+        for (sbyte i = 0; i < this.objPerChunk; ++i)
+        {
+            bool dupe = true;
+            sbyte x = 0, y = 0, z = 0;
+            while (dupe)
+            {
+                x = (sbyte)Random.Range(0, 64);
+                y = (sbyte)Random.Range(0, 64);
+                z = 0;
+                dupe = false;
+                for (sbyte k = 0; k < this.blockList.Count; ++k)
+                {
+                    if (x == this.blockList[k].x && y == this.blockList[k].y)
+                        dupe = true;
+                }
+            }
+            short ID = 0;
+            switch (Random.Range(0,2))
+            {
+                case 0:
+                    ID = 004;
+                    break;
+                case 1:
+                    ID = 204;
+                    break;
+                default:
+                    break;
+            }
+            WorldObjectData worldObj = new WorldObjectData(ID, x, y, z);
+            this.blockList.Add(worldObj);
+        }
     }
 }
 

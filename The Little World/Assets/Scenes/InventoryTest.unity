@@ -13496,15 +13496,25 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 230319901833833151, guid: ef5b43a82a216524696554f2362f7a43,
+    - target: {fileID: 230319901575732654, guid: ef5b43a82a216524696554f2362f7a43,
         type: 3}
-      propertyPath: m_LocalPosition.x
+      propertyPath: orthographic size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 230319901833833137, guid: ef5b43a82a216524696554f2362f7a43,
+        type: 3}
+      propertyPath: m_BodyType
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 230319901833833151, guid: ef5b43a82a216524696554f2362f7a43,
         type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 230319901833833151, guid: ef5b43a82a216524696554f2362f7a43,
+        type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2.7
       objectReference: {fileID: 0}
     - target: {fileID: 230319901833833151, guid: ef5b43a82a216524696554f2362f7a43,
         type: 3}
@@ -13577,11 +13587,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 230319901833833137, guid: ef5b43a82a216524696554f2362f7a43,
-        type: 3}
-      propertyPath: m_BodyType
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 230319901833833150, guid: ef5b43a82a216524696554f2362f7a43,
         type: 3}
       propertyPath: m_IsTrigger
@@ -13601,11 +13606,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 230319901575732654, guid: ef5b43a82a216524696554f2362f7a43,
-        type: 3}
-      propertyPath: orthographic size
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef5b43a82a216524696554f2362f7a43, type: 3}
