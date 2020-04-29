@@ -8,6 +8,7 @@ TagManager:
   - InventoryScreen
   - Hotbar
   - ItemBlock
+  - Button
   layers:
   - Default
   - TransparentFX

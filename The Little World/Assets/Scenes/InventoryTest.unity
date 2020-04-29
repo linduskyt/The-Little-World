@@ -371,7 +371,7 @@ GameObject:
   - component: {fileID: 316010898}
   m_Layer: 5
   m_Name: BuildModeToggleButton
-  m_TagString: Untagged
+  m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -520,7 +520,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &557227744
 RectTransform:
   m_ObjectHideFlags: 0
@@ -699,6 +699,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockPreFab: {fileID: 6217176618349398197, guid: c1c1e2325d0c66444aad556d6248c79b,
     type: 3}
+  player: {fileID: 0}
+  hotbar: {fileID: 0}
+  item:
+    Name: 
+    Id: 0
+    type: 0
+    buffs: []
+  button: {fileID: 0}
 --- !u!114 &586917183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -807,6 +815,7 @@ MonoBehaviour:
     type: 3}
   hotbar: {fileID: 647388619}
   selectedTab: {fileID: 0}
+  IsHover: 0
 --- !u!114 &647388615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -938,10 +947,10 @@ MonoBehaviour:
       buffs: []
     amount: 0
   myInventory: {fileID: 0}
+  tabGroup: {fileID: 647388614}
   inventoryPrefab: {fileID: 6324182652228505701, guid: 9d870d75317eb944181bc85d92010369,
     type: 3}
   inventory: {fileID: 11400000, guid: ac8b9e640d6981047a1ee15b4b5a1055, type: 2}
-  tabGroup: {fileID: 647388614}
   X_SPACE: 0
   X_START: 0
   Y_START: 0
@@ -18982,7 +18991,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1997305466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19127,6 +19136,7 @@ MonoBehaviour:
     type: 3}
   hotbar: {fileID: 2019970514}
   selectedTab: {fileID: 0}
+  IsHover: 0
 --- !u!114 &2019970514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19149,10 +19159,10 @@ MonoBehaviour:
       buffs: []
     amount: 0
   myInventory: {fileID: 1113281361}
+  tabGroup: {fileID: 2019970513}
   inventoryPrefab: {fileID: 6324182652228505701, guid: 9d870d75317eb944181bc85d92010369,
     type: 3}
   inventory: {fileID: 11400000, guid: 714b3e6875627d24db7319faad68d878, type: 2}
-  tabGroup: {fileID: 2019970513}
   X_SPACE: 0
   X_START: 0
   Y_START: 0
@@ -19209,9 +19219,10 @@ GameObject:
   - component: {fileID: 2056034301}
   - component: {fileID: 2056034300}
   - component: {fileID: 2056034303}
+  - component: {fileID: 2056034304}
   m_Layer: 5
   m_Name: InventoryToggleButton
-  m_TagString: Untagged
+  m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19334,6 +19345,36 @@ MonoBehaviour:
   inventoryToggled: 0
   inventoryScreen: {fileID: 1113281358}
   myButton: {fileID: 2056034300}
+--- !u!114 &2056034304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056034298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 586917171}
+          m_MethodName: 
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: 
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!224 &2066748614 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4670727126857419822, guid: 69530a0b4f31d8b45aa882ace843c15c,

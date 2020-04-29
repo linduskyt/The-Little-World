@@ -12,9 +12,11 @@ public class DisplayHotbar : MonoBehaviour
     public InventorySlot selectedSlot = null;
 
     public DisplayInventory myInventory = null;
+
+    public TabGroup tabGroup = null;
+
     [SerializeField] private GameObject inventoryPrefab = null;
     [SerializeField] private InventoryObject inventory = null;
-    [SerializeField] private TabGroup tabGroup = null;
     private Sprite[] borderSprite;
 
     [SerializeField] private int X_SPACE = 0;
