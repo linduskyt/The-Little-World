@@ -2,22 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public struct worldObjectData
+public struct WorldObjectData
 {
     short worldObjID;
     //Block coordinates of the object relative to it's chunk (0 - 63)
-    int x;
-    int y;
+    public sbyte x;
+    public sbyte y;
+    public sbyte z;
+
+    public WorldObjectData(short objID, sbyte x, sbyte y, sbyte z)
+    {
+        this.worldObjID = objID;
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    }
 }
 
-public class Chunk : MonoBehaviour
+public class Chunk
 {
-    Vector2 location;
-    short myIndex;
-    short biome;
-    List<worldObjectData> blockList;
-    List<worldObjectData> objectList;
-    bool isAlive;
+    private Vector2 location;
+    private short myIndex;
+    private short biome;
+    private List<WorldObjectData> blockList;
+    private List<WorldObjectData> objectList;
+    private List<GameObject> activeObjList;
+    private bool isAlive;
 
     // The index in the chunkList(Part of ChunkHandler.cs) of the Chunks on any given side of this chunk 
     short indxWest;
@@ -35,110 +45,146 @@ public class Chunk : MonoBehaviour
         this.myIndex = myIndexInList;
         this.location = location;
         this.biome = biome;
-        
-        blockList = new List<worldObjectData>();
-        objectList = new List<worldObjectData>();
 
-        indxWest = left;
-        indxEast = right;
-        indxNorth = up;
-        indxSouth = down;
+        this.blockList = new List<WorldObjectData>();
+        this.objectList = new List<WorldObjectData>();
+        this.activeObjList = new List<GameObject>();
 
-        indxNorthEast = upAndRight;
-        indxNorthWest = upAndLeft;
-        indxSouthEast = downAndRight;
-        indxSouthWest = downAndLeft;
+        WorldObjectData data = new WorldObjectData(1, 0, 0, 0);
+        this.blockList.Add(data);
+        data = new WorldObjectData(1, 63, 0, 0);
+        this.blockList.Add(data);
+        data = new WorldObjectData(1, 63, 63, 0);
+        this.blockList.Add(data);
+        data = new WorldObjectData(1, 0, 63, 0);
+        this.blockList.Add(data);
+
+
+
+        this.indxWest = left;
+        this.indxEast = right;
+        this.indxNorth = up;
+        this.indxSouth = down;
+
+        this.indxNorthEast = upAndRight;
+        this.indxNorthWest = upAndLeft;
+        this.indxSouthEast = downAndRight;
+        this.indxSouthWest = downAndLeft;
 
     }
 
     // Getters & Setters
+    public List<WorldObjectData> GetBlockList()
+    {
+        return this.blockList;
+    }
+
+    public List<GameObject> GetObjectList()
+    {
+        return this.activeObjList;
+    }
+
+    public void AddToActiveList(GameObject obj)
+    {
+        this.activeObjList.Add(obj);
+    }
 
     public Vector2 GetLocation()
     {
-        return location;
+        return this.location;
     }
 
     public short GetMyIndex()
     {
-        return myIndex;
+        return this.myIndex;
     }
 
     public bool IsAlive()
     {
-        return isAlive;
+        return this.isAlive;
+    }
+
+    public void Activate()
+    {
+        this.isAlive = true;
+    }
+
+    public void Deactivate()
+    {
+        this.isAlive = false;
     }
     // Get and Set chunkList Indices
 
     public short GetWest()
     {
-        return indxWest;
+        return this.indxWest;
     }
     public void SetWest (short left)
     {
-        indxWest = left;
+        this.indxWest = left;
     }
 
     public short GetEast()
     {
-        return indxEast;
+        return this.indxEast;
     }
     public void SetEast (short right)
     {
-        indxEast = right;
+        this.indxEast = right;
     }
 
     public short GetNorth()
     {
-        return indxNorth;
+        return this.indxNorth;
     }
     public void SetNorth (short up)
     {
-        indxNorth = up;
+        this.indxNorth = up;
     }
 
     public short GetSouth()
     {
-        return indxSouth;
+        return this.indxSouth;
     }
     public void SetSouth (short down)
     {
-        indxSouth = down;
+        this.indxSouth = down;
     }
 
     public short GetNorthEast()
     {
-        return indxNorthEast;
+        return this.indxNorthEast;
     }
     public void SetNorthEast(short upAndRight)
     {
-        indxNorthEast = upAndRight;
+        this.indxNorthEast = upAndRight;
     }
 
     public short GetNorthWest()
     {
-        return indxNorthWest;
+        return this.indxNorthWest;
     }
     public void SetNorthWest(short upAndLeft)
     {
-        indxNorthWest = upAndLeft;
+        this.indxNorthWest = upAndLeft;
     }
 
     public short GetSouthEast()
     {
-        return indxSouthEast;
+        return this.indxSouthEast;
     }
     public void SetSouthEast(short downAndRight)
     {
-        indxSouthEast = downAndRight;
+        this.indxSouthEast = downAndRight;
     }
 
     public short GetSouthWest()
     {
-        return indxSouthWest;
+        return this.indxSouthWest;
     }
     public void SetSouthWest(short downAndLeft)
     {
-        indxSouthWest = downAndLeft;
+        this.indxSouthWest = downAndLeft;
     }
 }
 

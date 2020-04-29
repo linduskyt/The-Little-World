@@ -55,6 +55,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\BuildModeToggle.cs" />
      <Compile Include="Assets\CheckRight.cs" />
      <Compile Include="Assets\GameOrientationScript.cs" />
      <Compile Include="Assets\NPCGraphics.cs" />
@@ -89,6 +90,7 @@
      <Compile Include="Assets\Scripts\PlayerWalking.cs" />
      <Compile Include="Assets\Scripts\PlayerWalkTouchInput.cs" />
      <Compile Include="Assets\Scripts\SpriteRenderOrder.cs" />
+     <Compile Include="Assets\Scripts\treeInteraction.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />

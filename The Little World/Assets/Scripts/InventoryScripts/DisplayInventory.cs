@@ -5,16 +5,19 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
+using System;
 
 public class DisplayInventory : MonoBehaviour
 {
     public InventoryObject inventory;
     public bool isDragging = false;
-    public bool isPlacable = true;
+    public bool isPlacable = false;
+    public bool stacking = false;
 
     [SerializeField] private Canvas myCanvas = null;
     private MouseItem mouseItem = new MouseItem();
     [SerializeField] private GameObject inventoryPrefab = null;
+    [SerializeField] private GameObject inventoryScreen = null;
 
     [SerializeField] private int X_SPACE = 0;
     [SerializeField] private int X_START = 0;
@@ -29,10 +32,19 @@ public class DisplayInventory : MonoBehaviour
 
     Dictionary<GameObject, InventorySlot> itemsDisplayed = new Dictionary<GameObject, InventorySlot>();
 
+    private void Awake()
+    {
+
+    }
+
     //Start is called before the first frame update
     void Start()
     {
+        inventoryScreen = this.gameObject;
         CreateSlots();
+        UpdateSlots();
+        inventoryScreen.SetActive(false);
+        isPlacable = true;
     }
 
     // Update is called once per frame
@@ -44,7 +56,8 @@ public class DisplayInventory : MonoBehaviour
             isDragging = false;
         if (isDragging && Input.GetMouseButtonDown(1))
         {
-
+            //stacking = true;
+            //splitStack();
         }
     }
 
@@ -57,14 +70,19 @@ public class DisplayInventory : MonoBehaviour
         {
             if (_slot.Value.ID >= 0)
             {
-                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = inventory.database.GetItem[_slot.Value.item.Id].uiDisplay;
-                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
+                if (_slot.Value.slotId >= 9)
+                {
+                    _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = null;
+                    _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color32(1, 1, 1, 0);
+                }
+                _slot.Key.transform.GetChild(1).GetComponentInChildren<Image>().sprite = inventory.database.GetItem[_slot.Value.item.Id].uiDisplay;
+                _slot.Key.transform.GetChild(1).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
                 _slot.Key.GetComponentInChildren<TextMeshProUGUI>().text = _slot.Value.amount == 1 ? "" : _slot.Value.amount.ToString("n0");
             }
             else
             {
-                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = null;
-                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 0);
+                _slot.Key.transform.GetChild(1).GetComponentInChildren<Image>().sprite = null;
+                _slot.Key.transform.GetChild(1).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 0);
                 _slot.Key.GetComponentInChildren<TextMeshProUGUI>().text = "";
             }
         }
@@ -89,6 +107,27 @@ public class DisplayInventory : MonoBehaviour
             inventory.Container.Items[i].slotId = slotId++;
 
             itemsDisplayed.Add(obj, inventory.Container.Items[i]);
+        }
+
+        foreach (KeyValuePair<GameObject, InventorySlot> _slot in itemsDisplayed)
+        {
+            if (_slot.Value.ID >= -1)
+            {
+                if (_slot.Value.slotId >= 9)
+                {
+                    _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = null;
+                    _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color32(1, 1, 1, 0);
+                }
+                _slot.Key.transform.GetChild(1).GetComponentInChildren<Image>().sprite = inventory.database.GetItem[_slot.Value.item.Id].uiDisplay;
+                _slot.Key.transform.GetChild(1).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
+                _slot.Key.GetComponentInChildren<TextMeshProUGUI>().text = _slot.Value.amount == 1 ? "" : _slot.Value.amount.ToString("n0");
+            }
+            else
+            {
+                _slot.Key.transform.GetChild(1).GetComponentInChildren<Image>().sprite = null;
+                _slot.Key.transform.GetChild(1).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 0);
+                _slot.Key.GetComponentInChildren<TextMeshProUGUI>().text = "";
+            }
         }
     }
 
@@ -141,7 +180,7 @@ public class DisplayInventory : MonoBehaviour
     /// <param name="obj">Item slot which player is dragging.</param>
     public void OnDragStart(GameObject obj)
     {
-        Debug.Log("Is Dragging: " + isDragging);
+        Debug.Log("Start Dragging: " + isDragging);
         if (mouseItem.hoverItem != null)
         {
             if (Input.GetMouseButton(0) && !(Input.GetMouseButton(1)) && mouseItem.hoverItem.ID >= 0)
@@ -150,17 +189,19 @@ public class DisplayInventory : MonoBehaviour
                 var mouseObject = new GameObject();
                 var rt = mouseObject.AddComponent<RectTransform>();
                 var mouseChild = new GameObject();
-                mouseChild.transform.Translate((float)12.5, -(float)12.5, 0);
+                mouseChild.transform.Translate((float)25, -(float)25, 0);
                 dragItemText = mouseChild.AddComponent<TextMeshProUGUI>();
                 mouseChild.transform.SetParent(mouseObject.transform);
 
 
-                rt.sizeDelta = new Vector2(40, 40);
+                rt.sizeDelta = new Vector2(70, 70);
 
-                dragItemText.fontSize = 16;
+                dragItemText.fontSize = 45;
                 dragItemText.autoSizeTextContainer = true;
                 dragItemText.fontStyle = FontStyles.Bold;
                 dragItemText.alignment = TextAlignmentOptions.MidlineJustified;
+                dragItemText.outlineWidth = (float)0.3;
+                dragItemText.outlineColor = Color.black;
 
                 mouseObject.transform.SetParent(transform.parent);
                 rt.localScale = new Vector3(1.0f, 1.0f, 1.0f);
@@ -168,7 +209,10 @@ public class DisplayInventory : MonoBehaviour
                 {
                     var img = mouseObject.AddComponent<Image>();
                     img.sprite = inventory.database.GetItem[itemsDisplayed[obj].ID].uiDisplay;
-                    dragItemText.text = itemsDisplayed[obj].amount.ToString("n0");
+                    if (itemsDisplayed[obj].amount > 1)
+                        dragItemText.text = itemsDisplayed[obj].amount.ToString("n0");
+                    else
+                        dragItemText.text = "";
                     img.raycastTarget = false;
                 }
                 tempObject = itemsDisplayed[obj];
@@ -187,24 +231,85 @@ public class DisplayInventory : MonoBehaviour
     /// <param name="obj">Item slot which player was dragging.</param>
     public void OnDragEnd(GameObject obj)
     {
-        if (mouseItem != null && mouseItem.item != null)
+        Debug.Log("End Dragging: " + isDragging);
+        if (mouseItem.hoverItem != null && isDragging)
         {
-            Debug.Log("Is Dragging: " + isDragging);
-            if (mouseItem.hoverObj && isDragging)
+            if (mouseItem.hoverItem.ID == mouseItem.item.item.Id && itemsDisplayed[obj].slotId != mouseItem.hoverItem.slotId)
             {
+                Debug.Log("End Drag Case 1");
+                Debug.Log("itemsDisplayed[obj].slotId: " + itemsDisplayed[obj].slotId);
+                Debug.Log("mouseItem.hoverItem.slotId: " + mouseItem.hoverItem.slotId);
                 itemsDisplayed[obj].ID = itemId;
+                itemsDisplayed[obj].item.Id = itemId;
+                mouseItem.hoverItem.amount = mouseItem.hoverItem.amount + mouseItem.item.amount;
+                mouseItem.item.ID = -1;
+            }
+            else if (mouseItem.hoverItem.ID == mouseItem.item.item.Id && mouseItem.hoverItem.slotId == mouseItem.item.slotId)
+            {
+                Debug.Log("End Drag Case 2");
+                Debug.Log("itemsDisplayed[obj].slotId: " + itemsDisplayed[obj].slotId);
+                Debug.Log("mouseItem.hoverItem.slotId: " + mouseItem.hoverItem.slotId);
+                itemsDisplayed[obj].ID = itemId;
+                itemsDisplayed[obj].item.Id = itemId;
+                mouseItem.hoverItem.amount = mouseItem.hoverItem.amount + mouseItem.item.amount;
+            }
+            else if (mouseItem.hoverItem.ID >= 0)
+            {
+                Debug.Log("End Drag Case 3");
+                itemsDisplayed[obj].ID = itemId;
+                itemsDisplayed[obj].item.Id = itemId;
                 inventory.MoveItem(itemsDisplayed[obj], itemsDisplayed[mouseItem.hoverObj]);
+            }
+            else if (mouseItem.hoverItem.ID == -1)
+            {
+                Debug.Log("End Drag Case 4");
+                Debug.Log("mouseItem.item.ID: " + itemId);
+                inventory.MoveItem(itemsDisplayed[obj], itemsDisplayed[mouseItem.hoverObj]);
+                itemsDisplayed[mouseItem.hoverObj].ID = itemId;
             }
             else
             {
+                Debug.Log("End Drag Case 5.1");
                 Debug.Log("Recovering Item");
                 itemsDisplayed[obj].ID = itemId;
+                itemsDisplayed[obj].item.Id = itemId;
+                if (stacking)
+                {
+                    mouseItem.item.amount += mouseItem.item.amount;
+                }
                 //itemsDisplayed[obj] = tempObject;
+            }
+        }
+        else
+        {
+            if (mouseItem.hoverItem != null && isDragging)
+            {
+                if (mouseItem.item.ID >= 0 && mouseItem.hoverItem.ID >= 0)
+                {
+                    Debug.Log("End Drag Case 5.2");
+                    Debug.Log("Recovering Item");
+                    itemsDisplayed[obj].ID = itemId;
+                    itemsDisplayed[obj].item.Id = itemId;
+                    if (stacking)
+                    {
+                        itemsDisplayed[obj].amount += mouseItem.item.amount;
+                    }
+                }
+            }
+            else if (isDragging)
+            {
+                itemsDisplayed[obj].ID = itemId;
+                itemsDisplayed[obj].item.Id = itemId;
+                if (stacking)
+                {
+                    itemsDisplayed[obj].amount += mouseItem.item.amount;
+                }
             }
         }
         Destroy(mouseItem.obj);
         mouseItem.item = null;
         isDragging = false;
+        stacking = false;
         Debug.Log("Is Dragging: " + isDragging);
     }
 
@@ -223,6 +328,15 @@ public class DisplayInventory : MonoBehaviour
             RectTransform mouseItemTransRef = mouseItem.obj.GetComponent<RectTransform>();
             RectTransformUtility.ScreenPointToLocalPointInRectangle(myCanvas.transform as RectTransform, mousePos, myCanvas.worldCamera, out returnPos);
             mouseItemTransRef.position = myCanvas.transform.TransformPoint(returnPos);
+            
+            if (dragItemText.text == "1")
+            {
+                dragItemText.text = "";
+                mouseItem.item.amount = 1;
+            }
+            if (dragItemText.text != "")
+                if (Int32.Parse(dragItemText.text) != mouseItem.item.amount)
+                    mouseItem.item.amount = Int32.Parse(dragItemText.text);
         }
     }
 
@@ -238,15 +352,50 @@ public class DisplayInventory : MonoBehaviour
 
     private void splitStack()
     {
-        Debug.Log("Hover item ID: " + mouseItem.hoverItem.ID);
-        if (mouseItem.hoverItem.ID < 0 && Input.GetMouseButtonDown(1))
+        if (mouseItem.hoverItem != null && isDragging)
         {
-            for (int i = 0; i < inventory.Container.Items.Length; i++)
+            int stackAmount = mouseItem.item.amount;
+            Debug.Log("Stack size: " + stackAmount);
+            mouseItem.item.amount = 0;
+            Debug.Log("Hover item ID: " + mouseItem.hoverItem.item.Id);
+            if (stackAmount == 1 && mouseItem.hoverItem.slotId != mouseItem.item.slotId)
             {
-                if (inventory.Container.Items[i].slotId == mouseItem.hoverItem.slotId)
-                {
-                    dragItemText.text = itemsDisplayed[mouseItem.obj].amount.ToString("n0");
-                }
+                Debug.Log("Stack = 1");
+                mouseItem.item.ID = itemId;
+                dragItemText.text = (0).ToString();
+                stackAmount = 0;
+                mouseItem.hoverItem.UpdateSlot(itemId, mouseItem.item.item, 1);
+                Destroy(mouseItem.obj);
+                isDragging = false;
+            }
+            else if (mouseItem.hoverItem.slotId == mouseItem.item.slotId && stackAmount == 1)
+            {
+                Debug.Log("Case: Same Slot with Stack = 1");
+                mouseItem.item.ID = itemId;
+                dragItemText.text = (0).ToString();
+                stackAmount = 0;
+                mouseItem.hoverItem.addAmount(1);
+                //mouseItem.hoverItem.UpdateSlot(itemId, mouseItem.item.item, 1);
+                Destroy(mouseItem.obj);
+                isDragging = false;
+            }
+            else if (mouseItem.hoverItem.slotId == mouseItem.item.slotId && stackAmount > 1)
+            {
+                Debug.Log("Case: Same slot as mouse item");
+                mouseItem.item.ID = itemId;
+                dragItemText.text = (stackAmount - (Mathf.CeilToInt((float)1.0 * stackAmount / 2))).ToString();
+                mouseItem.hoverItem.addAmount(Mathf.CeilToInt((float)1.0 * stackAmount / 2));
+                //mouseItem.hoverItem.UpdateSlot(mouseItem.item.item.Id, mouseItem.item.item, Mathf.FloorToInt((float)1.0 * stackAmount / 2));
+            }
+
+            else if (itemsDisplayed[mouseItem.hoverObj].ID == -1 && mouseItem != null && itemsDisplayed[mouseItem.hoverObj].item.Id >= 0 && stackAmount > 0)
+            {
+                Debug.Log("Case: Different slot to mouse item");
+                //itemsDisplayed[mouseItem.hoverObj].item.Id = mouseItem.item.ID;
+                //itemsDisplayed[mouseItem.hoverObj].amount = Mathf.FloorToInt((float)1.0 * mouseItem.item.amount / 2);
+                itemsDisplayed[mouseItem.hoverObj].ID = itemId;
+                dragItemText.text = (stackAmount - (Mathf.CeilToInt((float)1.0 * stackAmount / 2))).ToString();
+                mouseItem.hoverItem.UpdateSlot(mouseItem.item.item.Id, mouseItem.item.item, Mathf.CeilToInt((float)1.0 * stackAmount / 2));
             }
         }
     }
