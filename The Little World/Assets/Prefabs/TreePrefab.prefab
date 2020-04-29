@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: 4670727126857419821}
   - component: {fileID: 4670727126857419859}
   - component: {fileID: 7712031479935646592}
+  - component: {fileID: 5754852674990621361}
   m_Layer: 0
   m_Name: TreePrefab
   m_TagString: Untagged
@@ -295,6 +296,22 @@ MonoBehaviour:
   treeHealth: -1
   player: {fileID: 0}
   item: {fileID: 11400000, guid: a8bfae6c0b5a4164c8b378c55310647a, type: 2}
+--- !u!58 &5754852674990621361
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4670727126857419823}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.6}
+  serializedVersion: 2
+  m_Radius: 0.75
 --- !u!1 &4718989512658322241
 GameObject:
   m_ObjectHideFlags: 0
