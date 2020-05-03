@@ -24,8 +24,10 @@ public class Chunk
     private Vector2 location;
     private short myIndex;
     private short biome;
+    private short chunkSize;
     private List<WorldObjectData> blockList;
     private List<WorldObjectData> objectList;
+    private List<WorldObjectData> tileList;
     private List<GameObject> activeObjList;
     private bool isAlive;
     private sbyte objPerChunk;
@@ -41,15 +43,17 @@ public class Chunk
     short indxSouthEast;
     short indxSouthWest;
 
-    public Chunk(short myIndexInList, Vector2 location, short biome, short left = -1, short right = -1, short up = -1, short down = -1, short upAndRight = -1, short upAndLeft = -1, short downAndRight = -1, short downAndLeft = -1)
+    public Chunk(short myIndexInList, Vector2 location, short biome, short chunkSize = 64, short left = -1, short right = -1, short up = -1, short down = -1, short upAndRight = -1, short upAndLeft = -1, short downAndRight = -1, short downAndLeft = -1)
     {
         this.objPerChunk = 22;
         this.myIndex = myIndexInList;
         this.location = location;
         this.biome = biome;
+        this.chunkSize = chunkSize;
 
         this.blockList = new List<WorldObjectData>();
         this.objectList = new List<WorldObjectData>();
+        this.tileList = new List<WorldObjectData>();
         this.activeObjList = new List<GameObject>();
 
         WorldObjectData data = new WorldObjectData(004, 0, 0, 0);
@@ -84,6 +88,11 @@ public class Chunk
         return this.blockList;
     }
 
+    public List<WorldObjectData> GetTileList()
+    {
+        return this.tileList;
+    }
+
     public List<GameObject> GetObjectList()
     {
         return this.activeObjList;
@@ -92,6 +101,15 @@ public class Chunk
     public void AddToActiveList(GameObject obj)
     {
         this.activeObjList.Add(obj);
+    }
+
+    public void AddToBlockList(GameObject obj, Vector2 pos)
+    {
+        sbyte x = (sbyte)pos.x;
+        sbyte y = (sbyte)pos.y;
+        short obID = (short)obj.GetComponent<GroundBlock>().item.Id;
+        WorldObjectData data = new WorldObjectData(obID, x, y, 0);
+        this.blockList.Add(data);
     }
 
     public Vector2 GetLocation()
@@ -195,6 +213,7 @@ public class Chunk
     //Build Chunk
     private void GenerateForest()
     {
+        // Fill with objects
         for (sbyte i = 0; i < this.objPerChunk; ++i)
         {
             bool dupe = true;
@@ -225,6 +244,13 @@ public class Chunk
             }
             WorldObjectData worldObj = new WorldObjectData(ID, x, y, z);
             this.blockList.Add(worldObj);
+        }
+        // Fill tilemap
+        for (sbyte i = 0; i < this.chunkSize; ++i)
+        {
+            for (sbyte k = 0; k < this.chunkSize; ++k) {
+                this.tileList.Add(new WorldObjectData(501, i, k, 0));
+            }
         }
     }
 }
@@ -260,5 +286,8 @@ public class Chunk
 		492 = Zombie
 		493 = Skelton
 		...
+        TILES
+        501 = Grass #1
+        502 = Grass #2
 		999 = Player
 	*/
