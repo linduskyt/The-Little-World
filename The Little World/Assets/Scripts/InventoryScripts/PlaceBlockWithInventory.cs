@@ -28,6 +28,7 @@ public class PlaceBlockWithInventory : MonoBehaviour
             item = hotbar.selectedSlot.item;
             if (item.type == ItemType.Block)
             {
+                blockPreFab = Resources.Load("Prefabs/Blocks/" + item.Name, typeof(GameObject)) as GameObject;
                 Debug.Log("Placable: " + hotbar.myInventory.isPlacable);
                 //If right click, drop block under mouse
                 Vector3 mousePos = Input.mousePosition;

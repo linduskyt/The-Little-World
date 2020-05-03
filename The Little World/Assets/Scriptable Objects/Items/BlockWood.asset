@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9893453ac76474045a4edadd67f9aba7, type: 3}
-  m_Name: WoodBlock
+  m_Name: BlockWood
   m_EditorClassIdentifier: 
   Id: 4
   uiDisplay: {fileID: -3694533877916086887, guid: e1154149ae8c8f04591c2790f20e665d,
