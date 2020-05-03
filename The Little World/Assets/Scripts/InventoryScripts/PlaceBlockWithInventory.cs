@@ -39,7 +39,7 @@ public class PlaceBlockWithInventory : MonoBehaviour
                 //if (hit.collider == null) { Debug.Log("Placable: True"); }
                 //Debug.Log("Item Placable Test 1: " + hotbar.myInventory.isPlacable);
                 //Debug.Log("Item Placable Test 2: " + !hotbar.myInventory.isDragging);
-                if (Input.GetMouseButtonUp(0) == true && hotbar.selectedSlot.amount > 0 && hit.collider == null && !(hotbar.myInventory.isDragging) && hotbar.myInventory.isPlacable && !hotbar.tabGroup.IsHover)
+                if (Input.GetMouseButtonUp(0) == true && hotbar.selectedSlot.amount > 0 && hit.collider == null && !(hotbar.myInventory.isDragging) && hotbar.myInventory.isPlacable && !hotbar.tabGroup.IsHover && !buttonHover)
                 {
                     Debug.Log("Upclick");
                     Debug.Log("Removing one " + item.Name);
@@ -70,7 +70,7 @@ public class PlaceBlockWithInventory : MonoBehaviour
                 }
             }
             //If left click, break block under mouse
-            if (Input.GetMouseButtonUp(0) == true && item.Id == 3 && !hotbar.tabGroup.IsHover)
+            if (Input.GetMouseButtonUp(0) == true && item.Id == 3 && !hotbar.tabGroup.IsHover && !buttonHover)
             {
                 //Debug.Log("Left Click");
                 Vector3 mousePos = Input.mousePosition;
@@ -106,12 +106,12 @@ public class PlaceBlockWithInventory : MonoBehaviour
         }
     }
 
-    private void onButtonEnter()
+    public void onButtonEnter()
     {
         buttonHover = true;
     }
 
-    private void onButtonExit()
+    public void onButtonExit()
     {
         buttonHover = false;
     }

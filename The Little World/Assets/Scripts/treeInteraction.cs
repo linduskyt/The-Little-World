@@ -61,7 +61,7 @@ public class treeInteraction : MonoBehaviour
     {
         if(player && hotbar.selectedSlot.item.type == ItemType.Equipment && hotbar.selectedSlot.item.Id == 3 && inRange)
         {
-            if (player.mode == 1 && Input.GetMouseButtonUp(1))
+            if (player.mode == 1 && Input.GetMouseButtonUp(0))
             {
                 treeHealth = treeHealth - hotbar.selectedSlot.item.buffs[0].value;
 
