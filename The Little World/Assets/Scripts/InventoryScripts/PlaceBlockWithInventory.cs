@@ -60,7 +60,8 @@ public class PlaceBlockWithInventory : MonoBehaviour
                     //mousePos.z = -5 + (mousePos.y * .0001F);
                     mousePos.z = 0;
 
-                    Instantiate(blockPreFab, mousePos, Quaternion.identity);
+                    ChunkHandler.placedABlock = true;
+                    ChunkHandler.placedBlock = Instantiate(blockPreFab, mousePos, Quaternion.identity);
 
                 }
 

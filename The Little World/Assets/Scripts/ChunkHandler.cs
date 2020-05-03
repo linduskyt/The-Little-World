@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class ChunkHandler : MonoBehaviour
 {
+    public static GameObject placedBlock;
+    public static bool placedABlock;
     //List of objects linked to IDs
     /* Place Blocks */
     public GameObject ID000; // Tempblock
@@ -23,13 +26,17 @@ public class ChunkHandler : MonoBehaviour
     public GameObject ID203; // Tree_Fallen
     public GameObject ID204; // Tree_Normal
 
+    /* Tiles */
+    //public Tilebase.Tile ID501; // Grass Tile #1
+    //public Tile ID502; // Grass Tile #2
+
     // Current object
     public GameObject currObject;
 
     //Declare class variables
     private short updateCycle; // Counter to cycle through staggered pdate
     private Vector2 changingChunks; // If player crossed a chunk and a full cycle through update cases has yet to finish 
-    private short chunkSize; // Number of blocks per chunk
+    private sbyte chunkSize; // Number of blocks per chunk
     private Chunk activeChunk; // Chunk Player is currently standing in
     private List<Chunk> chunkList; // List of Chunks
     private GameObject playerObj; // Reference to player
@@ -38,6 +45,8 @@ public class ChunkHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        placedBlock = null;
+        placedABlock = false;
         //TEMP
         this.currObject = ID004;
         //
@@ -48,17 +57,16 @@ public class ChunkHandler : MonoBehaviour
         this.updateCycle = 0;
         this.changingChunks = new Vector2(0, 0);
 
-        
         // Hardcoded Generation and Linking of 3x3 cluster of starting chunks
-        this.chunkList.Add(new Chunk(0, new Vector2(0, 0), 0)); // 0:Center
-        this.chunkList.Add(new Chunk(1, new Vector2(1, 0), 0)); // 1:East
-        this.chunkList.Add(new Chunk(2, new Vector2(-1, 0), 0));// 2:West
-        this.chunkList.Add(new Chunk(3, new Vector2(0, 1), 0)); // 3:North
-        this.chunkList.Add(new Chunk(4, new Vector2(0, -1), 0));// 4:South
-        this.chunkList.Add(new Chunk(5, new Vector2(1, 1), 0)); // 5:NorthEast
-        this.chunkList.Add(new Chunk(6, new Vector2(-1, 1), 0));// 6:NorthWest
-        this.chunkList.Add(new Chunk(7, new Vector2(1, -1), 0));// 7:SouthEast
-        this.chunkList.Add(new Chunk(8, new Vector2(-1, -1), 0));// 8:SouthWest
+        this.chunkList.Add(new Chunk(0, new Vector2(0, 0), 0, this.chunkSize)); // 0:Center
+        this.chunkList.Add(new Chunk(1, new Vector2(1, 0), 0, this.chunkSize)); // 1:East
+        this.chunkList.Add(new Chunk(2, new Vector2(-1, 0), 0, this.chunkSize));// 2:West
+        this.chunkList.Add(new Chunk(3, new Vector2(0, 1), 0, this.chunkSize)); // 3:North
+        this.chunkList.Add(new Chunk(4, new Vector2(0, -1), 0, this.chunkSize));// 4:South
+        this.chunkList.Add(new Chunk(5, new Vector2(1, 1), 0, this.chunkSize)); // 5:NorthEast
+        this.chunkList.Add(new Chunk(6, new Vector2(-1, 1), 0, this.chunkSize));// 6:NorthWest
+        this.chunkList.Add(new Chunk(7, new Vector2(1, -1), 0, this.chunkSize));// 7:SouthEast
+        this.chunkList.Add(new Chunk(8, new Vector2(-1, -1), 0, this.chunkSize));// 8:SouthWest
 
         LinkChunks(0, 1);   // Center & East
         LinkChunks(0, 2);   // Center & West
@@ -77,26 +85,7 @@ public class ChunkHandler : MonoBehaviour
         {
             LoadChunk(this.chunkList[i]);
         }
-        /*
-
-        //Generates 3x3 grid of spawn chunks
-        for (short i = -1; i < 2; ++i)
-        {
-            for (short k = -1; k < 2; ++k)
-            {
-                chunkList.Add(new Chunk((short)chunkList.Count, new Vector2(i, k), 0));
-            }
-        }
-        //Iterative linker: (has nlog(n) time)
-        for (short i = 0; i < chunkList.Count; ++i)
-        {
-            for (short k = i; k < chunkList.Count; ++k)
-            {
-                LinkChunks(i, k);
-            }
-        }
-        */
-
+        
         this.activeChunk = this.chunkList[0];
         
     }
@@ -104,6 +93,45 @@ public class ChunkHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Link any placed block to it's chunk
+        if (placedABlock)
+        {
+            Vector2 chunkLocPlaced = WorldToChunk(placedBlock.transform.position.x, placedBlock.transform.position.y);
+            placedABlock = false;
+            if (chunkLocPlaced == this.activeChunk.GetLocation())
+            {
+                this.activeChunk.AddToBlockList(placedBlock, WorldToBlock(placedBlock.transform.position.x, placedBlock.transform.position.y));
+                this.activeChunk.AddToActiveList(placedBlock);
+            }
+            else if (chunkLocPlaced != this.activeChunk.GetLocation())
+            {
+                Vector2 chunkOffsetPlaced = chunkLocPlaced - this.activeChunk.GetLocation();
+                Chunk placedIn = this.activeChunk;
+                for (sbyte i = 0; i < chunkLocPlaced.x; ++i)
+                {
+                    placedIn = this.chunkList[placedIn.GetNorth()];
+                }
+                for (sbyte i = 0; i > chunkLocPlaced.x; --i)
+                {
+                    placedIn = this.chunkList[placedIn.GetSouth()];
+                }
+                for (sbyte i = 0; i < chunkLocPlaced.y; ++i)
+                {
+                    placedIn = this.chunkList[placedIn.GetEast()];
+                }
+                for (sbyte i = 0; i > chunkLocPlaced.y; --i)
+                {
+                    placedIn = this.chunkList[placedIn.GetWest()];
+                }
+                placedIn.AddToBlockList(placedBlock, WorldToBlock(placedBlock.transform.position.x, placedBlock.transform.position.y));
+                placedIn.AddToActiveList(placedBlock);
+            }
+            else
+            {
+                Debug.Log("Error: Unable to find chunk block placed in. @ ChunkHandler.Update()"); // Should never happen
+            }
+        }
+
         // Runs different checks on a cycle of 5 frames
         switch (this.updateCycle)
         {
@@ -289,6 +317,14 @@ public class ChunkHandler : MonoBehaviour
             GameObject block = Instantiate(currObject, chunkTranslation + objCoords, Quaternion.identity);
             chunkToLoad.AddToActiveList(block);
         }
+        /*
+        List<WorldObjectData> tileList = chunkToLoad.GetTileList();
+        for (short i = 0; i < tileList.Count; ++i)
+        {
+            Vector3 objCoords = new Vector3((float)(blockList[i].x * 0.32), (float)(blockList[i].y * 0.32), blockList[i].z); // Temporary, PLEASE CREATE A FUNCTION TO SIMPLIFY LATER
+            currTile = IDToObj(tileList[i].worldObjID);
+        }
+        */
     }
 
     void UnloadChunk(Chunk chunkToUnload)
@@ -378,7 +414,7 @@ public class ChunkHandler : MonoBehaviour
             {
                 // If there is no chunk to the north of activeChunk, create one
                 indexTemp = (short)chunkList.Count;
-                this.chunkList.Add(new Chunk(indexTemp, new Vector2(target.x, target.y), 0));
+                this.chunkList.Add(new Chunk(indexTemp, new Vector2(target.x, target.y), 0, this.chunkSize));
             }
         }
         return this.chunkList[indexTemp];
@@ -568,6 +604,9 @@ public class ChunkHandler : MonoBehaviour
                 break;
             case 204:
                 return ID204;
+                break;
+            case 501:
+                // return ID501;
                 break;
         }
 
