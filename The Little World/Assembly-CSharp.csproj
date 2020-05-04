@@ -77,10 +77,12 @@
     <Compile Include="Assets\Scripts\CameraTouchInput.cs" />
     <Compile Include="Assets\Scripts\Chunk.cs" />
     <Compile Include="Assets\Scripts\ChunkHandler.cs" />
+    <Compile Include="Assets\Scripts\InventoryScripts\BuyButton.cs" />
     <Compile Include="Assets\Scripts\InventoryScripts\DisplayHotbar.cs" />
     <Compile Include="Assets\Scripts\InventoryScripts\DisplayInventory.cs" />
     <Compile Include="Assets\Scripts\InventoryScripts\GroundBlock.cs" />
     <Compile Include="Assets\Scripts\InventoryScripts\InventoryToggle.cs" />
+    <Compile Include="Assets\Scripts\InventoryScripts\NPCInventoryToggle.cs" />
     <Compile Include="Assets\Scripts\InventoryScripts\PlaceBlockWithInventory.cs" />
     <Compile Include="Assets\Scripts\InventoryScripts\Player.cs" />
     <Compile Include="Assets\Scripts\InventoryScripts\TabButton.cs" />

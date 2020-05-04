@@ -11,6 +11,8 @@ public class PlaceBlockWithInventory : MonoBehaviour
     [SerializeField] private DisplayHotbar hotbar;
     [SerializeField] private Item item;
     [SerializeField] private BuildModeToggle button;
+    [SerializeField] private NPCInventoryToggle npcToggle;
+    [SerializeField] private InventoryToggle playerToggle;
     private bool buttonHover = false;
     // Start is called before the first frame update
     void Start()
@@ -18,12 +20,14 @@ public class PlaceBlockWithInventory : MonoBehaviour
         hotbar = GameObject.FindWithTag("Hotbar").GetComponent<DisplayHotbar>();
         player = GameObject.FindWithTag("Player").GetComponent<Player>();
         button = GameObject.Find("BuildModeToggleButton").GetComponent<BuildModeToggle>();
+        npcToggle = GameObject.Find("NPCTestShopButton").GetComponent<NPCInventoryToggle>();
+        playerToggle = GameObject.Find("InventoryToggleButton").GetComponent<InventoryToggle>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (player.mode == 1)
+        if (player.mode == 1 && !playerToggle.inventoryToggled && !npcToggle.inventoryToggled)
         {
             item = hotbar.selectedSlot.item;
             if (item.type == ItemType.Block)

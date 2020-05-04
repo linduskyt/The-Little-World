@@ -24,6 +24,7 @@ public class DisplayInventory : MonoBehaviour
     [SerializeField] private int Y_START = 0;
     [SerializeField] private int Y_SPACE = 0;
     [SerializeField] private int NUMBER_OF_COLUMNS = 0;
+    [SerializeField] private bool setUnactiveAtStart;
 
     private int slotId = 0;
     private int itemId = 0;
@@ -43,7 +44,8 @@ public class DisplayInventory : MonoBehaviour
         inventoryScreen = this.gameObject;
         CreateSlots();
         UpdateSlots();
-        inventoryScreen.SetActive(false);
+        if (setUnactiveAtStart)
+            inventoryScreen.SetActive(false);
         isPlacable = true;
     }
 
