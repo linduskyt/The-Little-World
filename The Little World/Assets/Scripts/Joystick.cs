@@ -101,7 +101,6 @@ public class Joystick : MonoBehaviour
             Mathf.Abs(vertTranslation));
 
         cameraRigidBody.velocity = new Vector2(horizTranslation, vertTranslation);
-        //cameraTransform.Translate(horizTranslation / 4, vertTranslation / 4, 0);
 
         //joyRigidBody.velocity = new Vector2(horizTranslation, vertTranslation);
         //outerJoyRigidBody.velocity = new Vector2(horizTranslation, vertTranslation);
