@@ -48,4 +48,44 @@ MonoBehaviour:
         type: 0
         buffs: []
       amount: 0
+    - slotId: 4
+      ID: -1
+      item:
+        Name: 
+        Id: 0
+        type: 0
+        buffs: []
+      amount: 0
+    - slotId: 5
+      ID: -1
+      item:
+        Name: 
+        Id: 0
+        type: 0
+        buffs: []
+      amount: 0
+    - slotId: 6
+      ID: -1
+      item:
+        Name: 
+        Id: 0
+        type: 0
+        buffs: []
+      amount: 0
+    - slotId: 7
+      ID: -1
+      item:
+        Name: 
+        Id: 0
+        type: 0
+        buffs: []
+      amount: 0
+    - slotId: 8
+      ID: -1
+      item:
+        Name: 
+        Id: 0
+        type: 0
+        buffs: []
+      amount: 0
   disableInventoryResetOnStop: 0

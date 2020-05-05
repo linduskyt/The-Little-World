@@ -1571,8 +1571,8 @@ MonoBehaviour:
     type: 3}
   inventory: {fileID: 11400000, guid: ac8b9e640d6981047a1ee15b4b5a1055, type: 2}
   X_SPACE: 50
-  X_START: 0
-  Y_START: 0
+  X_START: -200
+  Y_START: 200
   Y_SPACE: 0
   NUMBER_OF_COLUMNS: 9
 --- !u!1001 &673919489
@@ -21205,7 +21205,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1997305466
 MonoBehaviour:
   m_ObjectHideFlags: 0
