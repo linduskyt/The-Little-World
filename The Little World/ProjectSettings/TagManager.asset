@@ -9,6 +9,7 @@ TagManager:
   - Hotbar
   - ItemBlock
   - Button
+  - ShopUI
   layers:
   - Default
   - TransparentFX
