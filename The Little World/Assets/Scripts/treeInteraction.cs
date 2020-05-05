@@ -15,6 +15,8 @@ public class treeInteraction : MonoBehaviour
 
     private int numItem = -1;
 
+    private bool inRange = false;
+
     private void Start()
     {
         hotbar = GameObject.FindWithTag("Hotbar").GetComponent<DisplayHotbar>();
@@ -43,9 +45,21 @@ public class treeInteraction : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+            inRange = true;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+            inRange = false;
+    }
+
     private void OnMouseOver()
     {
-        if(player && hotbar.selectedSlot.item.type == ItemType.Equipment && hotbar.selectedSlot.item.Id == 3)
+        if(player && hotbar.selectedSlot.item.type == ItemType.Equipment && hotbar.selectedSlot.item.Id == 3 && inRange)
         {
             if (player.mode == 1 && Input.GetMouseButtonUp(1))
             {

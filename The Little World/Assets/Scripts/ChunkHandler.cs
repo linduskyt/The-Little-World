@@ -4,9 +4,28 @@ using UnityEngine;
 
 public class ChunkHandler : MonoBehaviour
 {
-    //DEMO ONLY REMOVE LATER
-    public GameObject blockPreFab;
-    //End Demo
+    //List of objects linked to IDs
+    /* Place Blocks */
+    public GameObject ID000; // Tempblock
+    public GameObject ID001; // Grass
+    public GameObject ID002; // Dirt
+    public GameObject ID003; // Stone
+    public GameObject ID004; // Wood Planks
+    public GameObject ID005; // Red Bricks
+
+    /* Crops */
+    public GameObject ID101; // Fruit Tree
+    public GameObject ID102; // Carrot
+
+    /* World Blocks */
+    public GameObject ID201; // Boulder #1
+    public GameObject ID202; // Boulder #2
+    public GameObject ID203; // Tree_Fallen
+    public GameObject ID204; // Tree_Normal
+
+    // Current object
+    public GameObject currObject;
+
     //Declare class variables
     private short updateCycle; // Counter to cycle through staggered pdate
     private Vector2 changingChunks; // If player crossed a chunk and a full cycle through update cases has yet to finish 
@@ -19,6 +38,9 @@ public class ChunkHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //TEMP
+        this.currObject = ID004;
+        //
         this.playerObj = GameObject.Find("Player");
         this.chunkSize = 64;
         this.chunkList = new List<Chunk>();
@@ -50,6 +72,11 @@ public class ChunkHandler : MonoBehaviour
         LinkChunks(7, 4);   // SouthEast & South
         LinkChunks(8, 2);   // SouthWest & West
         LinkChunks(8, 4);   // SouthWest & South
+
+        for (sbyte i = 0; i < this.chunkList.Count; ++i)
+        {
+            LoadChunk(this.chunkList[i]);
+        }
         /*
 
         //Generates 3x3 grid of spawn chunks
@@ -70,7 +97,7 @@ public class ChunkHandler : MonoBehaviour
         }
         */
 
-        activeChunk = this.chunkList[0];
+        this.activeChunk = this.chunkList[0];
         
     }
 
@@ -129,7 +156,7 @@ public class ChunkHandler : MonoBehaviour
                     }
 
                     // Check/Unload North & NorthEast chunks
-                    if (this.changingChunks.y == -1)
+                    if (this.changingChunks.y == 1)
                     {
                         northChunk = GetChunkToThe(0, 1, this.prevChunk);
                         northEastChunk = GetChunkToThe(1, 1, this.prevChunk);
@@ -161,8 +188,8 @@ public class ChunkHandler : MonoBehaviour
                         LoadChunk(southEastChunk);
                     }
 
-                    // Check/Unload North & NorthEast chunks
-                    if (this.changingChunks.y == -1)
+                    // Check/Unload East & SouthEast chunks
+                    if (this.changingChunks.x == 1)
                     {
                         eastChunk = GetChunkToThe(0, 1, this.prevChunk);
                         southEastChunk = GetChunkToThe(1, 1, this.prevChunk);
@@ -194,7 +221,7 @@ public class ChunkHandler : MonoBehaviour
                         LoadChunk(southWestChunk);
                     }
 
-                    // Check/Unload North & NorthEast chunks
+                    // Check/Unload South & SouthWest chunks
                     if (this.changingChunks.y == -1)
                     {
                         southChunk = GetChunkToThe(0, 1, this.prevChunk);
@@ -227,8 +254,8 @@ public class ChunkHandler : MonoBehaviour
                         LoadChunk(northWestChunk);
                     }
 
-                    // Check/Unload North & NorthEast chunks
-                    if (this.changingChunks.y == -1)
+                    // Check/Unload West & NorthWest chunks
+                    if (this.changingChunks.x == -1)
                     {
                         westChunk = GetChunkToThe(0, 1, this.prevChunk);
                         northWestChunk = GetChunkToThe(1, 1, this.prevChunk);
@@ -258,20 +285,24 @@ public class ChunkHandler : MonoBehaviour
         for (short i = 0; i < blockList.Count; ++i)
         {
             Vector3 objCoords = new Vector3((float)(blockList[i].x * 0.32), (float)(blockList[i].y * 0.32), blockList[i].z); // Temporary, PLEASE CREATE A FUNCTION TO SIMPLIFY LATER
-           
-            GameObject block = Instantiate(blockPreFab, chunkTranslation + objCoords, Quaternion.identity);
+            currObject = IDToObj(blockList[i].worldObjID);
+            GameObject block = Instantiate(currObject, chunkTranslation + objCoords, Quaternion.identity);
             chunkToLoad.AddToActiveList(block);
         }
     }
 
     void UnloadChunk(Chunk chunkToUnload)
     {
+        /*
         chunkToUnload.Deactivate();
         List<GameObject> blockList = chunkToUnload.GetObjectList();
         for (short i = (short)(blockList.Count - 1); i >= 0; --i)
         {
             Destroy(blockList[i]);
         }
+        Debug.Log(blockList.Count);
+        Debug.Log(chunkToUnload.GetObjectList().Count);
+        */
     }
 
     Chunk GetChunkToThe(short horizontalOffset, short verticalOffset, Chunk fromChunk)
@@ -456,8 +487,14 @@ public class ChunkHandler : MonoBehaviour
         x = (float)(x / 0.32);
         y = (float)(y / 0.32);
         //Reduce to the bottom left block in chunk, then divide by the number of blocks in a chunk to get chunk coords.
-        x = (x - (x % this.chunkSize)) / this.chunkSize;
-        y = (y - (y % this.chunkSize)) / this.chunkSize;
+        if (x >= 0)
+            x = (x - (x % this.chunkSize)) / this.chunkSize;
+        else
+            x = -((-x - (-x % this.chunkSize)) / this.chunkSize) - 1;
+        if (y >= 0)
+            y = (y - (y % this.chunkSize)) / this.chunkSize;
+        else
+            y = -((-y - (-y % this.chunkSize)) / this.chunkSize) - 1;
 
         return new Vector2(x, y);
     }
@@ -520,5 +557,20 @@ public class ChunkHandler : MonoBehaviour
     void BuildChunk(short chunkIndex)
     {
 
+    }
+
+    GameObject IDToObj(short ID)
+    {
+        switch (ID)
+        {
+            case 4:
+                return ID004;
+                break;
+            case 204:
+                return ID204;
+                break;
+        }
+
+        return ID000;
     }
 }

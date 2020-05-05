@@ -27,15 +27,6 @@ public class BuildModeToggle : MonoBehaviour
         btnText.text = "Build Mode Disabled";
     }
 
-    private void Update()
-    {
-        if (player.mode != 1)
-        {
-            builderMode = false;
-            btnText.text = "Build Mode Disabled";
-        }
-    }
-
     private void OnClick()
     {
 

@@ -7,14 +7,17 @@ using UnityEngine.UI;
 public class PlaceBlockWithInventory : MonoBehaviour
 {
     [SerializeField] GameObject blockPreFab = null;
-    private Player player;
-    private DisplayHotbar hotbar;
-    private Item item;
+    [SerializeField] private Player player;
+    [SerializeField] private DisplayHotbar hotbar;
+    [SerializeField] private Item item;
+    [SerializeField] private BuildModeToggle button;
+    private bool buttonHover = false;
     // Start is called before the first frame update
     void Start()
     {
         hotbar = GameObject.FindWithTag("Hotbar").GetComponent<DisplayHotbar>();
         player = GameObject.FindWithTag("Player").GetComponent<Player>();
+        button = GameObject.Find("BuildModeToggleButton").GetComponent<BuildModeToggle>();
     }
 
     // Update is called once per frame
@@ -36,7 +39,7 @@ public class PlaceBlockWithInventory : MonoBehaviour
                 //if (hit.collider == null) { Debug.Log("Placable: True"); }
                 //Debug.Log("Item Placable Test 1: " + hotbar.myInventory.isPlacable);
                 //Debug.Log("Item Placable Test 2: " + !hotbar.myInventory.isDragging);
-                if (Input.GetMouseButtonUp(1) == true && hotbar.selectedSlot.amount > 0 && hit.collider == null && !(hotbar.myInventory.isDragging) && hotbar.myInventory.isPlacable)
+                if (Input.GetMouseButtonUp(0) == true && hotbar.selectedSlot.amount > 0 && hit.collider == null && !(hotbar.myInventory.isDragging) && hotbar.myInventory.isPlacable && !hotbar.tabGroup.IsHover)
                 {
                     Debug.Log("Upclick");
                     Debug.Log("Removing one " + item.Name);
@@ -67,7 +70,7 @@ public class PlaceBlockWithInventory : MonoBehaviour
                 }
             }
             //If left click, break block under mouse
-            if (Input.GetMouseButtonUp(0) == true)
+            if (Input.GetMouseButtonUp(0) == true && item.Id == 3 && !hotbar.tabGroup.IsHover)
             {
                 //Debug.Log("Left Click");
                 Vector3 mousePos = Input.mousePosition;
@@ -101,5 +104,15 @@ public class PlaceBlockWithInventory : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void onButtonEnter()
+    {
+        buttonHover = true;
+    }
+
+    private void onButtonExit()
+    {
+        buttonHover = false;
     }
 }

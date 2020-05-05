@@ -12,6 +12,7 @@ public class InventoryObject : ScriptableObject
     public string savePath;
     public ItemDatabaseObject database;
     public Inventory Container;
+    [SerializeField] private bool disableInventoryResetOnStop = false;
 
     /// <summary>
     /// Adds the item to the player's inventory.
@@ -108,7 +109,8 @@ public class InventoryObject : ScriptableObject
     [ContextMenu("Clear")]
     public void Clear()
     {
-        Container = new Inventory();
+        if (!disableInventoryResetOnStop)
+            Container = new Inventory();
     }
 }
 
