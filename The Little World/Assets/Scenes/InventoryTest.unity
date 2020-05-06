@@ -15829,7 +15829,7 @@ MonoBehaviour:
   isPlacable: 0
   stacking: 0
   myCanvas: {fileID: 1792299646}
-  inventoryPrefab: {fileID: 6324182652228505701, guid: 9d870d75317eb944181bc85d92010369,
+  inventoryPrefab: {fileID: 7822375075814244308, guid: 4d38c9266e4bae749a7c6ff3d8301743,
     type: 3}
   inventoryScreen: {fileID: 0}
   X_SPACE: 55
