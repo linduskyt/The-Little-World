@@ -31,7 +31,7 @@ public class DisplayInventory : MonoBehaviour
     private InventorySlot tempObject;
     private TextMeshProUGUI dragItemText;
 
-    Dictionary<GameObject, InventorySlot> itemsDisplayed = new Dictionary<GameObject, InventorySlot>();
+    public Dictionary<GameObject, InventorySlot> itemsDisplayed = new Dictionary<GameObject, InventorySlot>();
 
     private void Awake()
     {
@@ -82,6 +82,13 @@ public class DisplayInventory : MonoBehaviour
                 _slot.Key.GetComponentInChildren<TextMeshProUGUI>().text = _slot.Value.amount == 1 ? "" : _slot.Value.amount.ToString("n0");
             }
             else
+            {
+                _slot.Key.transform.GetChild(1).GetComponentInChildren<Image>().sprite = null;
+                _slot.Key.transform.GetChild(1).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 0);
+                _slot.Key.GetComponentInChildren<TextMeshProUGUI>().text = "";
+            }
+
+            if (_slot.Value.amount == 0 && _slot.Value.ID >= 0)
             {
                 _slot.Key.transform.GetChild(1).GetComponentInChildren<Image>().sprite = null;
                 _slot.Key.transform.GetChild(1).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 0);
@@ -185,7 +192,7 @@ public class DisplayInventory : MonoBehaviour
         Debug.Log("Start Dragging: " + isDragging);
         if (mouseItem.hoverItem != null)
         {
-            if (Input.GetMouseButton(0) && !(Input.GetMouseButton(1)) && mouseItem.hoverItem.ID >= 0)
+            if (Input.GetMouseButton(0) && !(Input.GetMouseButton(1)) && mouseItem.hoverItem.ID >= 0 && mouseItem.hoverItem.amount > 0)
             {
                 isDragging = true;
                 var mouseObject = new GameObject();

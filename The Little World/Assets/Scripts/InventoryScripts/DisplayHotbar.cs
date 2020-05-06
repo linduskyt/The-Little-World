@@ -73,6 +73,13 @@ public class DisplayHotbar : MonoBehaviour
                 _slot.Key.transform.GetChild(1).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 0);
                 _slot.Key.GetComponentInChildren<TextMeshProUGUI>().text = "";
             }
+
+            if (_slot.Value.amount == 0)
+            {
+                _slot.Key.transform.GetChild(1).GetComponentInChildren<Image>().sprite = null;
+                _slot.Key.transform.GetChild(1).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 0);
+                _slot.Key.GetComponentInChildren<TextMeshProUGUI>().text = "";
+            }
         }
     }
 

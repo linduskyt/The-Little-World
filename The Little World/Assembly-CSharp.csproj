@@ -85,6 +85,7 @@
     <Compile Include="Assets\Scripts\InventoryScripts\NPCInventoryToggle.cs" />
     <Compile Include="Assets\Scripts\InventoryScripts\PlaceBlockWithInventory.cs" />
     <Compile Include="Assets\Scripts\InventoryScripts\Player.cs" />
+    <Compile Include="Assets\Scripts\InventoryScripts\SellButton.cs" />
     <Compile Include="Assets\Scripts\InventoryScripts\TabButton.cs" />
     <Compile Include="Assets\Scripts\InventoryScripts\TabGroup.cs" />
     <Compile Include="Assets\Scripts\Joystick.cs" />

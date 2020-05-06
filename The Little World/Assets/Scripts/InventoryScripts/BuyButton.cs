@@ -7,6 +7,7 @@ using System;
 public class BuyButton : MonoBehaviour
 {
     [SerializeField] private DisplayHotbar npcShop = null;
+    [SerializeField] private DisplayInventory playerInventory = null;
     [SerializeField] private TextMeshProUGUI buyText = null;
     [SerializeField] private Player player = null;
 
@@ -19,6 +20,8 @@ public class BuyButton : MonoBehaviour
         buyAmount = 0;
         if (npcShop == null)
             npcShop = GameObject.Find("NPCShopPanel").GetComponent<DisplayHotbar>();
+        if (playerInventory == null)
+            playerInventory = GameObject.Find("PlayerInventory").GetComponent<DisplayInventory>();
         if (buyText == null)
             buyText = GameObject.Find("CounterText").GetComponent<TextMeshProUGUI>();
         if (player == null)
@@ -37,7 +40,25 @@ public class BuyButton : MonoBehaviour
 
     public void buyItem()
     {
-        player.inventory.AddItem(npcShop.selectedSlot.item, npcShop.selectedSlot.amount * buyAmount);
+        bool itemExistsInInventory = false;
+        //    if (npcShop.selectedSlot.slotId != -1)
+        //        player.inventory.AddItem(npcShop.selectedSlot.item, npcShop.selectedSlot.amount * buyAmount);
+        //    player.GetComponent<DisplayInventory>().UpdateSlots();
+        int buyTotal = buyAmount * npcShop.selectedSlot.amount;
+        foreach (KeyValuePair<GameObject, InventorySlot> _slot in playerInventory.itemsDisplayed)
+        {
+            if (_slot.Value.item.Id == npcShop.selectedSlot.item.Id)
+            {
+                itemExistsInInventory = true;
+                _slot.Value.amount += buyTotal;
+                playerInventory.UpdateSlots();
+            }
+        }
+        if (!itemExistsInInventory && npcShop.selectedSlot.slotId >= 0)
+        {
+            player.inventory.AddItem(npcShop.selectedSlot.item, buyTotal);
+        }
+
     }
 
     public void addBuyAmount(int amount)
