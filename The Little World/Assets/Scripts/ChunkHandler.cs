@@ -25,6 +25,8 @@ public class ChunkHandler : MonoBehaviour
     public GameObject ID202; // Boulder #2
     public GameObject ID203; // Tree_Fallen
     public GameObject ID204; // Tree_Normal
+    public GameObject ID205; // Tree_RedFruit
+    public GameObject ID206; // Tree_GoldenFruit
 
     /* Tiles */
     //public Tilebase.Tile ID501; // Grass Tile #1
