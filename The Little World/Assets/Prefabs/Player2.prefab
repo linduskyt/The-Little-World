@@ -221,6 +221,7 @@ GameObject:
   - component: {fileID: 4940824257295973343}
   - component: {fileID: 4940824257295973342}
   - component: {fileID: 4940824257295973340}
+  - component: {fileID: 4507935140765832485}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Untagged
@@ -356,6 +357,31 @@ MonoBehaviour:
   cameraRigidBody: {fileID: 4940824258489517100}
   joyRigidBody: {fileID: 2001103142578623518}
   outerJoyRigidBody: {fileID: 2617285128988917658}
+--- !u!114 &4507935140765832485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8415106546309661089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 959bf39143c5b684e9c2e46637ff9de9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID000: {fileID: 0}
+  ID001: {fileID: 0}
+  ID002: {fileID: 0}
+  ID003: {fileID: 0}
+  ID004: {fileID: 6217176618349398197, guid: c1c1e2325d0c66444aad556d6248c79b, type: 3}
+  ID005: {fileID: 0}
+  ID101: {fileID: 0}
+  ID102: {fileID: 0}
+  ID201: {fileID: 0}
+  ID202: {fileID: 0}
+  ID203: {fileID: 0}
+  ID204: {fileID: 4670727126857419823, guid: 69530a0b4f31d8b45aa882ace843c15c, type: 3}
+  currObject: {fileID: 0}
 --- !u!1 &9212107920171708812
 GameObject:
   m_ObjectHideFlags: 0
