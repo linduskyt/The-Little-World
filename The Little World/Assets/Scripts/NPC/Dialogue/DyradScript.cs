@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 
-public class NPCDialogue : MonoBehaviour
+public class DyradScript : MonoBehaviour
 {
 
     public GameObject dyradDialogue;
@@ -40,14 +40,6 @@ public class NPCDialogue : MonoBehaviour
     public int dialogueNum = 0; //0 for no dialog, 1 for message 1, 2 for message2, etc.
 
     void Start() { 
-      dyradDialogue = GameObject.Find("dyradDialogue");
-      farmerDialogue = GameObject.Find("farmerDialogue");
-      librianDialogue = GameObject.Find("librianDialogue");
-      dungeonDialogue = GameObject.Find("dungeonDialogue");
-      BSDialogue = GameObject.Find("BSDialogue");
-      mageDialogue = GameObject.Find("mageDialogue");
-
-      dyradShop = GameObject.Find("NPC_Shop");
       theSpriteRenderer = dyradDialogue.GetComponent<SpriteRenderer>();
       //shopLoader = dyradShop.GetComponent<>();
       currentSprite = null;
@@ -69,7 +61,7 @@ public class NPCDialogue : MonoBehaviour
       mage1 = Resources.Load<Sprite>("Mage1");
       mage2 = Resources.Load<Sprite>("Mage2");
       mage3 = Resources.Load<Sprite>("Mage3");
-        //dyradShop.SetActive(false);
+      dyradShop.SetActive(false);
     }
     //FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
 
@@ -98,12 +90,18 @@ public class NPCDialogue : MonoBehaviour
             dialogueNum++;
             npcShopHandler();
         }
-        else if (this.dialogueNum >= 3)
+        else if (this.dialogueNum == 3)
         {
             dyradShop.SetActive(false);
             theSpriteRenderer.sprite = screenThree;
+            dialogueNum++;
+        }
+        else if (this.dialogueNum >= 4)
+        {
+
+            theSpriteRenderer.sprite = null;
             dialogueNum = 0;
- 
+
         }
 
     }
