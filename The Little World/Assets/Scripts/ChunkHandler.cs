@@ -28,6 +28,8 @@ public class ChunkHandler : MonoBehaviour
     public GameObject ID205; // Tree_RedFruit
     public GameObject ID206; // Tree_GoldenFruit
     public GameObject ID207; // Tree_Pine
+    public GameObject ID208; // Bush
+    public GameObject ID209; // Bush_Flower
 
     /* Tiles */
     public GameObject ID501; // Grass Tile #1
@@ -652,6 +654,15 @@ public class ChunkHandler : MonoBehaviour
             case 5:
                 return ID005;
                 break;
+            case 201:
+                return ID201;
+                break;
+            case 202:
+                return ID202;
+                break;
+            case 203:
+                return ID203;
+                break;
             case 204:
                 return ID204;
                 break;
@@ -660,6 +671,15 @@ public class ChunkHandler : MonoBehaviour
                 break;
             case 206:
                 return ID206;
+                break;
+            case 207:
+                return ID207;
+                break;
+            case 208:
+                return ID208;
+                break;
+            case 209:
+                return ID209;
                 break;
             case 501:
                 return ID501;
