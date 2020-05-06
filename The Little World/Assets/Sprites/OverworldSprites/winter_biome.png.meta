@@ -1,7 +1,37 @@
 fileFormatVersion: 2
 guid: 3b7cf6647cbc28a47ad1955d2322053f
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 5215971407477616952
+    second: winter_biome_0
+  - first:
+      213: -515173630832100205
+    second: winter_biome_1
+  - first:
+      213: 8040590793322552310
+    second: winter_biome_2
+  - first:
+      213: -7671792084088606827
+    second: winter_biome_3
+  - first:
+      213: -3137907371800278798
+    second: winter_biome_4
+  - first:
+      213: -5567643885211852912
+    second: winter_biome_5
+  - first:
+      213: -8905968532236012722
+    second: winter_biome_6
+  - first:
+      213: -3721266704193378332
+    second: winter_biome_7
+  - first:
+      213: 1403179429974480368
+    second: winter_biome_8
+  - first:
+      213: 8071812152832420524
+    second: winter_biome_9
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -40,7 +70,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -70,9 +100,231 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: winter_biome_0
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 90
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f3b9c0f915d6b24fa8a9d945ed43572
+      internalID: 5215971407477616952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: winter_biome_1
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 90
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ef07a45e26f1044f9df5349e0a876a9
+      internalID: -515173630832100205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: winter_biome_2
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 90
+        width: 32
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d15790e9311d8c4cb603b9d9da68eea
+      internalID: 8040590793322552310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: winter_biome_3
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 10
+        width: 62
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b59b10f4a9da4bc46a818005910d83c3
+      internalID: -7671792084088606827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: winter_biome_4
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 50
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f2a06889a494ba4e9433ea5e2516efc
+      internalID: -3137907371800278798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: winter_biome_5
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 50
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d276bbcf9b089b240841f842036d8464
+      internalID: -5567643885211852912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: winter_biome_6
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 50
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b989d4314dde6ba4f8de1fa9a1a3eeb6
+      internalID: -8905968532236012722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: winter_biome_7
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 10
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c98beec7a0b1e3a47a7d9b5228b4e659
+      internalID: -3721266704193378332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: winter_biome_8
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 10
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9de10159a349f4b459656fe1da14247e
+      internalID: 1403179429974480368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: winter_biome_9
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 10
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10e86ba3a2bceeb458c863107dc14414
+      internalID: 8071812152832420524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

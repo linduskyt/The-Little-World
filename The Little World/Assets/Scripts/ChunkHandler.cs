@@ -27,10 +27,45 @@ public class ChunkHandler : MonoBehaviour
     public GameObject ID204; // Tree_Normal
     public GameObject ID205; // Tree_RedFruit
     public GameObject ID206; // Tree_GoldenFruit
+    public GameObject ID207; // Tree_Pine
 
     /* Tiles */
-    //public Tilebase.Tile ID501; // Grass Tile #1
-    //public Tile ID502; // Grass Tile #2
+    public GameObject ID501; // Grass Tile #1
+    public GameObject ID502; // Grass Tile #2
+    public GameObject ID503; // Grass Tile #3
+    public GameObject ID504; // Grass Tile #4
+    public GameObject ID505; // Grass Tile #5
+    public GameObject ID506; // Dirt
+    public GameObject ID507; // Fall Grass #1
+    public GameObject ID508; // Fall Grass #2
+    public GameObject ID509; // Fall Grass #3
+    public GameObject ID510; // Fall Grass #4
+    public GameObject ID511; // Fall Grass #5
+    public GameObject ID512; // Fall Dirt
+    public GameObject ID513; // Winter Grass #1
+    public GameObject ID514; // Winter Grass #2
+    public GameObject ID515; // Winter Grass #3
+    public GameObject ID516; // Winter Grass #4
+    public GameObject ID517; // Winter Grass #5
+    public GameObject ID518; // Winter Dirt
+    public GameObject ID519; // Mushroom Grass #1
+    public GameObject ID520; // Mushroom Grass #2
+    public GameObject ID521; // Mushroom Grass #3
+    public GameObject ID522; // Mushroom Grass #4
+    public GameObject ID523; // Small Mushroom #1
+    public GameObject ID524; // Small Mushroom #2
+    public GameObject ID525; // Small Mushroom #3
+    public GameObject ID526; // Small Mushroom #4
+    public GameObject ID527; // Purple Mushroom Grass #1
+    public GameObject ID528; // Purple Mushroom Grass #2
+    public GameObject ID529; // Purple Mushroom Grass #3
+    public GameObject ID530; // Purple Mushroom Grass #4
+    public GameObject ID531; // Purple Small Mushroom
+    public GameObject ID532; // Grass Puddle #1
+    public GameObject ID533; // Grass Puddle #2
+    public GameObject ID534; // Swamp Water #1
+    public GameObject ID535; // Swamp Water #2
+    public GameObject ID536;
 
     // Current object
     public GameObject currObject;
@@ -319,14 +354,15 @@ public class ChunkHandler : MonoBehaviour
             GameObject block = Instantiate(currObject, chunkTranslation + objCoords, Quaternion.identity);
             chunkToLoad.AddToActiveList(block);
         }
-        /*
+
         List<WorldObjectData> tileList = chunkToLoad.GetTileList();
         for (short i = 0; i < tileList.Count; ++i)
         {
-            Vector3 objCoords = new Vector3((float)(blockList[i].x * 0.32), (float)(blockList[i].y * 0.32), blockList[i].z); // Temporary, PLEASE CREATE A FUNCTION TO SIMPLIFY LATER
-            currTile = IDToObj(tileList[i].worldObjID);
+            Vector3 objCoords = new Vector3((float)(tileList[i].x * 0.32), (float)(tileList[i].y * 0.32), tileList[i].z); // Temporary, PLEASE CREATE A FUNCTION TO SIMPLIFY LATER
+            currObject = IDToObj(tileList[i].worldObjID);
+            GameObject tile = Instantiate(currObject, chunkTranslation + objCoords, Quaternion.identity);
+            chunkToLoad.AddToActiveList(tile);
         }
-        */
     }
 
     void UnloadChunk(Chunk chunkToUnload)
@@ -601,14 +637,134 @@ public class ChunkHandler : MonoBehaviour
     {
         switch (ID)
         {
+            case 1:
+                return ID001;
+                break;
+            case 2:
+                return ID002;
+                break;
+            case 3:
+                return ID003;
+                break;
             case 4:
                 return ID004;
+                break;
+            case 5:
+                return ID005;
                 break;
             case 204:
                 return ID204;
                 break;
+            case 205:
+                return ID205;
+                break;
+            case 206:
+                return ID206;
+                break;
             case 501:
-                // return ID501;
+                return ID501;
+                break;
+            case 502:
+                return ID502;
+                break;
+            case 503:
+                return ID503;
+                break;
+            case 504:
+                return ID504;
+                break;
+            case 505:
+                return ID505;
+                break;
+            case 506:
+                return ID506;
+                break;
+            case 507:
+                return ID507;
+                break;
+            case 508:
+                return ID508;
+                break;
+            case 509:
+                return ID509;
+                break;
+            case 510:
+                return ID510;
+                break;
+            case 511:
+                return ID511;
+                break;
+            case 512:
+                return ID512;
+                break;
+            case 513:
+                return ID513;
+                break;
+            case 514:
+                return ID514;
+                break;
+            case 515:
+                return ID515;
+                break;
+            case 516:
+                return ID516;
+                break;
+            case 517:
+                return ID517;
+                break;
+            case 518:
+                return ID518;
+                break;
+            case 519:
+                return ID519;
+                break;
+            case 520:
+                return ID520;
+                break;
+            case 521:
+                return ID521;
+                break;
+            case 522:
+                return ID522;
+                break;
+            case 523:
+                return ID523;
+                break;
+            case 524:
+                return ID524;
+                break;
+            case 525:
+                return ID525;
+                break;
+            case 526:
+                return ID526;
+                break;
+            case 527:
+                return ID527;
+                break;
+            case 528:
+                return ID528;
+                break;
+            case 529:
+                return ID529;
+                break;
+            case 530:
+                return ID530;
+                break;
+            case 531:
+                return ID531;
+                break;
+            case 532:
+                return ID532;
+                break;
+            case 533:
+                return ID533;
+                break;
+            case 534:
+                return ID534;
+                break;
+            case 535:
+                return ID535;
                 break;
         }
 

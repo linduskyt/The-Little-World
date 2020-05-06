@@ -1,7 +1,43 @@
 fileFormatVersion: 2
 guid: 2c8d4bcf04fe18e44be8052cc0e49671
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 8816899931682617277
+    second: swamp_tiles_0
+  - first:
+      213: -151637304275769627
+    second: swamp_tiles_1
+  - first:
+      213: -3198136972527159395
+    second: swamp_tiles_2
+  - first:
+      213: -4983302680125898628
+    second: swamp_tiles_3
+  - first:
+      213: 7008252711227741807
+    second: swamp_tiles_4
+  - first:
+      213: -1685143424911296929
+    second: swamp_tiles_5
+  - first:
+      213: 5819383922117782373
+    second: swamp_tiles_6
+  - first:
+      213: -4092288493961916549
+    second: swamp_tiles_7
+  - first:
+      213: 4102395567442175114
+    second: swamp_tiles_8
+  - first:
+      213: -7105019441651436932
+    second: swamp_tiles_9
+  - first:
+      213: 6383854842805614332
+    second: swamp_tiles_10
+  - first:
+      213: -7382042456271869191
+    second: swamp_tiles_11
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -40,7 +76,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -70,9 +106,273 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: swamp_tiles_0
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 8
+        width: 56
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2759173347db8a418273a8dd5f934cc
+      internalID: 8816899931682617277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swamp_tiles_1
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 78
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c55757325b8ed224aae85697c49a9a2a
+      internalID: -151637304275769627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swamp_tiles_2
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 78
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55df7fc0708028d4d874e7e893f6b2e3
+      internalID: -3198136972527159395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swamp_tiles_3
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 78
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6345e367cbe0a80448f0a6dd9601180e
+      internalID: -4983302680125898628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swamp_tiles_4
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 43
+        width: 32
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e7b0e423f6a6fe4591e9128beaf1fe9
+      internalID: 7008252711227741807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swamp_tiles_5
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 43
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8363d8dbfa987474792b34ed1dff2c86
+      internalID: -1685143424911296929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swamp_tiles_6
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 43
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3fa1bbeedba1674895749823aa17fee
+      internalID: 5819383922117782373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swamp_tiles_7
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 43
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cd9821960959e64e9d83f6906143ae9
+      internalID: -4092288493961916549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swamp_tiles_8
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 8
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8cd5dd1f8e83384cab7dcca064005c6
+      internalID: 4102395567442175114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swamp_tiles_9
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 8
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 394a763fa6be3a042908ddea2e3f369c
+      internalID: -7105019441651436932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swamp_tiles_10
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 8
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d98693bbdf67b4e42aaf0628063188e8
+      internalID: 6383854842805614332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swamp_tiles_11
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 8
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9d3e346b2683844792daefabf7a14a3
+      internalID: -7382042456271869191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

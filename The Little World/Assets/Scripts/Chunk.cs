@@ -249,7 +249,7 @@ public class Chunk
         for (sbyte i = 0; i < this.chunkSize; ++i)
         {
             for (sbyte k = 0; k < this.chunkSize; ++k) {
-                this.tileList.Add(new WorldObjectData(501, i, k, 0));
+                this.tileList.Add(new WorldObjectData((short)Random.Range(501, 506), i, k, 1));
             }
         }
     }

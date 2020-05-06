@@ -1,7 +1,40 @@
 fileFormatVersion: 2
 guid: 060f6ab6f7d36544fa4424e1bab66a17
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 899366925836264453
+    second: autumn_forest_tiles_0
+  - first:
+      213: 5044789695933764051
+    second: autumn_forest_tiles_1
+  - first:
+      213: -7052446840502359130
+    second: autumn_forest_tiles_2
+  - first:
+      213: 2802024306101382097
+    second: autumn_forest_tiles_3
+  - first:
+      213: 6735701353615347643
+    second: autumn_forest_tiles_4
+  - first:
+      213: 9059207911816950280
+    second: autumn_forest_tiles_5
+  - first:
+      213: 2573005818600594201
+    second: autumn_forest_tiles_6
+  - first:
+      213: 927555660098882557
+    second: autumn_forest_tiles_7
+  - first:
+      213: -9040110604328557321
+    second: autumn_forest_tiles_8
+  - first:
+      213: -4267974981810789247
+    second: autumn_forest_tiles_9
+  - first:
+      213: 4542729750417247116
+    second: autumn_forest_tiles_10
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -40,7 +73,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -70,9 +103,252 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: autumn_forest_tiles_0
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 7
+        width: 69
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21389119fe79b15449602686dd11ec27
+      internalID: 899366925836264453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: autumn_forest_tiles_1
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 6
+        width: 52
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f828080cabace594684cc7ae8bcc2736
+      internalID: 5044789695933764051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: autumn_forest_tiles_2
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 78
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05200265ff7c24243ae3cbc33b149c7b
+      internalID: -7052446840502359130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: autumn_forest_tiles_3
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 78
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 342d263ac77481e4390342a9d921ddb1
+      internalID: 2802024306101382097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: autumn_forest_tiles_4
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 78
+        width: 32
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8f4b7a22500817488789b47a3fd24ea
+      internalID: 6735701353615347643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: autumn_forest_tiles_5
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 42
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d37c1dc770338d4fa3ae4ba1cf27ed7
+      internalID: 9059207911816950280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: autumn_forest_tiles_6
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 42
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 230a0a9074cc8e3458a309f9751e0d94
+      internalID: 2573005818600594201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: autumn_forest_tiles_7
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 42
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ce26c99ea378944cb42277ff889bbb0
+      internalID: 927555660098882557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: autumn_forest_tiles_8
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 6
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cb57280ab86eb740b83875db448eeff
+      internalID: -9040110604328557321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: autumn_forest_tiles_9
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 6
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebe7309e6880419469bcd0f0c02d24a9
+      internalID: -4267974981810789247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: autumn_forest_tiles_10
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 6
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2568d4088fff1f4ca88009b72e9e7b4
+      internalID: 4542729750417247116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
