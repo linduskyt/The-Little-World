@@ -6,6 +6,7 @@ public class NPCWalking : MonoBehaviour
 {
 
     public float speed = 0.1F;
+    public Animator animator;
     private Rigidbody2D myBody;
 
     // Start is called before the first frame update
@@ -22,7 +23,10 @@ public class NPCWalking : MonoBehaviour
         float vertTranslation = Input.GetAxis("Vertical") * speed;
         
         myBody.velocity = new Vector2(horizTranslation, vertTranslation);
-
+        animator.SetFloat("VertSpeed", vertTranslation);
+        animator.SetFloat("HorizSpeed", horizTranslation);
+        animator.SetBool("HorizGreaterThan",
+            Mathf.Abs(horizTranslation) > Mathf.Abs(vertTranslation));
 
 
     }
