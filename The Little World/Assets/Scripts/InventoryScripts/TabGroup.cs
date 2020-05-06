@@ -15,8 +15,7 @@ public class TabGroup : MonoBehaviour
 
     private void Start()
     {
-        if (hotbar == null)
-            hotbar = GameObject.FindWithTag("Hotbar").GetComponent<DisplayHotbar>();
+
     }
 
     public void Subscribe(TabButton button)

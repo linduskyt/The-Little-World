@@ -51,7 +51,6 @@ public class BuyButton : MonoBehaviour
             {
                 itemExistsInInventory = true;
                 _slot.Value.amount += buyTotal;
-                playerInventory.UpdateSlots();
             }
         }
         if (!itemExistsInInventory && npcShop.selectedSlot.slotId >= 0)
