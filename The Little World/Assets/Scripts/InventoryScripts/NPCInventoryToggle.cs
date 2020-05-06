@@ -9,6 +9,7 @@ public class NPCInventoryToggle : MonoBehaviour
 
     [SerializeField] private GameObject inventoryScreen = null;
     [SerializeField] private Button myButton = null;
+    [SerializeField] private GameObject inventoryShopScreen = null;
 
     private Button btn;
 
@@ -24,5 +25,6 @@ public class NPCInventoryToggle : MonoBehaviour
     {
         inventoryToggled = !inventoryToggled;
         inventoryScreen.SetActive(!inventoryScreen.activeInHierarchy);
+        inventoryShopScreen.SetActive(true);
     }
 }
