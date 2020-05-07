@@ -422,7 +422,7 @@ public class ChunkHandler : MonoBehaviour
             GameObject block = Instantiate(currObject, chunkTranslation + objCoords, Quaternion.identity);
             chunkToLoad.AddToActiveList(block);
         }
-        /*
+        
         List<WorldObjectData> tileList = chunkToLoad.GetTileList();
         for (short i = 0; i < tileList.Count; ++i)
         {
@@ -431,7 +431,7 @@ public class ChunkHandler : MonoBehaviour
             GameObject tile = Instantiate(currObject, chunkTranslation + objCoords, Quaternion.identity);
             chunkToLoad.AddToActiveList(tile);
         }
-        */
+        
     }
 
     void UnloadChunk(Chunk chunkToUnload)
@@ -522,7 +522,7 @@ public class ChunkHandler : MonoBehaviour
                 // If there is no chunk to the north of activeChunk, create one
                 indexTemp = (short)chunkList.Count;
                 short biome = this.activeChunk.GetBiome();
-                if (Random.Range(0, 4) == 0)
+                if (Random.Range(0, 2) == 0)
                 {
                     biome = (short)(Random.Range(0, 9));
                 }

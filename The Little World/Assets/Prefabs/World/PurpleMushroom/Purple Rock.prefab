@@ -12,6 +12,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Purple Rock
       objectReference: {fileID: 0}
+    - target: {fileID: 7712031479935646592, guid: 69530a0b4f31d8b45aa882ace843c15c,
+        type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: b98f0bd7161f7914cab4e19a371d342e,
+        type: 2}
     - target: {fileID: 4670727126857419822, guid: 69530a0b4f31d8b45aa882ace843c15c,
         type: 3}
       propertyPath: m_LocalPosition.x
