@@ -30,6 +30,29 @@ public class ChunkHandler : MonoBehaviour
     public GameObject ID207; // Tree_Pine
     public GameObject ID208; // Bush
     public GameObject ID209; // Bush_Flower
+    public GameObject ID210; // Fall Bush
+    public GameObject ID211; // Fall Rock
+    public GameObject ID212; // Fall Tree #1
+    public GameObject ID213; // Fall Tree #2
+    public GameObject ID214; // Cactus #1
+    public GameObject ID215; // Cactus #2
+    public GameObject ID216; // Cactus #3
+    public GameObject ID217; // Dry Bush
+    public GameObject ID218; // Sand Rock
+    public GameObject ID219; // Small Mush #1
+    public GameObject ID220; // Small Mush #2
+    public GameObject ID221; // Small Mush #3
+    public GameObject ID222; // Small Mush #4
+    public GameObject ID223; // Tall Mush #1
+    public GameObject ID224; // Tall Mush #2
+    public GameObject ID225; // Teal Rock
+    public GameObject ID226; // Purple Shroom
+    public GameObject ID227; // Purple Rock
+    public GameObject ID228; // Water Rock
+    public GameObject ID229; // Swamp Tree
+    public GameObject ID230; // Winter Tree
+    public GameObject ID231; // Winter Bush
+    public GameObject ID232; // Winter Rock
 
     /* Tiles */
     public GameObject ID501; // Grass Tile #1
@@ -72,6 +95,7 @@ public class ChunkHandler : MonoBehaviour
     public GameObject ID538; // Sand #3
     public GameObject ID539; // Sand #4
     public GameObject ID540; // Sand #5
+    public GameObject ID541; // Tainted Dirt
 
     // Current object
     public GameObject currObject;
@@ -458,7 +482,12 @@ public class ChunkHandler : MonoBehaviour
             {
                 // If there is no chunk to the north of activeChunk, create one
                 indexTemp = (short)chunkList.Count;
-                this.chunkList.Add(new Chunk(indexTemp, new Vector2(target.x, target.y), 0, this.chunkSize));
+                short biome = this.activeChunk.GetBiome();
+                if (Random.Range(0, 4) == 0)
+                {
+                    biome = (short)(Random.Range(0, 9));
+                }
+                this.chunkList.Add(new Chunk(indexTemp, new Vector2(target.x, target.y), biome, this.chunkSize));
             }
         }
         return this.chunkList[indexTemp];
@@ -664,9 +693,13 @@ public class ChunkHandler : MonoBehaviour
             case 202:
                 return ID202;
                 break;
+
+                /*
             case 203:
                 return ID203;
                 break;
+                */
+
             case 204:
                 return ID204;
                 break;
@@ -684,6 +717,75 @@ public class ChunkHandler : MonoBehaviour
                 break;
             case 209:
                 return ID209;
+                break;
+            case 210:
+                return ID210;
+                break;
+            case 211:
+                return ID211;
+                break;
+            case 212:
+                return ID212;
+                break;
+            case 213:
+                return ID213;
+                break;
+            case 214:
+                return ID214;
+                break;
+            case 215:
+                return ID215;
+                break;
+            case 216:
+                return ID216;
+                break;
+            case 217:
+                return ID217;
+                break;
+            case 218:
+                return ID218;
+                break;
+            case 219:
+                return ID219;
+                break;
+            case 220:
+                return ID220;
+                break;
+            case 221:
+                return ID221;
+                break;
+            case 222:
+                return ID222;
+                break;
+            case 223:
+                return ID223;
+                break;
+            case 224:
+                return ID224;
+                break;
+            case 225:
+                return ID225;
+                break;
+            case 226:
+                return ID226;
+                break;
+            case 227:
+                return ID227;
+                break;
+            case 228:
+                return ID228;
+                break;
+            case 229:
+                return ID229;
+                break;
+            case 230:
+                return ID230;
+                break;
+            case 231:
+                return ID231;
+                break;
+            case 232:
+                return ID232;
                 break;
             case 501:
                 return ID501;
@@ -798,6 +900,25 @@ public class ChunkHandler : MonoBehaviour
             case 535:
                 return ID535;
                 break;
+            case 536:
+                return ID536;
+                break;
+            case 537:
+                return ID537;
+                break;
+            case 538:
+                return ID538;
+                break;
+            case 539:
+                return ID539;
+                break;
+            case 540:
+                return ID540;
+                break;
+            case 541:
+                return ID541;
+                break;
+
         }
 
         return ID000;
