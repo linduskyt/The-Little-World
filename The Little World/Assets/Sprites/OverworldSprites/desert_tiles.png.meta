@@ -1,7 +1,37 @@
 fileFormatVersion: 2
 guid: 91ef480237aa8c843a50d56cc09ce5f0
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -2718832226920268427
+    second: desert_tiles_0
+  - first:
+      213: 2798778986449459663
+    second: desert_tiles_1
+  - first:
+      213: -1526176362283986254
+    second: desert_tiles_2
+  - first:
+      213: -2458093048746983580
+    second: desert_tiles_3
+  - first:
+      213: 7722380002134236486
+    second: desert_tiles_4
+  - first:
+      213: 8266565278371275274
+    second: desert_tiles_5
+  - first:
+      213: 5013715327299697034
+    second: desert_tiles_6
+  - first:
+      213: 512638517490506622
+    second: desert_tiles_7
+  - first:
+      213: 4837398324069430384
+    second: desert_tiles_8
+  - first:
+      213: 8902320787988421094
+    second: desert_tiles_9
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -40,12 +70,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 97
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -70,9 +100,231 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: desert_tiles_0
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 46
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab96bc66419b79940b61a680326d3b64
+      internalID: -2718832226920268427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_tiles_1
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 46
+        width: 33
+        height: 39
+      alignment: 9
+      pivot: {x: 0.4848485, y: 0.41025642}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8603582c6eb87634e93a9b1a47427c78
+      internalID: 2798778986449459663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_tiles_2
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 46
+        width: 32
+        height: 52
+      alignment: 9
+      pivot: {x: 0.5, y: 0.30769232}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f94675be93f13c4387619759bc809f4
+      internalID: -1526176362283986254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_tiles_3
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 46
+        width: 32
+        height: 44
+      alignment: 9
+      pivot: {x: 0.5, y: 0.36363637}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01257f82ee571a24f96f9606aa11c007
+      internalID: -2458093048746983580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_tiles_4
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 46
+        width: 40
+        height: 77
+      alignment: 9
+      pivot: {x: 0.5, y: 0.20779221}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f0f8c770d1855145a838871c7502dc5
+      internalID: 7722380002134236486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_tiles_5
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 7
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afa4bdebd516d3c4593f943a85b81fd3
+      internalID: 8266565278371275274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_tiles_6
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 7
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2a049609f153ed4297537cf9c4fd59d
+      internalID: 5013715327299697034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_tiles_7
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 7
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 595498556866bdd4fb1f6387d7938a0d
+      internalID: 512638517490506622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_tiles_8
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 7
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76e1ac191d6090641baeb79904577050
+      internalID: 4837398324069430384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_tiles_9
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 7
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2513fa0b666a5d64188e0434198c342a
+      internalID: 8902320787988421094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

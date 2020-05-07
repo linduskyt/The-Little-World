@@ -60,7 +60,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -358,7 +358,17 @@ MonoBehaviour:
   ID533: {fileID: 7608997122094731809, guid: c98b4310e6b591447bdf04c8177911be, type: 3}
   ID534: {fileID: 2411785414339389113, guid: 9ee7ae0d05e2a9a48916fc49e13fc572, type: 3}
   ID535: {fileID: 7569115602114594456, guid: b3d89a3694fcc4946b8b5fd974b61d66, type: 3}
-  ID536: {fileID: 0}
+  ID536: {fileID: 3455550279915829467, guid: 70f156df9c338304a9932d614dd67255, type: 3}
+  ID537: {fileID: 3140753978096108148, guid: 624e421e294da854eb75840624809500, type: 3}
+  ID538: {fileID: 2946242873654665253, guid: d99da1c124456d64b847b3cf03c6b7ea, type: 3}
+  ID539: {fileID: 3956807464569074111, guid: 0897dc4bd501166488420d74f594fd49, type: 3}
+  ID540: {fileID: 38257047468986211, guid: 8a44519cc684f794db5356ce30f4fcac, type: 3}
+  ID541: {fileID: 9125752351785175442, guid: 0ed0f143459871241aa5fc1ae134bbce, type: 3}
+  ID542: {fileID: 1822635198898186811, guid: 54cfe9b5c004edc4087570cbf9704735, type: 3}
+  ID543: {fileID: 3416350928237275514, guid: bdb255a25b529fc4bb64593a38385e33, type: 3}
+  ID544: {fileID: 8910303757315152926, guid: b490450a4c1a86e43bea93fecdbb8f9d, type: 3}
+  ID545: {fileID: 3418991393502205081, guid: d7ac20fadff766f48beb2e8e4852366d, type: 3}
+  ID546: {fileID: 5143296725188442074, guid: a83deedec727e7d499bae666ecc05ed4, type: 3}
   currObject: {fileID: 0}
 --- !u!50 &230319901833833137
 Rigidbody2D:

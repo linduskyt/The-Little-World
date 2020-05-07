@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &6263408660850027739
+--- !u!1001 &5337701255337992476
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 4670727126857419823, guid: 69530a0b4f31d8b45aa882ace843c15c,
         type: 3}
       propertyPath: m_Name
-      value: DirtRock
+      value: Sand Rock
       objectReference: {fileID: 0}
     - target: {fileID: 4670727126857419822, guid: 69530a0b4f31d8b45aa882ace843c15c,
         type: 3}
@@ -70,12 +70,12 @@ PrefabInstance:
     - target: {fileID: 4670727126857419822, guid: 69530a0b4f31d8b45aa882ace843c15c,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 6.399213
+      value: -6.823808
       objectReference: {fileID: 0}
     - target: {fileID: 4670727126857419822, guid: 69530a0b4f31d8b45aa882ace843c15c,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -2.18
+      value: 3.9512982
       objectReference: {fileID: 0}
     - target: {fileID: 4670727126857419822, guid: 69530a0b4f31d8b45aa882ace843c15c,
         type: 3}
@@ -131,7 +131,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 2525993462694188768, guid: a0fafdf3a2d79c14bae0f351b2edf60f,
+      objectReference: {fileID: -2718832226920268427, guid: 91ef480237aa8c843a50d56cc09ce5f0,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69530a0b4f31d8b45aa882ace843c15c, type: 3}

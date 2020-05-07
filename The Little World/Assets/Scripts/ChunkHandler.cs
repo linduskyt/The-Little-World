@@ -17,13 +17,13 @@ public class ChunkHandler : MonoBehaviour
     public GameObject ID005; // Red Bricks
 
     /* Crops */
-    public GameObject ID101; // Fruit Tree
-    public GameObject ID102; // Carrot
+    // public GameObject ID101; // Fruit Tree
+    // public GameObject ID102; // Carrot
 
     /* World Blocks */
     public GameObject ID201; // Boulder #1
     public GameObject ID202; // Boulder #2
-    public GameObject ID203; // Tree_Fallen
+    // public GameObject ID203; // Tree_Fallen
     public GameObject ID204; // Tree_Normal
     public GameObject ID205; // Tree_RedFruit
     public GameObject ID206; // Tree_GoldenFruit
@@ -54,20 +54,24 @@ public class ChunkHandler : MonoBehaviour
     public GameObject ID520; // Mushroom Grass #2
     public GameObject ID521; // Mushroom Grass #3
     public GameObject ID522; // Mushroom Grass #4
-    public GameObject ID523; // Small Mushroom #1
-    public GameObject ID524; // Small Mushroom #2
-    public GameObject ID525; // Small Mushroom #3
-    public GameObject ID526; // Small Mushroom #4
+    // public GameObject ID523; // Removed
+    // public GameObject ID524; // Removed
+    // public GameObject ID525; // Removed
+    // public GameObject ID526; // Removed
     public GameObject ID527; // Purple Mushroom Grass #1
     public GameObject ID528; // Purple Mushroom Grass #2
     public GameObject ID529; // Purple Mushroom Grass #3
     public GameObject ID530; // Purple Mushroom Grass #4
-    public GameObject ID531; // Purple Small Mushroom
+    // ublic GameObject ID531; // Removed
     public GameObject ID532; // Grass Puddle #1
     public GameObject ID533; // Grass Puddle #2
     public GameObject ID534; // Swamp Water #1
     public GameObject ID535; // Swamp Water #2
-    public GameObject ID536;
+    public GameObject ID536; // Sand #1
+    public GameObject ID537; // Sand #2
+    public GameObject ID538; // Sand #3
+    public GameObject ID539; // Sand #4
+    public GameObject ID540; // Sand #5
 
     // Current object
     public GameObject currObject;
@@ -747,7 +751,9 @@ public class ChunkHandler : MonoBehaviour
             case 522:
                 return ID522;
                 break;
-            case 523:
+
+            /*
+               case 523:
                 return ID523;
                 break;
             case 524:
@@ -758,7 +764,9 @@ public class ChunkHandler : MonoBehaviour
                 break;
             case 526:
                 return ID526;
-                break;
+                break; 
+                */
+
             case 527:
                 return ID527;
                 break;
@@ -771,9 +779,13 @@ public class ChunkHandler : MonoBehaviour
             case 530:
                 return ID530;
                 break;
+
+                /*
             case 531:
                 return ID531;
                 break;
+                */
+
             case 532:
                 return ID532;
                 break;

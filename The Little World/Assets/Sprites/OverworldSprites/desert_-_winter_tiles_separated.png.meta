@@ -1,7 +1,55 @@
 fileFormatVersion: 2
 guid: eeaf6b4121401ca4486061c94030414b
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -8748719884160890796
+    second: desert_-_winter_tiles_separated_0
+  - first:
+      213: 6378953244080876877
+    second: desert_-_winter_tiles_separated_1
+  - first:
+      213: 795240018405869302
+    second: desert_-_winter_tiles_separated_2
+  - first:
+      213: 6060761812331495482
+    second: desert_-_winter_tiles_separated_3
+  - first:
+      213: 5412999671993654405
+    second: desert_-_winter_tiles_separated_4
+  - first:
+      213: 6112222376972784797
+    second: desert_-_winter_tiles_separated_5
+  - first:
+      213: 8727583174560265891
+    second: desert_-_winter_tiles_separated_6
+  - first:
+      213: 2229352370143043911
+    second: desert_-_winter_tiles_separated_7
+  - first:
+      213: -5609784645663678188
+    second: desert_-_winter_tiles_separated_8
+  - first:
+      213: 8174244863741971557
+    second: desert_-_winter_tiles_separated_9
+  - first:
+      213: 2364142367818592747
+    second: desert_-_winter_tiles_separated_10
+  - first:
+      213: 6133658966924587973
+    second: desert_-_winter_tiles_separated_11
+  - first:
+      213: -3677264691990780159
+    second: desert_-_winter_tiles_separated_12
+  - first:
+      213: -7613200072047437453
+    second: desert_-_winter_tiles_separated_13
+  - first:
+      213: -1348357497433733088
+    second: desert_-_winter_tiles_separated_14
+  - first:
+      213: 4191536661293947864
+    second: desert_-_winter_tiles_separated_15
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -40,12 +88,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 50
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -70,9 +118,357 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: desert_-_winter_tiles_separated_0
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 53
+        width: 33
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a710c1f8d3349848a57778db125d5ca
+      internalID: -8748719884160890796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_-_winter_tiles_separated_1
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 53
+        width: 21
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d145c470050fefb4ca943eaccf673aa1
+      internalID: 6378953244080876877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_-_winter_tiles_separated_2
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 52
+        width: 29
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1885fda1314bebd46a37cb758b2092fc
+      internalID: 795240018405869302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_-_winter_tiles_separated_3
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 52
+        width: 40
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b313d4eeeacd72e4ea140e3ca1edb583
+      internalID: 6060761812331495482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_-_winter_tiles_separated_4
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 52
+        width: 20
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 698186a5826397b4287436582f0d8c87
+      internalID: 5412999671993654405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_-_winter_tiles_separated_5
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 64
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 206a209f47a4a844195cf1c04655a5e4
+      internalID: 6112222376972784797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_-_winter_tiles_separated_6
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 50
+        width: 32
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08ac983d4379e104abdd05d10dd69e1f
+      internalID: 8727583174560265891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_-_winter_tiles_separated_7
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 50
+        width: 62
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0f9f36ce5a33ac4daba29456afc4a57
+      internalID: 2229352370143043911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_-_winter_tiles_separated_8
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 53
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2de2ed81238a45545b8b258aff1173ce
+      internalID: -5609784645663678188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_-_winter_tiles_separated_9
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 11
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a56e54f07dd84f149a3c607e1fc85e3f
+      internalID: 8174244863741971557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_-_winter_tiles_separated_10
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 11
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c45ba1a3b382909499c4e47b9ec19e07
+      internalID: 2364142367818592747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_-_winter_tiles_separated_11
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 11
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9207063149eb20f4da33701772b8bd0c
+      internalID: 6133658966924587973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_-_winter_tiles_separated_12
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 11
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc06eb08976d0d9418b55ead3a63c161
+      internalID: -3677264691990780159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_-_winter_tiles_separated_13
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 11
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0422d83e63294f74a86102a7c8157417
+      internalID: -7613200072047437453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_-_winter_tiles_separated_14
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 11
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cafe7f2082272e44a48e6525a485a9d
+      internalID: -1348357497433733088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_-_winter_tiles_separated_15
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 11
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b18ff9e9bda7b09499cbb70073aff597
+      internalID: 4191536661293947864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

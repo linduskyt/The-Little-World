@@ -45,7 +45,7 @@ public class Chunk
 
     public Chunk(short myIndexInList, Vector2 location, short biome, short chunkSize = 64, short left = -1, short right = -1, short up = -1, short down = -1, short upAndRight = -1, short upAndLeft = -1, short downAndRight = -1, short downAndLeft = -1)
     {
-        this.objPerChunk = 70;
+        this.objPerChunk = 110;
         this.myIndex = myIndexInList;
         this.location = location;
         this.biome = biome;
@@ -234,37 +234,37 @@ public class Chunk
             switch (Random.Range(0,11))
             {
                 case 0:
-                    ID = 001;
+                    ID = 001; // Grass Block
                     break;
                 case 1:
-                    ID = 002;
+                    ID = 002; // Dirt Block
                     break;
                 case 2:
-                    ID = 003;
+                    ID = 003; // Stone Block
                     break;
                 case 3:
-                    ID = 201;
+                    ID = 201; // Grassy Rock
                     break;
                 case 4:
-                    ID = 202;
+                    ID = 202; // Dirt Rock
                     break;
                 case 5:
-                    ID = 204;
+                    ID = 204; // Tree
                     break;
                 case 6:
-                    ID = 205;
+                    ID = 205; // Fruit Tree
                     break;
                 case 7:
-                    ID = 206;
+                    ID = 206; // Gold Fruit Tree
                     break;
                 case 8:
-                    ID = 207;
+                    ID = 207; // Pine Tree
                     break;
                 case 9:
-                    ID = 208;
+                    ID = 208; // Bush
                     break;
                 case 10:
-                    ID = 209;
+                    ID = 209; // Flower Bush
                     break;
                 default:
                     break;
