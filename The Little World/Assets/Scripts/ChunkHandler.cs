@@ -126,14 +126,14 @@ public class ChunkHandler : MonoBehaviour
 
         // Hardcoded Generation and Linking of 3x3 cluster of starting chunks
         this.chunkList.Add(new Chunk(0, new Vector2(0, 0), 0, this.chunkSize)); // 0:Center
-        this.chunkList.Add(new Chunk(1, new Vector2(1, 0), 0, this.chunkSize)); // 1:East
-        this.chunkList.Add(new Chunk(2, new Vector2(-1, 0), 0, this.chunkSize));// 2:West
-        this.chunkList.Add(new Chunk(3, new Vector2(0, 1), 0, this.chunkSize)); // 3:North
-        this.chunkList.Add(new Chunk(4, new Vector2(0, -1), 0, this.chunkSize));// 4:South
-        this.chunkList.Add(new Chunk(5, new Vector2(1, 1), 0, this.chunkSize)); // 5:NorthEast
-        this.chunkList.Add(new Chunk(6, new Vector2(-1, 1), 0, this.chunkSize));// 6:NorthWest
-        this.chunkList.Add(new Chunk(7, new Vector2(1, -1), 0, this.chunkSize));// 7:SouthEast
-        this.chunkList.Add(new Chunk(8, new Vector2(-1, -1), 0, this.chunkSize));// 8:SouthWest
+        this.chunkList.Add(new Chunk(1, new Vector2(1, 0), 1, this.chunkSize)); // 1:East
+        this.chunkList.Add(new Chunk(2, new Vector2(-1, 0), 2, this.chunkSize));// 2:West
+        this.chunkList.Add(new Chunk(3, new Vector2(0, 1), 3, this.chunkSize)); // 3:North
+        this.chunkList.Add(new Chunk(4, new Vector2(0, -1), 4, this.chunkSize));// 4:South
+        this.chunkList.Add(new Chunk(5, new Vector2(1, 1), 5, this.chunkSize)); // 5:NorthEast
+        this.chunkList.Add(new Chunk(6, new Vector2(-1, 1), 6, this.chunkSize));// 6:NorthWest
+        this.chunkList.Add(new Chunk(7, new Vector2(1, -1), 7, this.chunkSize));// 7:SouthEast
+        this.chunkList.Add(new Chunk(8, new Vector2(-1, -1), 8, this.chunkSize));// 8:SouthWest
 
         LinkChunks(0, 1);   // Center & East
         LinkChunks(0, 2);   // Center & West
