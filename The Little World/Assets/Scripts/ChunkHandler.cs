@@ -250,19 +250,28 @@ public class ChunkHandler : MonoBehaviour
                         LoadChunk(northEastChunk);
                     }
 
-                    // Check/Unload North & NorthEast chunks
-                    if (this.changingChunks.y == 1)
+                    // Check/Unload Northern Chunks
+                    if (this.changingChunks.y > 0)
                     {
-                        northChunk = GetChunkToThe(0, 1, this.prevChunk);
-                        northEastChunk = GetChunkToThe(1, 1, this.prevChunk);
-
-                        if (northChunk.IsAlive())
-                        {
-                            UnloadChunk(northChunk);
+                        short ind = this.prevChunk.GetNorthEast();
+                        if (ind >= 0) { 
+                            northChunk = this.chunkList[ind];
+                            if (northChunk.IsAlive())
+                                UnloadChunk(northChunk);
                         }
-                        if (northEastChunk.IsAlive())
-                        {
-                            UnloadChunk(northEastChunk);
+
+                        ind = this.prevChunk.GetNorth();
+                        if (ind >= 0) { 
+                            northChunk = this.chunkList[ind];
+                            if (northChunk.IsAlive())
+                                UnloadChunk(northChunk);
+                        }
+
+                        ind = this.prevChunk.GetNorthWest();
+                        if (ind >= 0) { 
+                            northChunk = this.chunkList[ind];
+                            if (northChunk.IsAlive())
+                                UnloadChunk(northChunk);
                         }
                     }
                 }
@@ -283,19 +292,28 @@ public class ChunkHandler : MonoBehaviour
                         LoadChunk(southEastChunk);
                     }
 
-                    // Check/Unload East & SouthEast chunks
-                    if (this.changingChunks.x == 1)
+                    // Check/Unload Eastern Chunks
+                    if (this.changingChunks.x > 0)
                     {
-                        eastChunk = GetChunkToThe(0, 1, this.prevChunk);
-                        southEastChunk = GetChunkToThe(1, 1, this.prevChunk);
-
-                        if (eastChunk.IsAlive())
-                        {
-                            UnloadChunk(eastChunk);
+                        short ind = this.prevChunk.GetNorthEast();
+                        if (ind >= 0) { 
+                            eastChunk = this.chunkList[ind];
+                            if (eastChunk.IsAlive())
+                                UnloadChunk(eastChunk);
                         }
-                        if (southEastChunk.IsAlive())
-                        {
-                            UnloadChunk(southEastChunk);
+
+                        ind = this.prevChunk.GetEast();
+                        if (ind >= 0) { 
+                            eastChunk = this.chunkList[ind];
+                            if (eastChunk.IsAlive())
+                                UnloadChunk(eastChunk);
+                        }
+
+                        ind = this.prevChunk.GetSouthEast();
+                        if (ind >= 0) { 
+                            eastChunk = this.chunkList[ind];
+                            if (eastChunk.IsAlive())
+                                UnloadChunk(eastChunk);
                         }
                     }
                 }
@@ -316,19 +334,28 @@ public class ChunkHandler : MonoBehaviour
                         LoadChunk(southWestChunk);
                     }
 
-                    // Check/Unload South & SouthWest chunks
-                    if (this.changingChunks.y == -1)
+                    // Check/Unload Southern Chunks
+                    if (this.changingChunks.y < 0)
                     {
-                        southChunk = GetChunkToThe(0, 1, this.prevChunk);
-                        southWestChunk = GetChunkToThe(1, 1, this.prevChunk);
-
-                        if (southChunk.IsAlive())
-                        {
-                            UnloadChunk(southChunk);
+                        short ind = this.prevChunk.GetSouthEast();
+                        if (ind >= 0) { 
+                            southChunk = this.chunkList[ind];
+                            if (southChunk.IsAlive())
+                                UnloadChunk(southChunk);
                         }
-                        if (southWestChunk.IsAlive())
-                        {
-                            UnloadChunk(southWestChunk);
+
+                        ind = this.prevChunk.GetSouth();
+                        if (ind >= 0) { 
+                            southChunk = this.chunkList[ind];
+                            if (southChunk.IsAlive())
+                                UnloadChunk(southChunk);
+                        }
+
+                        ind = this.prevChunk.GetSouthWest();
+                        if (ind >= 0) { 
+                            southChunk = this.chunkList[ind];
+                            if (southChunk.IsAlive())
+                                UnloadChunk(southChunk);
                         }
                     }
                 }
@@ -349,20 +376,31 @@ public class ChunkHandler : MonoBehaviour
                         LoadChunk(northWestChunk);
                     }
 
-                    // Check/Unload West & NorthWest chunks
-                    if (this.changingChunks.x == -1)
+                    // Check/Unload Western
+                    if (this.changingChunks.x < 0)
                     {
-                        westChunk = GetChunkToThe(0, 1, this.prevChunk);
-                        northWestChunk = GetChunkToThe(1, 1, this.prevChunk);
+                        short ind = this.prevChunk.GetSouthWest();
+                        if (ind >= 0) { 
+                            westChunk = this.chunkList[ind];
+                            if (westChunk.IsAlive())
+                                UnloadChunk(westChunk);
+                        }
 
-                        if (westChunk.IsAlive())
-                        {
-                            UnloadChunk(westChunk);
+                        ind = this.prevChunk.GetWest();
+                        if (ind >= 0) { 
+                            westChunk = this.chunkList[ind];
+                            if (westChunk.IsAlive())
+                                UnloadChunk(westChunk);
                         }
-                        if (northWestChunk.IsAlive())
+
+                        ind = this.prevChunk.GetNorthWest();
+                        if (ind >= 0)
                         {
-                            UnloadChunk(northWestChunk);
+                            westChunk = this.chunkList[ind];
+                            if (westChunk.IsAlive())
+                                UnloadChunk(westChunk);
                         }
+                        
                     }
                 }
                 this.updateCycle = -1;
@@ -384,7 +422,7 @@ public class ChunkHandler : MonoBehaviour
             GameObject block = Instantiate(currObject, chunkTranslation + objCoords, Quaternion.identity);
             chunkToLoad.AddToActiveList(block);
         }
-
+        /*
         List<WorldObjectData> tileList = chunkToLoad.GetTileList();
         for (short i = 0; i < tileList.Count; ++i)
         {
@@ -393,11 +431,12 @@ public class ChunkHandler : MonoBehaviour
             GameObject tile = Instantiate(currObject, chunkTranslation + objCoords, Quaternion.identity);
             chunkToLoad.AddToActiveList(tile);
         }
+        */
     }
 
     void UnloadChunk(Chunk chunkToUnload)
     {
-        /*
+        
         chunkToUnload.Deactivate();
         List<GameObject> blockList = chunkToUnload.GetObjectList();
         for (short i = (short)(blockList.Count - 1); i >= 0; --i)
@@ -406,7 +445,7 @@ public class ChunkHandler : MonoBehaviour
         }
         Debug.Log(blockList.Count);
         Debug.Log(chunkToUnload.GetObjectList().Count);
-        */
+        
     }
 
     Chunk GetChunkToThe(short horizontalOffset, short verticalOffset, Chunk fromChunk)
