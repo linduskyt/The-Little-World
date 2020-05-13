@@ -33,7 +33,7 @@ public class Joystick : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        cameraTransform.position.Set(0.0f,0.0f,-10.0f);
+        gameObject.transform.GetChild(0).transform.localPosition = new Vector3(0, 0, -10);
 
         cameraPositionX = cameraTransform.position.x;
         cameraPositionY = cameraTransform.position.y;

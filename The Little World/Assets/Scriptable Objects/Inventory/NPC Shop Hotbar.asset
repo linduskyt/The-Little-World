@@ -31,39 +31,39 @@ MonoBehaviour:
         Id: 4
         type: 3
         buffs: []
-      amount: 10
+      amount: 1
     - slotId: 2
-      ID: -1
+      ID: 5
       item:
-        Name: 
-        Id: 0
-        type: 0
+        Name: BlockStone
+        Id: 5
+        type: 3
         buffs: []
-      amount: 0
+      amount: 1
     - slotId: 3
-      ID: -1
+      ID: 6
       item:
-        Name: 
-        Id: 0
-        type: 0
+        Name: BlockBrick
+        Id: 6
+        type: 3
         buffs: []
-      amount: 0
+      amount: 1
     - slotId: 4
-      ID: -1
+      ID: 7
       item:
-        Name: 
-        Id: 0
-        type: 0
+        Name: BlockGrass
+        Id: 7
+        type: 3
         buffs: []
-      amount: 0
+      amount: 1
     - slotId: 5
-      ID: -1
+      ID: 8
       item:
-        Name: 
-        Id: 0
-        type: 0
+        Name: BlockDirt
+        Id: 8
+        type: 3
         buffs: []
-      amount: 0
+      amount: 1
     - slotId: 6
       ID: -1
       item:

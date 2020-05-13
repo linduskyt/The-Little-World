@@ -61,7 +61,7 @@ MonoBehaviour:
       item:
         Name: BlockDirt
         Id: 8
-        type: 0
+        type: 3
         buffs: []
       amount: 1
     - slotId: 6
@@ -71,7 +71,7 @@ MonoBehaviour:
         Id: 0
         type: 0
         buffs: []
-      amount: 1
+      amount: 0
     - slotId: 7
       ID: -1
       item:
@@ -88,4 +88,4 @@ MonoBehaviour:
         type: 0
         buffs: []
       amount: 0
-  disableInventoryResetOnStop: 0
+  disableInventoryResetOnStop: 1

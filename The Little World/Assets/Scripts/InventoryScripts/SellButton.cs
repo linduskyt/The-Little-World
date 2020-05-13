@@ -48,7 +48,13 @@ public class SellButton : MonoBehaviour
             if (_slot.Value.item.Id == npcShop.selectedSlot.item.Id)
             {
                 Debug.Log("Inventory Slot: " + _slot.Value.slotId);
-                if (sellTotal >= _slot.Value.amount)
+
+                if (_slot.Value.amount == 0)
+                {
+                    break;
+                }
+
+                else if (sellTotal >= _slot.Value.amount)
                 {
                     sellTotal = _slot.Value.amount;
 
@@ -60,7 +66,6 @@ public class SellButton : MonoBehaviour
                     }
                 }
                 _slot.Value.amount -= sellTotal;
-                playerInventory.UpdateSlots();
             }
         }
     }
