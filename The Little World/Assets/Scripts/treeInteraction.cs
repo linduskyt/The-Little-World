@@ -25,7 +25,7 @@ public class treeInteraction : MonoBehaviour
         treeMaxHealth = treeHealth;
         float fNumItem = treeHealth * Random.Range(1.5f, 3f);
         numItem = (int)fNumItem;
-        Debug.Log("fNum:" + fNumItem + "\nnum: " + numItem);
+        //Debug.Log("fNum:" + fNumItem + "\nnum: " + numItem);
     }
 
     private void Update()
@@ -68,9 +68,9 @@ public class treeInteraction : MonoBehaviour
                 if (treeHealth < 0)
                     treeHealth = 0;
 
-                Debug.Log("Tree Health: " + treeHealth + "\nTree Max Health: " + treeMaxHealth);
+                //Debug.Log("Tree Health: " + treeHealth + "\nTree Max Health: " + treeMaxHealth);
 
-                Debug.Log("Tool Mining Speed: " + hotbar.selectedSlot.item.buffs[0].value);
+                //Debug.Log("Tool Mining Speed: " + hotbar.selectedSlot.item.buffs[0].value);
 
                 float floatScale = 0;
                 for (int i = 0; treeHealth > 0 && i < hotbar.selectedSlot.item.buffs[0].value; i++)
@@ -78,7 +78,7 @@ public class treeInteraction : MonoBehaviour
                     floatScale = 3f - (((2f / (treeMaxHealth)) * (treeMaxHealth - treeHealth)));
                 }
 
-                Debug.Log("Float: " + floatScale);
+                //Debug.Log("Float: " + floatScale);
 
                 if(!tree.transform.GetChild(3).gameObject.activeInHierarchy)
                 {
