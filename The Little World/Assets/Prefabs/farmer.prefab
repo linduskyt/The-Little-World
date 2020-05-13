@@ -203,7 +203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dyradDialogue: {fileID: 0}
-  farmerDialogue: {fileID: 1270969022780756811}
+  farmerDialogue: {fileID: 0}
   librianDialogue: {fileID: 0}
   dungeonDialogue: {fileID: 0}
   BSDialogue: {fileID: 0}

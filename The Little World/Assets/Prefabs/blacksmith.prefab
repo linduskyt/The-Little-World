@@ -205,7 +205,7 @@ MonoBehaviour:
   farmerDialogue: {fileID: 0}
   librianDialogue: {fileID: 0}
   dungeonDialogue: {fileID: 0}
-  BSDialogue: {fileID: 5435908935115766614}
+  BSDialogue: {fileID: 0}
   mageDialogue: {fileID: 0}
   dyradShop: {fileID: 313874675099510303, guid: 9a625377dd22e894da1a358f856c5eab,
     type: 3}

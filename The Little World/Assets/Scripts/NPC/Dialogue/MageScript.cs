@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class MageScript : MonoBehaviour
 {
+    [SerializeField] private GameObject myCanvas;
 
     public GameObject dyradDialogue;
     public GameObject farmerDialogue;
@@ -26,7 +27,7 @@ public class MageScript : MonoBehaviour
 
     void Start()
     {
-        mageDialogue = GameObject.Find("mageDialogue");
+        mageDialogue = GameObject.Find("Canvas").transform.GetChild(3).GetChild(0).gameObject;
 
 
        theSpriteRenderer = mageDialogue.GetComponent<SpriteRenderer>();

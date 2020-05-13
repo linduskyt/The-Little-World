@@ -24,6 +24,8 @@ public class DungeonGirlScript : MonoBehaviour
 
     void Start()
     {
+        dungeonDialogue = GameObject.Find("Canvas").transform.GetChild(3).GetChild(3).gameObject;
+
         theSpriteRenderer = dungeonDialogue.GetComponent<SpriteRenderer>();
         //shopLoader = dyradShop.GetComponent<>();
         currentSprite = null;

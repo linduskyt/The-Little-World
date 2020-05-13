@@ -25,6 +25,8 @@ public class LibrarianScript : MonoBehaviour
 
     void Start()
     {
+        librianDialogue = GameObject.Find("Canvas").transform.GetChild(3).GetChild(1).gameObject;
+
         theSpriteRenderer = librianDialogue.GetComponent<SpriteRenderer>();
         //shopLoader = dyradShop.GetComponent<>();
         currentSprite = null;

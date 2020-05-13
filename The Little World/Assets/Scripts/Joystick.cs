@@ -5,6 +5,7 @@ using UnityEngine;
 public class Joystick : MonoBehaviour
 {
     public Transform cameraTransform;
+    public Transform playerTransform;
     public Animator animator;
     public float speed = 5.0f;
     private bool touchStart = false;
@@ -27,9 +28,13 @@ public class Joystick : MonoBehaviour
     public Rigidbody2D joyRigidBody;
     public Rigidbody2D outerJoyRigidBody;
 
+    private bool collision;
+
     // Update is called once per frame
     void Update()
     {
+        cameraTransform.position.Set(0.0f,0.0f,-10.0f);
+
         cameraPositionX = cameraTransform.position.x;
         cameraPositionY = cameraTransform.position.y;
 
@@ -108,11 +113,11 @@ public class Joystick : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-
+        collision = true;
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnCollisionExit2D(Collision2D col)
     {
-
+        collision = false;
     }
 }

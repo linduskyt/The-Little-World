@@ -24,6 +24,8 @@ public class BSScript : MonoBehaviour
 
      void Start()
     {
+        BSDialogue = GameObject.Find("Canvas").transform.GetChild(3).GetChild(4).gameObject;
+
         theSpriteRenderer = BSDialogue.GetComponent<SpriteRenderer>();
         //shopLoader = dyradShop.GetComponent<>();
         currentSprite = null;

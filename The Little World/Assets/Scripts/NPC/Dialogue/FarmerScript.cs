@@ -24,6 +24,8 @@ public class FarmerScript : MonoBehaviour
 
     void Start()
     {
+        farmerDialogue = GameObject.Find("Canvas").transform.GetChild(3).GetChild(2).gameObject;
+
         theSpriteRenderer = farmerDialogue.GetComponent<SpriteRenderer>();
         //shopLoader = dyradShop.GetComponent<>();
         currentSprite = null;
