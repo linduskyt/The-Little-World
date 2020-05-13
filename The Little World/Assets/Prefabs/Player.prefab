@@ -455,7 +455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcd59f2aad66e2f4bbad08f85f8fdd36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.1
+  speed: 0.01
   animator: {fileID: 3881903702439278024}
   myBody: {fileID: 230319901833833137}
 --- !u!95 &3881903702439278024

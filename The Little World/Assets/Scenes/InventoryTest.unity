@@ -965,7 +965,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcd59f2aad66e2f4bbad08f85f8fdd36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.1
+  speed: 0.04
   animator: {fileID: 586917181}
   myBody: {fileID: 586917174}
 --- !u!61 &586917184
@@ -4397,12 +4397,12 @@ PrefabInstance:
     - target: {fileID: 230319901833833141, guid: ef5b43a82a216524696554f2362f7a43,
         type: 3}
       propertyPath: speed
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 230319901833833141, guid: ef5b43a82a216524696554f2362f7a43,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 230319901833833138, guid: ef5b43a82a216524696554f2362f7a43,
         type: 3}
@@ -5019,7 +5019,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1280, y: 800}
+  m_ReferenceResolution: {x: 1480, y: 800}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
