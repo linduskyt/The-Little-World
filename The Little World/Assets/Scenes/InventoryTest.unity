@@ -1096,7 +1096,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 586917171}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 9c80ba5f4255cde47a4d09488d3bf138, type: 2}
   m_CullingMode: 0
@@ -1138,7 +1138,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 586917171}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bcd59f2aad66e2f4bbad08f85f8fdd36, type: 3}
   m_Name: 
@@ -4733,6 +4733,16 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 230319901575732654, guid: ef5b43a82a216524696554f2362f7a43,
+        type: 3}
+      propertyPath: orthographic size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 230319901833833137, guid: ef5b43a82a216524696554f2362f7a43,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 230319901833833151, guid: ef5b43a82a216524696554f2362f7a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4844,11 +4854,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 230319901833833137, guid: ef5b43a82a216524696554f2362f7a43,
-        type: 3}
-      propertyPath: m_BodyType
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 230319901833833150, guid: ef5b43a82a216524696554f2362f7a43,
         type: 3}
       propertyPath: m_IsTrigger
@@ -4869,10 +4874,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 230319901575732654, guid: ef5b43a82a216524696554f2362f7a43,
+    - target: {fileID: -2017070933167602087, guid: ef5b43a82a216524696554f2362f7a43,
         type: 3}
-      propertyPath: orthographic size
-      value: 5
+      propertyPath: speed
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef5b43a82a216524696554f2362f7a43, type: 3}
