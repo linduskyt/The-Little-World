@@ -54,6 +54,16 @@ public class ChunkHandler : MonoBehaviour
     public GameObject ID231; // Winter Bush
     public GameObject ID232; // Winter Rock
 
+    /* NPCs */
+    public GameObject ID401; // Blacksmith
+    public GameObject ID402; // Dungeon Girl
+    public GameObject ID403; // Farmer
+    public GameObject ID404; // Librarian
+    public GameObject ID405; // Mage
+    public GameObject ID406; // Duck
+    public GameObject ID407; // Cow
+    public GameObject ID408; // Pig
+
     /* Tiles */
     public GameObject ID501; // Grass Tile #1
     public GameObject ID502; // Grass Tile #2
@@ -825,6 +835,30 @@ public class ChunkHandler : MonoBehaviour
                 break;
             case 232:
                 return ID232;
+                break;
+            case 401:
+                return ID401;
+                break;
+            case 402:
+                return ID402;
+                break;
+            case 403:
+                return ID403;
+                break;
+            case 404:
+                return ID404;
+                break;
+            case 405:
+                return ID405;
+                break;
+            case 406:
+                return ID406;
+                break;
+            case 407:
+                return ID407;
+                break;
+            case 408:
+                return ID408;
                 break;
             case 501:
                 return ID501;

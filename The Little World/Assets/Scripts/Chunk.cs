@@ -56,6 +56,17 @@ public class Chunk
         this.tileList = new List<WorldObjectData>();
         this.activeObjList = new List<GameObject>();
 
+        if (Random.Range(0, 1) == 0)
+        {
+            short ID = (short)Random.Range(1, 6);
+            ID += 400;
+            sbyte x = (sbyte)Random.Range(0, 64);
+            sbyte y = (sbyte)Random.Range(0, 64);
+            sbyte z = 0;
+            WorldObjectData worldObj = new WorldObjectData(ID, x, y, z);
+            this.blockList.Add(worldObj);
+        }
+
         switch (this.biome)
         {
             case 0:
@@ -255,7 +266,7 @@ public class Chunk
                 }
             }
             short ID = 0;
-            switch (Random.Range(0, 10))
+            switch (Random.Range(0, 11))
             {
                 case 0:
                     ID = 001; // Grass Block
@@ -286,6 +297,9 @@ public class Chunk
                     break;
                 case 9:
                     ID = 209; // Flower Bush
+                    break;
+                case 10:
+                    ID = (short)(Random.Range(0,3) + 406);
                     break;
                 default:
                     break;
@@ -336,7 +350,7 @@ public class Chunk
                 }
             }
             short ID = 0;
-            switch (Random.Range(0, 6))
+            switch (Random.Range(0, 7))
             {
                 case 0:
                     ID = 002; // Dirt Block
@@ -355,6 +369,9 @@ public class Chunk
                     break;
                 case 5:
                     ID = 213; // Fall Tree #2
+                    break;
+                case 6:
+                    ID = (short)(Random.Range(0, 3) + 406);
                     break;
                 default:
                     break;
@@ -392,7 +409,7 @@ public class Chunk
                 }
             }
             short ID = 0;
-            switch (Random.Range(0, 6))
+            switch (Random.Range(0, 7))
             {
                 case 0:
                     ID = 003; // Stone Block
@@ -411,6 +428,9 @@ public class Chunk
                     break;
                 case 5:
                     ID = 218; // Sand Rock
+                    break;
+                case 6:
+                    ID = (short)(Random.Range(0, 3) + 406);
                     break;
                 default:
                     break;
@@ -448,7 +468,7 @@ public class Chunk
                 }
             }
             short ID = 0;
-            switch (Random.Range(0, 7))
+            switch (Random.Range(0, 8))
             {
                 case 0:
                     ID = 219; // Small Mush #1
@@ -470,6 +490,9 @@ public class Chunk
                     break;
                 case 6:
                     ID = 225; // Teal Rock
+                    break;
+                case 7:
+                    ID = (short)(Random.Range(0, 3) + 406);
                     break;
                 default:
                     break;
@@ -507,7 +530,7 @@ public class Chunk
                 }
             }
             short ID = 0;
-            switch (Random.Range(0, 4))
+            switch (Random.Range(0, 5))
             {
                 case 0:
                     ID = 226; // Purple Small Mush
@@ -520,6 +543,9 @@ public class Chunk
                     break;
                 case 3:
                     ID = 224; // Tall Mush #2
+                    break;
+                case 4:
+                    ID = (short)(Random.Range(0, 3) + 406);
                     break;
                 default:
                     break;
@@ -557,13 +583,16 @@ public class Chunk
                 }
             }
             short ID = 0;
-            switch (Random.Range(0, 2))
+            switch (Random.Range(0, 3))
             {
                 case 0:
                     ID = 228; // Swamp Rock
                     break;
                 case 1:
                     ID = 229; // Swamp Tree
+                    break;
+                case 2:
+                    ID = (short)(Random.Range(0, 3) + 406);
                     break;
                 default:
                     break;
@@ -613,7 +642,7 @@ public class Chunk
                 }
             }
             short ID = 0;
-            switch (Random.Range(0, 4))
+            switch (Random.Range(0, 5))
             {
                 case 0:
                     ID = 202; // Dirt Rock
@@ -626,6 +655,9 @@ public class Chunk
                     break;
                 case 3:
                     ID = 3; // Stone Block
+                    break;
+                case 4:
+                    ID = (short)(Random.Range(0, 3) + 406);
                     break;
                 default:
                     break;
@@ -675,7 +707,7 @@ public class Chunk
                 }
             }
             short ID = 0;
-            switch (Random.Range(0, 3))
+            switch (Random.Range(0, 4))
             {
                 case 0:
                     ID = 230; // Winter Tree
@@ -685,6 +717,9 @@ public class Chunk
                     break;
                 case 2:
                     ID = 232; // Snow Rock
+                    break;
+                case 3:
+                    ID = (short)(Random.Range(0, 3) + 406);
                     break;
                 default:
                     break;
