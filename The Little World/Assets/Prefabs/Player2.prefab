@@ -281,8 +281,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1801501267
-  m_SortingLayer: 2
+  m_SortingLayerID: 1580506225
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -5630661495560137964, guid: a24950f5f4883cb4a9b5fe1be70a988d,
     type: 3}
@@ -349,6 +349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraTransform: {fileID: 4940824258489517105}
+  playerTransform: {fileID: 0}
   animator: {fileID: 4940824257295973342}
   speed: 7
   joyTransform: {fileID: 1008401152777260783}
@@ -375,12 +376,81 @@ MonoBehaviour:
   ID003: {fileID: 0}
   ID004: {fileID: 6217176618349398197, guid: c1c1e2325d0c66444aad556d6248c79b, type: 3}
   ID005: {fileID: 0}
-  ID101: {fileID: 0}
-  ID102: {fileID: 0}
   ID201: {fileID: 0}
   ID202: {fileID: 0}
-  ID203: {fileID: 0}
   ID204: {fileID: 4670727126857419823, guid: 69530a0b4f31d8b45aa882ace843c15c, type: 3}
+  ID205: {fileID: 0}
+  ID206: {fileID: 0}
+  ID207: {fileID: 0}
+  ID208: {fileID: 0}
+  ID209: {fileID: 0}
+  ID210: {fileID: 0}
+  ID211: {fileID: 0}
+  ID212: {fileID: 0}
+  ID213: {fileID: 0}
+  ID214: {fileID: 0}
+  ID215: {fileID: 0}
+  ID216: {fileID: 0}
+  ID217: {fileID: 0}
+  ID218: {fileID: 0}
+  ID219: {fileID: 0}
+  ID220: {fileID: 0}
+  ID221: {fileID: 0}
+  ID222: {fileID: 0}
+  ID223: {fileID: 0}
+  ID224: {fileID: 0}
+  ID225: {fileID: 0}
+  ID226: {fileID: 0}
+  ID227: {fileID: 0}
+  ID228: {fileID: 0}
+  ID229: {fileID: 0}
+  ID230: {fileID: 0}
+  ID231: {fileID: 0}
+  ID232: {fileID: 0}
+  ID401: {fileID: 0}
+  ID402: {fileID: 0}
+  ID403: {fileID: 0}
+  ID404: {fileID: 0}
+  ID405: {fileID: 0}
+  ID406: {fileID: 0}
+  ID407: {fileID: 0}
+  ID408: {fileID: 0}
+  ID501: {fileID: 0}
+  ID502: {fileID: 0}
+  ID503: {fileID: 0}
+  ID504: {fileID: 0}
+  ID505: {fileID: 0}
+  ID506: {fileID: 0}
+  ID507: {fileID: 0}
+  ID508: {fileID: 0}
+  ID509: {fileID: 0}
+  ID510: {fileID: 0}
+  ID511: {fileID: 0}
+  ID512: {fileID: 0}
+  ID513: {fileID: 0}
+  ID514: {fileID: 0}
+  ID515: {fileID: 0}
+  ID516: {fileID: 0}
+  ID517: {fileID: 0}
+  ID518: {fileID: 0}
+  ID519: {fileID: 0}
+  ID520: {fileID: 0}
+  ID521: {fileID: 0}
+  ID522: {fileID: 0}
+  ID527: {fileID: 0}
+  ID528: {fileID: 0}
+  ID529: {fileID: 0}
+  ID530: {fileID: 0}
+  ID532: {fileID: 0}
+  ID533: {fileID: 0}
+  ID534: {fileID: 0}
+  ID535: {fileID: 0}
+  ID536: {fileID: 0}
+  ID537: {fileID: 0}
+  ID538: {fileID: 0}
+  ID539: {fileID: 0}
+  ID540: {fileID: 0}
+  ID541: {fileID: 0}
   currObject: {fileID: 0}
 --- !u!1 &9212107920171708812
 GameObject:

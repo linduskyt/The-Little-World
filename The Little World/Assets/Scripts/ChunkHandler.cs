@@ -446,7 +446,7 @@ public class ChunkHandler : MonoBehaviour
 
     void UnloadChunk(Chunk chunkToUnload)
     {
-        
+        /*
         chunkToUnload.Deactivate();
         List<GameObject> blockList = chunkToUnload.GetObjectList();
         for (short i = (short)(blockList.Count - 1); i >= 0; --i)
@@ -455,6 +455,7 @@ public class ChunkHandler : MonoBehaviour
         }
         Debug.Log(blockList.Count);
         Debug.Log(chunkToUnload.GetObjectList().Count);
+        */
         
     }
 
